@@ -77,59 +77,62 @@ function SiteNav() {
 }
 
 /* ----------------------------------------------------------------------------
-   Hero — section #1 of the brief, BTF campaign poster treatment.
-   Cream background. Massive black-caps Acumin headline, gold accent word.
-   Yellow strip divider. GalGothic body. Dark CTA pill.
+   Hero — section #1 of the brief.
+   Full-bleed campaign poster (dl-side2 → btf-hero.jpg) — sunset over the city,
+   sun-rays motif, "Building the FUTURE" wordmark baked into the photography.
+   Because the headline lives in the image, the HTML overlay is intentionally
+   minimal: subtitle + CTAs + action-ladder ribbon, anchored to the dark base
+   of the photo for contrast.
 ---------------------------------------------------------------------------- */
 function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[var(--color-cream-50)] text-[var(--color-ink-900)]">
+    <section className="relative min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
+      {/* full-bleed campaign hero photograph */}
+      <img
+        src="/media/hero/btf-hero.jpg"
+        alt="Building The Future — sunset over the city, sun-rays rising"
+        className="absolute inset-0 w-full h-full object-cover object-center select-none"
+        loading="eager"
+        fetchPriority="high"
+      />
+
+      {/* dark gradient at the bottom so subtitle + CTAs stay legible
+          regardless of where the photo's silhouette ends up */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-[1]"
+      />
+
       <div className="relative z-10 min-h-screen flex flex-col">
-        <div className="flex-1 flex items-center px-6 md:px-10 pt-32 pb-16">
+        {/* spacer pushes content to the bottom of the frame */}
+        <div className="flex-1" />
+
+        <div className="px-6 md:px-10 pb-12 md:pb-16">
           <div className="mx-auto w-full max-w-[1400px]">
-            {/* eyebrow */}
-            <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-8 md:mb-10">
-              Futures Church · 2026 Vision
-            </p>
-
-            {/* headline — TODO: confirm wording from vision doc */}
-            <h1
-              className="font-[family-name:var(--font-display)] uppercase leading-[0.86] tracking-[-0.015em] text-[var(--color-ink-900)]"
-              style={{ fontSize: 'clamp(3.25rem, 13vw, 13rem)' }}
-            >
-              We&rsquo;re Building
-              <br />
-              The <span className="text-[var(--color-gold-500)]">Future</span>
-              <span className="text-[var(--color-gold-500)]">.</span>
-            </h1>
-
-            {/* yellow strip — campaign motif */}
-            <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
-
-            {/* lead — GalGothic Light */}
-            <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl lg:text-2xl leading-[1.45] text-[var(--color-ink-900)]/85">
-              A vision for the next chapter of Futures Church &mdash; five pillars,
-              one future, and the offering that builds it.
+            {/* lead — GalGothic Light over the dark base of the photo */}
+            <p className="max-w-2xl text-base md:text-lg lg:text-xl leading-[1.45] text-white/90">
+              The vision for the next chapter of Futures Church &mdash; five
+              pillars, one future, and the offering that builds it.
             </p>
 
             {/* CTAs */}
-            <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3 md:gap-4">
-              <a
-                href="#vision"
-                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-ink-900)] text-[var(--color-cream-50)] px-7 py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-[var(--color-gold-500)] hover:text-[var(--color-ink-900)] transition-colors"
-              >
-                Watch the vision <span aria-hidden>→</span>
-              </a>
+            <div className="mt-7 md:mt-9 flex flex-wrap items-center gap-3 md:gap-4">
               <a
                 href="#pillars"
-                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 px-5 py-4 text-xs md:text-sm tracking-[0.2em] uppercase text-[var(--color-ink-900)]/80 hover:text-[var(--color-ink-900)] transition-colors"
+                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-gold-500)] text-[var(--color-ink-900)] px-7 py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors"
               >
-                See the five pillars
+                See the five pillars <span aria-hidden>→</span>
+              </a>
+              <a
+                href="#vision"
+                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 px-5 py-4 text-xs md:text-sm tracking-[0.2em] uppercase text-white/85 hover:text-white transition-colors"
+              >
+                Watch the vision
               </a>
             </div>
 
-            {/* footer ribbon — campaign action ladder */}
-            <div className="mt-16 md:mt-24 flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-[var(--color-ink-900)]/55 font-[family-name:var(--font-display)]">
+            {/* action ladder ribbon */}
+            <div className="mt-10 md:mt-14 flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-white/65 font-[family-name:var(--font-display)]">
               <span aria-hidden className="h-px w-10 bg-current" />
               Pray · Prepare · Pledge · Commit
             </div>
