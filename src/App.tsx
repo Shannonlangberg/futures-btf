@@ -711,6 +711,9 @@ type ReachItem = {
   name: string;
   region: string;
   body: string;
+  /** Optional photo. Drop a JPEG into /public/media/global/<slug>.jpg and the
+   *  card will render it instead of the placeholder tile. */
+  image?: { src: string; alt: string };
   cta?: { label: string; href: string; external?: boolean };
 };
 
@@ -721,6 +724,10 @@ const GLOBAL_REACH: ReachItem[] = [
     region: 'Adelaide · Online',
     body:
       'Training the next generation of leaders, pastors and missional thinkers — the people God is raising up to plant the church’s next chapter.',
+    image: {
+      src: '/media/global/college.jpg',
+      alt: 'A room full of students mid-worship at Futures Global College, hands raised, with the campaign sun-rays painted on the back wall.',
+    },
     cta: {
       label: 'Visit the college →',
       href: 'https://futuresglobal.college',
@@ -733,6 +740,10 @@ const GLOBAL_REACH: ReachItem[] = [
     region: 'South-east Asia',
     body:
       'Long-running partnerships with local churches and leaders. The gospel taking root in some of the most populous islands on earth.',
+    image: {
+      src: '/media/global/indonesia.jpg',
+      alt: 'A scene from the Futures partnership in Indonesia.',
+    },
   },
   {
     slug: 'brazil',
@@ -784,21 +795,29 @@ function GlobalReach() {
 function ReachCard({ item }: { item: ReachItem }) {
   return (
     <article id={item.slug} className="flex flex-col">
-      {/* Photo placeholder — TODO: drop a JPEG into /media/global/{slug}.jpg
-          and replace this tile with an <img>. Suggested copy: a B-roll still
-          or a city/landscape shot from each location. */}
+      {/* Photo: real <img> if `item.image` is set, otherwise placeholder tile. */}
       <div className="aspect-[5/4] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
-            Photo
-          </span>
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
-            — TBC —
-          </span>
-          <span className="mt-5 max-w-[24ch] text-[11px] md:text-xs leading-snug">
-            B-roll or landscape from <span className="font-mono">{item.slug}</span>.
-          </span>
-        </div>
+        {item.image ? (
+          <img
+            src={item.image.src}
+            alt={item.image.alt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
+            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+              Photo
+            </span>
+            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+              — TBC —
+            </span>
+            <span className="mt-5 max-w-[24ch] text-[11px] md:text-xs leading-snug">
+              B-roll or landscape from <span className="font-mono">{item.slug}</span>.
+            </span>
+          </div>
+        )}
         <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
       </div>
 
@@ -892,24 +911,23 @@ type Voice = {
   role: string;
 };
 
-// TODO: replace each `quote` with the real words from each pastor.
-// Names + roles confirmed by Shannon.
+// Real quotes from each pastor (provided by Shannon).
 const VOICES: Voice[] = [
   {
     quote:
-      'I’m watching kids meet Jesus for the first time every week. That’s not us. That’s him.',
+      'We’re seeing over 900 kids in our kids programs every week.',
     attribution: 'Ps Renee Watego',
     role: 'Kids Pastor · Futures Church',
   },
   {
     quote:
-      'Our students aren’t just attending. They’re being formed for a lifetime of faith — and Jesus is doing more than we know how to measure.',
+      'We’re reaching this next generation for Jesus — we’re now in 25 high schools across the state.',
     attribution: 'Ps Seth Behn',
     role: 'Youth Pastor · Futures Church',
   },
   {
     quote:
-      'What’s happening in this church right now is bigger than anything we’ve programmed. Jesus is moving — we’re being asked to make room.',
+      'Our reach is getting bigger because that is just what God is doing.',
     attribution: 'Ps Josh Greenwood',
     role: 'Lead Pastor · Futures Church',
   },
