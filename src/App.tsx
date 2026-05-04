@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 /**
  * Building The Future — homepage
  *
@@ -27,14 +29,15 @@
 function App() {
   return (
     <>
+      <ScrollProgress />
       <SiteNav />
       <main>
         <Hero />
         <VisionLetter />
         <AnchorProject />
         <Portfolio />
-        <WhyNow />
         <Pillars />
+        <WhyNow />
         <Voices />
         <ActionLadder />
         <WaysToGive />
@@ -56,6 +59,42 @@ function YellowStrip({ className = '' }: { className?: string }) {
       aria-hidden
       className={`h-3 md:h-4 bg-[var(--color-gold-500)] ${className}`}
     />
+  );
+}
+
+/**
+ * Scroll-progress indicator — slim yellow bar at the top of the viewport,
+ * scaling 0 → 100% across the page. Pure CSS transform, no layout cost.
+ */
+function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const update = () => {
+      const max =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const current = window.scrollY;
+      setProgress(max > 0 ? current / max : 0);
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  return (
+    <div
+      aria-hidden
+      className="fixed top-0 left-0 right-0 h-[3px] z-40 pointer-events-none"
+    >
+      <div
+        className="h-full bg-[var(--color-gold-500)] origin-left"
+        style={{ transform: `scaleX(${progress})` }}
+      />
+    </div>
   );
 }
 
@@ -101,7 +140,7 @@ function SiteNav() {
           href="/"
           className="font-[family-name:var(--font-display)] text-[var(--color-ink-900)] text-sm md:text-base tracking-[0.18em] uppercase leading-none"
         >
-          Building <span className="text-[var(--color-gold-600)]">The</span> Future
+          Building <span className="text-[var(--color-gold-800)]">The</span> Future
         </a>
         <a
           href="#vision"
@@ -119,23 +158,33 @@ function SiteNav() {
    Full-bleed campaign poster (dl-side2 → btf-hero.jpg) — sunset over the city,
    sun-rays motif, "Building the FUTURE" wordmark baked into the photography.
    Because the headline lives in the image, the HTML overlay is intentionally
-   minimal: subtitle + CTAs + action-ladder ribbon, anchored to the dark base
-   of the photo for contrast.
+   minimal: a visually-hidden h1 for SR/SEO, plus two CTAs anchored to the
+   dark base of the photo. Image is shipped as 1200/1800/2400w via srcset.
 ---------------------------------------------------------------------------- */
 function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
-      {/* full-bleed campaign hero photograph */}
+      {/* Visually-hidden semantic page heading — the actual title lives baked
+          into the hero image, but screen readers + SEO need a real <h1>. */}
+      <h1 className="sr-only">
+        Building The Future — Futures Church 2026 Vision
+      </h1>
+
+      {/* full-bleed campaign hero photograph (3 sizes via srcset for perf) */}
       <img
-        src="/media/hero/btf-hero.jpg"
-        alt="Building The Future — sunset over the city, sun-rays rising"
+        src="/media/hero/btf-hero-1800.jpg"
+        srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
+        sizes="100vw"
+        alt="Sunset over the city skyline. The words 'Building the Future' rise with the sun, sun-rays cresting from the horizon."
         className="absolute inset-0 w-full h-full object-cover object-center select-none"
         loading="eager"
         fetchPriority="high"
+        width={2400}
+        height={1167}
       />
 
-      {/* dark gradient at the bottom so subtitle + CTAs stay legible
-          regardless of where the photo's silhouette ends up */}
+      {/* dark gradient at the bottom so CTAs stay legible regardless of where
+          the photo's silhouette ends up */}
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-[1]"
@@ -147,14 +196,8 @@ function Hero() {
 
         <div className="px-6 md:px-10 pb-12 md:pb-16">
           <div className="mx-auto w-full max-w-[1400px]">
-            {/* lead — GalGothic Light over the dark base of the photo */}
-            <p className="max-w-2xl text-base md:text-lg lg:text-xl leading-[1.45] text-white/90">
-              The vision for the next chapter of Futures Church &mdash; five
-              pillars, one future, and the offering that builds it.
-            </p>
-
-            {/* CTAs */}
-            <div className="mt-7 md:mt-9 flex flex-wrap items-center gap-3 md:gap-4">
+            {/* CTAs — subtitle removed (the hero image already says it) */}
+            <div className="flex flex-wrap items-center gap-3 md:gap-4">
               <a
                 href="#pillars"
                 className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-gold-500)] text-[var(--color-ink-900)] px-7 py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors"
@@ -240,7 +283,7 @@ function VisionLetter() {
             style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
           >
             What We&rsquo;re{' '}
-            <span className="text-[var(--color-gold-500)]">Building</span>{' '}
+            <span className="text-[var(--color-gold-800)]">Building</span>{' '}
             Next.
           </h2>
 
@@ -321,7 +364,7 @@ const PILLARS: Pillar[] = [
     titleSrc: '/media/titles/discipleship.png',
     titleAlt: 'Discipleship',
     body:
-      "We're building rooms &mdash; and rhythms &mdash; where faith deepens. Small groups, discipleship pathways, the everyday Christian formed for the long journey.",
+      "We're building rooms — and rhythms — where faith deepens. Small groups, discipleship pathways, the everyday Christian formed for the long journey.",
   },
   {
     n: '03',
@@ -361,7 +404,7 @@ function Pillars() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        Five <span className="text-[var(--color-gold-500)]">Pillars</span>.
+        Five <span className="text-[var(--color-gold-800)]">Pillars</span>.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
@@ -401,11 +444,9 @@ function PillarBlock({ pillar, isLast }: { pillar: Pillar; isLast: boolean }) {
       </h3>
 
       {/* body — GalGothic Light, max ~60ch reading width */}
-      <p
-        className="mt-7 md:mt-9 text-lg md:text-xl lg:text-2xl leading-[1.5] text-[var(--color-ink-900)]/85 max-w-[58ch]"
-        // body uses HTML entities for em-dashes — render as raw HTML.
-        dangerouslySetInnerHTML={{ __html: pillar.body }}
-      />
+      <p className="mt-7 md:mt-9 text-lg md:text-xl lg:text-2xl leading-[1.5] text-[var(--color-ink-900)]/85 max-w-[58ch]">
+        {pillar.body}
+      </p>
 
       {/* yellow strip between blocks (skip after the last) */}
       {!isLast && <YellowStrip className="mt-20 md:mt-28 w-full max-w-[760px]" />}
@@ -549,7 +590,7 @@ const GIVING_METHODS: GivingMethod[] = [
     slug: 'other',
     name: 'Other Ways',
     body:
-      'Shares, property, business gifts &mdash; there are many ways to give. Speak with the BTF team and we’ll walk you through it.',
+      'Shares, property, business gifts — there are many ways to give. Speak with the BTF team and we’ll walk you through it.',
     cta: {
       label: 'Talk to the team →',
       // TODO: replace with the real BTF contact email.
@@ -569,7 +610,7 @@ function WaysToGive() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        Ways to <span className="text-[var(--color-gold-500)]">Give</span>.
+        Ways to <span className="text-[var(--color-gold-800)]">Give</span>.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
@@ -597,10 +638,9 @@ function GivingMethodCard({ method }: { method: GivingMethod }) {
       >
         {method.name}
       </h3>
-      <p
-        className="text-base md:text-lg leading-[1.55] text-[var(--color-ink-900)]/80 max-w-[44ch] flex-1"
-        dangerouslySetInnerHTML={{ __html: method.body }}
-      />
+      <p className="text-base md:text-lg leading-[1.55] text-[var(--color-ink-900)]/80 max-w-[44ch] flex-1">
+        {method.body}
+      </p>
       {method.detail && (
         <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-xs md:text-sm text-[var(--color-ink-900)]/70 border-t border-[var(--color-ink-900)]/10 pt-4">
           {method.detail}
@@ -640,7 +680,7 @@ function AnchorProject() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        Where it <span className="text-[var(--color-gold-500)]">Begins</span>.
+        Where it <span className="text-[var(--color-gold-800)]">Begins</span>.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
@@ -751,7 +791,7 @@ function Portfolio() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        And the <span className="text-[var(--color-gold-500)]">Rest</span>.
+        And the <span className="text-[var(--color-gold-800)]">Rest</span>.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
@@ -896,7 +936,7 @@ function Voices() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        What <span className="text-[var(--color-gold-500)]">others</span> see.
+        What <span className="text-[var(--color-gold-800)]">others</span> see.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
@@ -905,7 +945,7 @@ function Voices() {
         Some of the people in this church on what they believe is being built.
       </p>
 
-      <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
         {VOICES.map((v, i) => (
           <Quote key={i} voice={v} />
         ))}
@@ -984,7 +1024,7 @@ function FAQs() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        The <span className="text-[var(--color-gold-500)]">Questions</span>.
+        The <span className="text-[var(--color-gold-800)]">Questions</span>.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
