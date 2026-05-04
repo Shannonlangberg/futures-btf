@@ -237,7 +237,7 @@ function Hero() {
         {/* Desktop only: pushes content to the bottom of the frame */}
         <div className="hidden md:block flex-1" />
 
-        <div className="px-6 md:px-10 pt-10 pb-14 md:pt-0 md:pb-16">
+        <div className="px-6 md:px-10 pt-6 pb-8 md:pt-0 md:pb-16">
           <div className="mx-auto w-full max-w-[1400px]">
             {/* CTAs — subtitle removed (hero image already says it) */}
             <div className="flex flex-wrap items-center gap-3 md:gap-4">
@@ -256,7 +256,7 @@ function Hero() {
             </div>
 
             {/* action ladder ribbon */}
-            <div className="mt-10 md:mt-14 flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-white/65 font-[family-name:var(--font-display)]">
+            <div className="mt-6 md:mt-14 flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-white/65 font-[family-name:var(--font-display)]">
               <span aria-hidden className="h-px w-10 bg-current" />
               Pray · Prepare · Pledge · Commit
             </div>
