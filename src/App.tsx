@@ -11,14 +11,15 @@
  * Sections built:
  *   #1  Hero
  *   #2  Vision letter from senior pastor  (placeholder portrait + copy)
- *   #6  The Five Pillars  (built ahead of order — we have all the assets)
+ *   #6  The Five Pillars
+ *   #8a Action ladder — Pray · Prepare · Pledge · Commit (statement.png)
+ *   #8b Ways to Give  (placeholder giving channels)
  *
  * Sections still to come, in brief order:
  *   #3  The Anchor Project (full-bleed reveal)
  *   #4  Portfolio grid
  *   #5  Why Now
  *   #7  Voices
- *   #8  How you can be part (uses statement.png — Pray·Prepare·Pledge·Commit)
  *   #9  FAQs
  *   #10 Footer
  *
@@ -33,6 +34,8 @@ function App() {
         <Hero />
         <VisionLetter />
         <Pillars />
+        <ActionLadder />
+        <WaysToGive />
       </main>
     </>
   );
@@ -402,6 +405,211 @@ function PillarBlock({ pillar, isLast }: { pillar: Pillar; isLast: boolean }) {
 
       {/* yellow strip between blocks (skip after the last) */}
       {!isLast && <YellowStrip className="mt-20 md:mt-28 w-full max-w-[760px]" />}
+    </article>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Action Ladder — section #8a of the brief.
+   The PRAY · PREPARE · PLEDGE · COMMIT ladder from statement.png, rebuilt
+   in HTML (live Acumin) so the body copy expanding each action stays
+   consistent and accessible. Dark ink section to break up the cream rhythm.
+
+   PLACEHOLDERS:
+     - Each action's body copy is my draft; replace with the campaign's
+       official phrasing if the team has it.
+---------------------------------------------------------------------------- */
+type Action = {
+  n: string;
+  word: string;
+  body: string;
+};
+
+const ACTIONS: Action[] = [
+  {
+    n: '01',
+    word: 'Pray',
+    body:
+      'Set aside time over the coming weeks to pray for what God is doing in this church and what your part of it looks like.',
+  },
+  {
+    n: '02',
+    word: 'Prepare',
+    body:
+      'Come to a vision night. Read the brief. Sit with your family and decide what stewardship looks like for your household.',
+  },
+  {
+    n: '03',
+    word: 'Pledge',
+    body:
+      'Make a pledge for what you and your household are believing for over the next 12–18 months. Big or small, every pledge counts.',
+  },
+  {
+    n: '04',
+    word: 'Commit',
+    body:
+      'Stand with us as we build. Show up. Serve. Give. Tell the story of what God is doing.',
+  },
+];
+
+function ActionLadder() {
+  return (
+    <Section id="how-to-be-part" tone="ink">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
+        How You Can Be Part
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Four <span className="text-[var(--color-gold-500)]">Actions</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-cream-50)]/80">
+        We&rsquo;re asking the church to take four steps with us &mdash; in this
+        order, at your own pace, but all the way through.
+      </p>
+
+      <div className="mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
+        {ACTIONS.map((a) => (
+          <ActionBlock key={a.n} action={a} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function ActionBlock({ action }: { action: Action }) {
+  return (
+    <article>
+      <p className="font-[family-name:var(--font-display)] text-xs md:text-sm tracking-[0.32em] uppercase text-[var(--color-cream-50)]/45 mb-3 md:mb-4">
+        {action.n}
+      </p>
+      <h3
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.86] tracking-[-0.012em] text-[var(--color-gold-500)] m-0"
+        style={{ fontSize: 'clamp(2.5rem, 5vw, 4.75rem)' }}
+      >
+        {action.word}
+      </h3>
+      <p className="mt-5 md:mt-6 text-base md:text-lg leading-[1.55] text-[var(--color-cream-50)]/80 max-w-[40ch]">
+        {action.body}
+      </p>
+    </article>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Ways to Give — section #8b of the brief.
+   The practical, transactional follow-up to the action ladder. Card grid of
+   four giving channels. All copy + URLs + bank details are placeholders for
+   now — clearly TODO-tagged in the data so they're easy to swap.
+---------------------------------------------------------------------------- */
+type GivingMethod = {
+  slug: string;
+  name: string;
+  body: string;
+  detail?: string; // smaller secondary line, e.g. bank reference details
+  cta?: { label: string; href: string };
+};
+
+const GIVING_METHODS: GivingMethod[] = [
+  {
+    slug: 'online',
+    name: 'Online',
+    body:
+      'Make your pledge or one-off gift through the secure giving portal. Set up recurring giving in a couple of clicks.',
+    cta: {
+      label: 'Give online →',
+      // TODO: replace with the real giving-portal URL.
+      href: '#',
+    },
+  },
+  {
+    slug: 'bank',
+    name: 'Bank Transfer',
+    body:
+      'Direct deposit straight from your bank. Use your full name as the reference so we can match the gift to your pledge.',
+    // TODO: confirm the BTF account details with the finance team.
+    detail: 'BSB 000-000  ·  Acc 0000 0000  ·  Ref: Your full name',
+  },
+  {
+    slug: 'in-person',
+    name: 'In Person',
+    body:
+      'Bring your offering to any weekend service. The team will help you set up a pledge card on the day.',
+  },
+  {
+    slug: 'other',
+    name: 'Other Ways',
+    body:
+      'Shares, property, business gifts &mdash; there are many ways to give. Speak with the BTF team and we’ll walk you through it.',
+    cta: {
+      label: 'Talk to the team →',
+      // TODO: replace with the real BTF contact email.
+      href: 'mailto:btf@futures.church',
+    },
+  },
+];
+
+function WaysToGive() {
+  return (
+    <Section id="ways-to-give">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        Practical Steps
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Ways to <span className="text-[var(--color-gold-500)]">Give</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
+        Four ways to make a pledge a real gift. Pick whichever fits your
+        family best &mdash; every method goes to the same place.
+      </p>
+
+      <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {GIVING_METHODS.map((m) => (
+          <GivingMethodCard key={m.slug} method={m} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function GivingMethodCard({ method }: { method: GivingMethod }) {
+  return (
+    <article className="bg-[var(--color-cream-100)] p-8 md:p-10 flex flex-col gap-5 md:gap-6 border-t-4 border-[var(--color-gold-500)]">
+      <h3
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em] m-0"
+        style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}
+      >
+        {method.name}
+      </h3>
+      <p
+        className="text-base md:text-lg leading-[1.55] text-[var(--color-ink-900)]/80 max-w-[44ch] flex-1"
+        dangerouslySetInnerHTML={{ __html: method.body }}
+      />
+      {method.detail && (
+        <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-xs md:text-sm text-[var(--color-ink-900)]/70 border-t border-[var(--color-ink-900)]/10 pt-4">
+          {method.detail}
+        </p>
+      )}
+      {method.cta && (
+        <a
+          href={method.cta.href}
+          className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 self-start text-xs md:text-sm tracking-[0.2em] uppercase text-[var(--color-ink-900)] border-b-2 border-[var(--color-gold-500)] pb-1 hover:border-[var(--color-ink-900)] transition-colors"
+        >
+          {method.cta.label}
+        </a>
+      )}
     </article>
   );
 }
