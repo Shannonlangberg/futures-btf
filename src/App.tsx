@@ -239,17 +239,20 @@ function Hero() {
 
         <div className="px-6 md:px-10 pt-6 pb-8 md:pt-0 md:pb-16">
           <div className="mx-auto w-full max-w-[1400px]">
-            {/* CTAs — subtitle removed (hero image already says it) */}
+            {/* CTAs — subtitle removed (hero image already says it).
+                Secondary "Watch the vision" hidden on mobile because the nav
+                already exposes it; keeping both there made the dark area
+                wrap and bloat. */}
             <div className="flex flex-wrap items-center gap-3 md:gap-4">
               <a
                 href="#pillars"
-                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-gold-500)] text-[var(--color-ink-900)] px-7 py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors"
+                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-gold-500)] text-[var(--color-ink-900)] px-6 py-3 md:px-7 md:py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors"
               >
                 See the five pillars <span aria-hidden>→</span>
               </a>
               <a
                 href="#vision"
-                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 px-5 py-4 text-xs md:text-sm tracking-[0.2em] uppercase text-white/85 hover:text-white transition-colors"
+                className="hidden md:inline-flex font-[family-name:var(--font-display)] items-center gap-2 px-5 py-4 text-xs md:text-sm tracking-[0.2em] uppercase text-white/85 hover:text-white transition-colors"
               >
                 Watch the vision
               </a>
