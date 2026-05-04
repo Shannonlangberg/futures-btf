@@ -1,18 +1,42 @@
 @import "tailwindcss";
 
-/*
-  Building The Future — design tokens
-  Palette is a starting set drawn from the FUT002 brand guide. Refine once we
-  pull the exact swatches from the colour palette pages of the brand guide.
-*/
+/* ----------------------------------------------------------------------------
+   BTF campaign typography
+   Acumin Pro Condensed Ultra Black is the heavy display weight (used in caps
+   for everything headline-shaped). GalGothic Light is the body voice.
+---------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Acumin Pro Condensed";
+  src: url("/fonts/Acumin-Pro-Condensed-Ultra-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GalGothic";
+  src: url("/fonts/GalGothic-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ----------------------------------------------------------------------------
+   Building The Future — design tokens
+
+   Two palette layers:
+   - Parent Futures palette (rust/ember/sage) — kept for any cross-brand needs.
+   - BTF campaign palette (gold accent on cream/ink) — the visual language for
+     this site, drawn from the Design Assets pack and inside.jpg poster.
+---------------------------------------------------------------------------- */
 @theme {
-  /* Warm brand palette */
+  /* Parent Futures Church brand palette */
   --color-rust-50:  #faece6;
   --color-rust-100: #f3d2c2;
   --color-rust-200: #e9b099;
   --color-rust-300: #de8c70;
   --color-rust-400: #d36b50;
-  --color-rust-500: #c64a2c; /* primary rust — brand cover colour */
+  --color-rust-500: #c64a2c;
   --color-rust-600: #a83a23;
   --color-rust-700: #872d1c;
   --color-rust-800: #672115;
@@ -23,7 +47,7 @@
   --color-ember-200: #f9bd87;
   --color-ember-300: #f4a05a;
   --color-ember-400: #ef8741;
-  --color-ember-500: #e97032; /* bright accent orange */
+  --color-ember-500: #e97032;
   --color-ember-600: #c95a23;
   --color-ember-700: #a3461a;
   --color-ember-800: #7a3413;
@@ -32,7 +56,7 @@
   --color-sage-50:  #f1f3e6;
   --color-sage-100: #e2e6cc;
   --color-sage-200: #cdd3a8;
-  --color-sage-300: #b7bd8e; /* primary sage — brand neutral */
+  --color-sage-300: #b7bd8e;
   --color-sage-400: #9ea478;
   --color-sage-500: #858a63;
   --color-sage-600: #6a6e4e;
@@ -40,30 +64,51 @@
   --color-sage-800: #3a3c2b;
   --color-sage-900: #23241a;
 
-  --color-magenta-500: #d7338c; /* signature accent */
+  --color-magenta-500: #d7338c;
 
-  /* Neutrals — for the dark/cream rhythm we lift from FLC */
+  /* BTF campaign accent — the saturated golden yellow from strip-yellow.png /
+     statement.png. Treated as the campaign "warm" the way ember serves the
+     parent brand. */
+  --color-gold-50:  #fff8d8;
+  --color-gold-100: #fff0a8;
+  --color-gold-200: #ffe87a;
+  --color-gold-300: #ffdd47;
+  --color-gold-400: #ffd233;
+  --color-gold-500: #ffc72c; /* primary campaign yellow */
+  --color-gold-600: #e0a800;
+  --color-gold-700: #b87f00;
+  --color-gold-800: #8c5e00;
+  --color-gold-900: #5e3f00;
+
+  /* Neutrals — cream paper + warm ink */
   --color-cream-50:  #faf6ef;
   --color-cream-100: #f3ecdf;
-  --color-ink-900:   #1a120e; /* warm near-black for hero sections */
-  --color-ink-800:   #2a1f18;
+  --color-cream-200: #e9dfca;
+  --color-ink-900:   #0e0c0a; /* near-black for poster headlines */
+  --color-ink-800:   #1a120e;
 
   /* Typography */
-  --font-display: "Fraunces", "Times New Roman", serif;
-  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Acumin Pro Condensed", "Impact", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+  --font-body:    "GalGothic", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-/* Base body styles */
+/* Base body styles — cream paper, ink type, light body weight */
 html, body, #root {
   height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background: var(--color-cream-50);
   color: var(--color-ink-900);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* Selection — yellow highlight, ink text */
+::selection {
+  background: var(--color-gold-500);
+  color: var(--color-ink-900);
 }
