@@ -246,15 +246,15 @@ function PillarBlock({ pillar, isLast }: { pillar: Pillar; isLast: boolean }) {
         Pillar {pillar.n}
       </p>
 
-      {/* title PNG — sized by height so all pillars align visually,
-          cropping responsively without distorting the artwork */}
-      <img
-        src={pillar.titleSrc}
-        alt={pillar.titleAlt}
-        className="block h-[68px] sm:h-[88px] md:h-[120px] lg:h-[150px] w-auto max-w-full select-none"
-        loading="lazy"
-        decoding="async"
-      />
+      {/* title — rendered as live Acumin text so all pillars share an exact
+          type size regardless of word length (the source PNGs varied in width
+          which made the section feel uneven). */}
+      <h3
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.012em] text-[var(--color-ink-900)] m-0"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 7.5rem)' }}
+      >
+        {pillar.titleAlt}
+      </h3>
 
       {/* body — GalGothic Light, max ~60ch reading width */}
       <p
