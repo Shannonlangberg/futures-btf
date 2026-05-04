@@ -751,6 +751,10 @@ const GLOBAL_REACH: ReachItem[] = [
     region: 'South America',
     body:
       'Investing in churches and church planters across Brazil — backing what God is already doing through faithful local leaders.',
+    image: {
+      src: '/media/global/brazil.jpg',
+      alt: 'A scene from the Futures partnership in Brazil.',
+    },
   },
   {
     slug: 'venezuela',
@@ -758,6 +762,10 @@ const GLOBAL_REACH: ReachItem[] = [
     region: 'South America',
     body:
       'Standing with the church in Venezuela through a season the rest of the world has largely forgotten. Discipleship, relief, and resilience.',
+    image: {
+      src: '/media/global/venezuela.jpg',
+      alt: 'A scene from the Futures partnership in Venezuela.',
+    },
   },
 ];
 
