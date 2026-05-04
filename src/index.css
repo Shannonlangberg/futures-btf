@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/*
+  Building The Future — design tokens
+  Palette is a starting set drawn from the FUT002 brand guide. Refine once we
+  pull the exact swatches from the colour palette pages of the brand guide.
+*/
+@theme {
+  /* Warm brand palette */
+  --color-rust-50:  #faece6;
+  --color-rust-100: #f3d2c2;
+  --color-rust-200: #e9b099;
+  --color-rust-300: #de8c70;
+  --color-rust-400: #d36b50;
+  --color-rust-500: #c64a2c; /* primary rust — brand cover colour */
+  --color-rust-600: #a83a23;
+  --color-rust-700: #872d1c;
+  --color-rust-800: #672115;
+  --color-rust-900: #46160e;
+
+  --color-ember-50:  #fef0e3;
+  --color-ember-100: #fcd9bb;
+  --color-ember-200: #f9bd87;
+  --color-ember-300: #f4a05a;
+  --color-ember-400: #ef8741;
+  --color-ember-500: #e97032; /* bright accent orange */
+  --color-ember-600: #c95a23;
+  --color-ember-700: #a3461a;
+  --color-ember-800: #7a3413;
+  --color-ember-900: #52220c;
+
+  --color-sage-50:  #f1f3e6;
+  --color-sage-100: #e2e6cc;
+  --color-sage-200: #cdd3a8;
+  --color-sage-300: #b7bd8e; /* primary sage — brand neutral */
+  --color-sage-400: #9ea478;
+  --color-sage-500: #858a63;
+  --color-sage-600: #6a6e4e;
+  --color-sage-700: #51543c;
+  --color-sage-800: #3a3c2b;
+  --color-sage-900: #23241a;
+
+  --color-magenta-500: #d7338c; /* signature accent */
+
+  /* Neutrals — for the dark/cream rhythm we lift from FLC */
+  --color-cream-50:  #faf6ef;
+  --color-cream-100: #f3ecdf;
+  --color-ink-900:   #1a120e; /* warm near-black for hero sections */
+  --color-ink-800:   #2a1f18;
+
+  /* Typography */
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Base body styles */
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-cream-50);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
