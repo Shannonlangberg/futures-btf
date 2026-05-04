@@ -10,10 +10,10 @@
  *
  * Sections built:
  *   #1  Hero
+ *   #2  Vision letter from senior pastor  (placeholder portrait + copy)
  *   #6  The Five Pillars  (built ahead of order — we have all the assets)
  *
  * Sections still to come, in brief order:
- *   #2  Vision letter from senior pastor
  *   #3  The Anchor Project (full-bleed reveal)
  *   #4  Portfolio grid
  *   #5  Why Now
@@ -31,6 +31,7 @@ function App() {
       <SiteNav />
       <main>
         <Hero />
+        <VisionLetter />
         <Pillars />
       </main>
     </>
@@ -48,6 +49,36 @@ function YellowStrip({ className = '' }: { className?: string }) {
       aria-hidden
       className={`h-3 md:h-4 bg-[var(--color-gold-500)] ${className}`}
     />
+  );
+}
+
+/**
+ * Section wrapper — standardises horizontal padding, max-width, and vertical
+ * rhythm across the homepage. Pass a `tone` to flip cream/ink backgrounds.
+ */
+function Section({
+  id,
+  tone = 'cream',
+  className = '',
+  children,
+}: {
+  id?: string;
+  tone?: 'cream' | 'cream-100' | 'ink';
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const bg =
+    tone === 'ink'
+      ? 'bg-[var(--color-ink-900)] text-[var(--color-cream-50)]'
+      : tone === 'cream-100'
+      ? 'bg-[var(--color-cream-100)] text-[var(--color-ink-900)]'
+      : 'bg-[var(--color-cream-50)] text-[var(--color-ink-900)]';
+  return (
+    <section id={id} className={`relative ${bg} ${className}`}>
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-24 md:py-32">
+        {children}
+      </div>
+    </section>
   );
 }
 
@@ -144,6 +175,114 @@ function Hero() {
 }
 
 /* ----------------------------------------------------------------------------
+   Vision Letter — section #2 of the brief.
+   The FLC "founder spotlight" pattern adapted for BTF. Two-column on desktop:
+   portrait + signature on the left, eyebrow + headline + letter on the right.
+   Stacked on mobile.
+
+   PLACEHOLDERS — all clearly marked TODO:
+     - Senior pastor's name (currently "[ Pastor's Name ]")
+     - Portrait image (currently a labelled cream tile)
+     - Letter copy (currently a 4-paragraph stand-in I drafted; replace with
+       the real letter from the senior pastor when it lands)
+---------------------------------------------------------------------------- */
+function VisionLetter() {
+  return (
+    <Section id="vision" tone="cream-100">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        {/* portrait + signature column */}
+        <div className="lg:col-span-5 xl:col-span-4">
+          {/* TODO: replace with real portrait — drop a JPEG into
+              public/media/portraits/senior-pastor.jpg and swap the inner
+              placeholder for an <img> tag */}
+          <div className="aspect-[4/5] w-full bg-[var(--color-cream-200)] relative overflow-hidden">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-[var(--color-ink-900)]/45">
+              <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+                Portrait
+              </span>
+              <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+                — TBC —
+              </span>
+              <span className="mt-6 max-w-[16ch] text-[11px] md:text-xs leading-snug">
+                Drop senior-pastor.jpg into{' '}
+                <span className="font-mono">/media/portraits/</span>.
+              </span>
+            </div>
+            <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+          </div>
+
+          {/* signature block */}
+          <div className="mt-7 md:mt-8 font-[family-name:var(--font-display)] uppercase">
+            <p className="text-base md:text-lg tracking-[0.18em]">
+              Pastor [ Name ]
+            </p>
+            <p className="text-[10px] md:text-xs tracking-[0.32em] text-[var(--color-ink-900)]/60 mt-1.5">
+              Senior Pastor · Futures Church
+            </p>
+          </div>
+        </div>
+
+        {/* letter column */}
+        <div className="lg:col-span-7 lg:col-start-6">
+          <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+            A Letter From Your Pastor
+          </p>
+
+          <h2
+            className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em]"
+            style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
+          >
+            What We&rsquo;re{' '}
+            <span className="text-[var(--color-gold-500)]">Building</span>{' '}
+            Next.
+          </h2>
+
+          <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
+
+          {/* letter copy — TODO: replace with the real letter */}
+          <div className="mt-8 md:mt-10 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.65] text-[var(--color-ink-900)]/85 space-y-5">
+            <p>Dear church family,</p>
+            <p>
+              Over the last decade you&rsquo;ve watched God do extraordinary
+              things in this place. Lives changed. Generations reached. A
+              community of faith becoming a community of life. None of it has
+              been our doing.
+            </p>
+            <p>
+              Today I want to tell you what I believe God is asking us to build
+              next.
+            </p>
+            <p>
+              <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.05em]">
+                Building The Future
+              </span>{' '}
+              is the vision for the season ahead &mdash; five pillars the next
+              chapter of Futures Church will be measured by. Souls coming home.
+              Disciples being made. Generations growing up in faith. Churches
+              being planted. A reach that&rsquo;s both global and local.
+            </p>
+            <p>
+              This is bigger than any one of us. Which is exactly why I&rsquo;m
+              asking each of us to be part of it.
+            </p>
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3 md:gap-4">
+            <a
+              href="#pillars"
+              className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-ink-900)] text-[var(--color-cream-50)] px-7 py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-[var(--color-gold-500)] hover:text-[var(--color-ink-900)] transition-colors"
+            >
+              Read the five pillars <span aria-hidden>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ----------------------------------------------------------------------------
    The Five Pillars — section #6 of the brief.
    Editorial-poster grid. Each pillar is its own block:
        small numbered tag → title PNG → GalGothic body.
@@ -205,39 +344,34 @@ const PILLARS: Pillar[] = [
 
 function Pillars() {
   return (
-    <section
-      id="pillars"
-      className="relative bg-[var(--color-cream-50)] text-[var(--color-ink-900)]"
-    >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-24 md:py-32">
-        {/* section header */}
-        <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
-          The Vision · 2026 &rarr; 2030
-        </p>
+    <Section id="pillars">
+      {/* section header */}
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        The Vision · 2026 &rarr; 2030
+      </p>
 
-        <h2
-          className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
-          style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
-        >
-          Five <span className="text-[var(--color-gold-500)]">Pillars</span>.
-        </h2>
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Five <span className="text-[var(--color-gold-500)]">Pillars</span>.
+      </h2>
 
-        <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-        <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-          One vision, five places it lands. Each pillar is a part of what
-          we&rsquo;re building &mdash; and a part of what we&rsquo;re asking the
-          church to build with us.
-        </p>
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
+        One vision, five places it lands. Each pillar is a part of what
+        we&rsquo;re building &mdash; and a part of what we&rsquo;re asking the
+        church to build with us.
+      </p>
 
-        {/* pillars list */}
-        <div className="mt-20 md:mt-32 flex flex-col gap-20 md:gap-28">
-          {PILLARS.map((p, i) => (
-            <PillarBlock key={p.slug} pillar={p} isLast={i === PILLARS.length - 1} />
-          ))}
-        </div>
+      {/* pillars list */}
+      <div className="mt-20 md:mt-32 flex flex-col gap-20 md:gap-28">
+        {PILLARS.map((p, i) => (
+          <PillarBlock key={p.slug} pillar={p} isLast={i === PILLARS.length - 1} />
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
 
