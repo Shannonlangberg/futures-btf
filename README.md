@@ -25,7 +25,20 @@ Copy `.env.example` to `.env` and fill in your Supabase keys — see step 4 belo
 
 ## One-time cloud setup
 
-The local project is ready. The four steps below wire it up to GitHub, Netlify, and Supabase. Do them in order.
+The local project is ready. The steps below wire it up to GitHub, Netlify, and Supabase. Do them in order.
+
+### 0. Initialise git locally
+
+The project folder doesn't have a fresh `.git` yet (it was scaffolded outside git). From inside `futures-btf/` on your machine:
+
+```bash
+# If a half-initialised .git already exists from earlier scaffolding, nuke it first:
+rm -rf .git
+
+git init -b main
+git add .
+git commit -m "Initial commit: Vite + React + TS + Tailwind + Supabase + Netlify scaffold"
+```
 
 ### 1. Create the GitHub repo
 
