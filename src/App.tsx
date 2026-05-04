@@ -203,7 +203,7 @@ function SiteNav() {
 ---------------------------------------------------------------------------- */
 function Hero() {
   return (
-    <section className="relative md:min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
+    <section className="relative md:min-h-screen overflow-hidden bg-[var(--color-cream-50)] md:bg-[var(--color-ink-900)] text-white">
       {/* Visually-hidden semantic page heading — the actual title lives baked
           into the hero image, but screen readers + SEO need a real <h1>. */}
       <h1 className="sr-only">
@@ -222,7 +222,7 @@ function Hero() {
         height={1167}
         loading="eager"
         fetchPriority="high"
-        className="block w-full h-auto select-none md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
+        className="block w-full h-auto select-none mt-[64px] md:mt-0 md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
       />
 
       {/* Dark gradient at the bottom of the photo — only meaningful on desktop
@@ -233,7 +233,7 @@ function Hero() {
         className="hidden md:block absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-[1]"
       />
 
-      <div className="relative z-10 md:min-h-screen md:flex md:flex-col">
+      <div className="relative z-10 bg-[var(--color-ink-900)] md:bg-transparent md:min-h-screen md:flex md:flex-col">
         {/* Desktop only: pushes content to the bottom of the frame */}
         <div className="hidden md:block flex-1" />
 
