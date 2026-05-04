@@ -63,6 +63,44 @@ function YellowStrip({ className = '' }: { className?: string }) {
 }
 
 /**
+ * Vimeo embed — responsive 16:9 iframe with a sensible default param set
+ * (no title, no byline, no author portrait, do-not-track on).
+ */
+function VimeoEmbed({
+  id,
+  hash,
+  title,
+  className = '',
+}: {
+  id: string;
+  hash: string;
+  title: string;
+  className?: string;
+}) {
+  const params = new URLSearchParams({
+    h: hash,
+    title: '0',
+    byline: '0',
+    portrait: '0',
+    dnt: '1',
+  }).toString();
+  return (
+    <div
+      className={`relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden ${className}`}
+    >
+      <iframe
+        src={`https://player.vimeo.com/video/${id}?${params}`}
+        title={title}
+        frameBorder={0}
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+        allowFullScreen
+        className="absolute inset-0 w-full h-full"
+      />
+    </div>
+  );
+}
+
+/**
  * Scroll-progress indicator — slim yellow bar at the top of the viewport,
  * scaling 0 → 100% across the page. Pure CSS transform, no layout cost.
  */
@@ -226,71 +264,50 @@ function Hero() {
 
 /* ----------------------------------------------------------------------------
    Vision Letter — section #2 of the brief.
-   The FLC "founder spotlight" pattern adapted for BTF. Two-column on desktop:
-   portrait + signature on the left, eyebrow + headline + letter on the right.
-   Stacked on mobile.
+   Video-led: A&J's vision message anchors the section. The written letter
+   sits below as a companion / transcript-feel block.
 
    PLACEHOLDERS — all clearly marked TODO:
-     - Senior pastor's name (currently "[ Pastor's Name ]")
-     - Portrait image (currently a labelled cream tile)
-     - Letter copy (currently a 4-paragraph stand-in I drafted; replace with
-       the real letter from the senior pastor when it lands)
+     - Pastor names (currently "[ Ashley & Jane ]" — confirm with Shannon)
+     - Letter copy below the video is a 4-paragraph stand-in
 ---------------------------------------------------------------------------- */
 function VisionLetter() {
   return (
     <Section id="vision" tone="cream-100">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-        {/* portrait + signature column */}
-        <div className="lg:col-span-5 xl:col-span-4">
-          {/* TODO: replace with real portrait — drop a JPEG into
-              public/media/portraits/senior-pastor.jpg and swap the inner
-              placeholder for an <img> tag */}
-          <div className="aspect-[4/5] w-full bg-[var(--color-cream-200)] relative overflow-hidden">
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 text-[var(--color-ink-900)]/45">
-              <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
-                Portrait
-              </span>
-              <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
-                — TBC —
-              </span>
-              <span className="mt-6 max-w-[16ch] text-[11px] md:text-xs leading-snug">
-                Drop senior-pastor.jpg into{' '}
-                <span className="font-mono">/media/portraits/</span>.
-              </span>
-            </div>
-            <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
-          </div>
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        A Letter From Your Pastors
+      </p>
 
-          {/* signature block */}
-          <div className="mt-7 md:mt-8 font-[family-name:var(--font-display)] uppercase">
-            <p className="text-base md:text-lg tracking-[0.18em]">
-              Pastor [ Name ]
-            </p>
-            <p className="text-[10px] md:text-xs tracking-[0.32em] text-[var(--color-ink-900)]/60 mt-1.5">
-              Senior Pastor · Futures Church
-            </p>
-          </div>
-        </div>
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
+      >
+        What We&rsquo;re{' '}
+        <span className="text-[var(--color-gold-800)]">Building</span> Next.
+      </h2>
 
-        {/* letter column */}
-        <div className="lg:col-span-7 lg:col-start-6">
-          <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
-            A Letter From Your Pastor
+      <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
+
+      {/* The vision video — anchors the section */}
+      <div className="mt-12 md:mt-16">
+        <VimeoEmbed
+          id="1188946482"
+          hash="076da569fd"
+          title="A letter from Pastors Ashley & Jane Evans"
+        />
+        <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
+          Pastors Ashley &amp; Jane Evans · Senior Pastors
+        </p>
+      </div>
+
+      {/* Companion letter — TODO: replace with the real letter copy */}
+      <div className="mt-14 md:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="lg:col-span-9 xl:col-span-8">
+          <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-6">
+            In their words
           </p>
 
-          <h2
-            className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em]"
-            style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
-          >
-            What We&rsquo;re{' '}
-            <span className="text-[var(--color-gold-800)]">Building</span>{' '}
-            Next.
-          </h2>
-
-          <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
-
-          {/* letter copy — TODO: replace with the real letter */}
-          <div className="mt-8 md:mt-10 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.65] text-[var(--color-ink-900)]/85 space-y-5">
+          <div className="max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.65] text-[var(--color-ink-900)]/85 space-y-5">
             <p>Dear church family,</p>
             <p>
               Over the last decade you&rsquo;ve watched God do extraordinary
@@ -299,25 +316,35 @@ function VisionLetter() {
               been our doing.
             </p>
             <p>
-              Today I want to tell you what I believe God is asking us to build
-              next.
+              Today we want to tell you what we believe God is asking us to
+              build next.
             </p>
             <p>
               <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.05em]">
                 Building The Future
               </span>{' '}
-              is the vision for the season ahead &mdash; five pillars the next
-              chapter of Futures Church will be measured by. Souls coming home.
+              is the vision for the season ahead — five pillars the next chapter
+              of Futures Church will be measured by. Souls coming home.
               Disciples being made. Generations growing up in faith. Churches
               being planted. A reach that&rsquo;s both global and local.
             </p>
             <p>
-              This is bigger than any one of us. Which is exactly why I&rsquo;m
-              asking each of us to be part of it.
+              This is bigger than any one of us. Which is exactly why
+              we&rsquo;re asking each of us to be part of it.
             </p>
           </div>
 
-          {/* CTAs */}
+          {/* signature */}
+          <div className="mt-10 font-[family-name:var(--font-display)] uppercase">
+            <p className="text-base md:text-lg tracking-[0.18em]">
+              [ Ashley &amp; Jane Evans ]
+            </p>
+            <p className="text-[10px] md:text-xs tracking-[0.32em] text-[var(--color-ink-900)]/60 mt-1.5">
+              Senior Pastors · Futures Church
+            </p>
+          </div>
+
+          {/* CTA */}
           <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3 md:gap-4">
             <a
               href="#pillars"
@@ -942,10 +969,24 @@ function Voices() {
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
       <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-        Some of the people in this church on what they believe is being built.
+        Hear from the team — and from some of the people in this church — on
+        what they believe is being built.
       </p>
 
-      <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+      {/* Staff / leadership video — anchors the section */}
+      <div className="mt-12 md:mt-16">
+        <VimeoEmbed
+          id="1183634809"
+          hash="9f487d7782"
+          title="Hear from the Futures team"
+        />
+        <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
+          Voices from the Futures team
+        </p>
+      </div>
+
+      {/* Supporting quote cards */}
+      <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
         {VOICES.map((v, i) => (
           <Quote key={i} voice={v} />
         ))}
