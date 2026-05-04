@@ -157,7 +157,7 @@ function Section({
       : 'bg-[var(--color-cream-50)] text-[var(--color-ink-900)]';
   return (
     <section id={id} className={`relative ${bg} ${className}`}>
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
         {children}
       </div>
     </section>
@@ -771,7 +771,7 @@ const GLOBAL_REACH: ReachItem[] = [
 
 function GlobalReach() {
   return (
-    <Section id="global-reach" tone="cream-100">
+    <Section id="global-reach" tone="cream">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
         Global · Local
       </p>
@@ -943,7 +943,7 @@ const VOICES: Voice[] = [
 
 function Voices() {
   return (
-    <Section id="voices" tone="cream">
+    <Section id="voices" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
         Voices
       </p>
