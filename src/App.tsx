@@ -12,16 +12,15 @@ import { useEffect, useState } from 'react';
  *
  * Sections built (full skeleton in place — content placeholders marked TODO):
  *   #1  Hero  (full-bleed campaign poster)
- *   #2  Vision letter from senior pastor
- *   #3  The Anchor Project (placeholder render, project meta)
- *   #4  Portfolio grid (3 placeholder projects)
- *   #5  Why Now  (placeholder copy + pull quote)
- *   #6  The Five Pillars
- *   #7  Voices  (3 placeholder quotes)
- *   #8a Action ladder — Pray · Prepare · Pledge · Commit
- *   #8b Ways to Give
- *   #9  FAQs (6 placeholder Q&As)
- *   #10 Footer
+ *   #2  Vision letter from senior pastors  (A&J video + companion letter)
+ *   #3  Global Reach  (Futures Global College, Indonesia, Brazil, Venezuela)
+ *   #4  Why Now  (placeholder copy + pull quote)
+ *   #5  The Five Pillars
+ *   #6  Voices  (Ps Renee Watego, Ps Seth Behn, Ps Josh Greenwood + staff video)
+ *   #7a Action ladder — Pray · Prepare · Pledge · Commit
+ *   #7b Ways to Give
+ *   #8  FAQs (6 placeholder Q&As)
+ *   #9  Footer
  *
  * TODOs marked inline below — final copy from the vision doc, real portrait,
  * real anchor render etc.
@@ -34,10 +33,9 @@ function App() {
       <main>
         <Hero />
         <VisionLetter />
-        <AnchorProject />
-        <Portfolio />
-        <Pillars />
+        <GlobalReach />
         <WhyNow />
+        <Pillars />
         <Voices />
         <ActionLadder />
         <WaysToGive />
@@ -694,187 +692,139 @@ function GivingMethodCard({ method }: { method: GivingMethod }) {
 }
 
 /* ----------------------------------------------------------------------------
-   Anchor Project — section #3 of the brief.
-   The flagship project of the campaign, given a full-bleed reveal moment.
+   Global Reach — section #3.
+   Replaces the "Anchor Project + Portfolio" pair from the original brief.
+   The BTF offering doesn't fund discrete construction projects; it pours into
+   the campaign's pillars. This section makes that real by showing where those
+   pillars land — Futures Global College, Indonesia, Brazil, Venezuela.
 
-   PLACEHOLDERS — all clearly marked:
-     - Project name (currently "[ Anchor Project ]")
-     - Anchor render (placeholder tile — drop a JPEG into
-       /public/media/projects/anchor/ and swap)
-     - Status / timeline copy
-     - "Explore the anchor" link target
+   PLACEHOLDERS:
+     - Per-location body copy is my draft — replace with the real story for
+       each region when content lands.
+     - Photo tiles are sized slots — drop JPEGs into
+       /public/media/global/<slug>.jpg and swap each tile for an <img>.
+     - College CTA goes to futuresglobal.college; the others are unlinked
+       until you decide whether each gets a deeper page.
 ---------------------------------------------------------------------------- */
-function AnchorProject() {
-  return (
-    <Section id="anchor" tone="cream">
-      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
-        The Anchor Project
-      </p>
-
-      <h2
-        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
-        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
-      >
-        Where it <span className="text-[var(--color-gold-800)]">Begins</span>.
-      </h2>
-
-      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
-
-      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-        Every long-haul vision needs an anchor &mdash; the first build that
-        proves the rest is possible. Here is ours.
-      </p>
-
-      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
-        {/* Big placeholder render — TODO: replace tile with <img src="/media/projects/anchor/render-1.jpg" /> */}
-        <div className="lg:col-span-8 aspect-[16/10] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
-            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
-              Anchor Render
-            </span>
-            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
-              &mdash; TBC &mdash;
-            </span>
-            <span className="mt-6 max-w-[28ch] text-[11px] md:text-xs leading-snug">
-              Drop the anchor render into{' '}
-              <span className="font-mono">/media/projects/anchor/</span>.
-            </span>
-          </div>
-          <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
-        </div>
-
-        {/* Project metadata */}
-        <div className="lg:col-span-4 flex flex-col gap-7">
-          <div>
-            <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-2">
-              Project name
-            </p>
-            <p
-              className="font-[family-name:var(--font-display)] uppercase tracking-[-0.01em] leading-[1]"
-              style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}
-            >
-              [ Anchor Project ]
-            </p>
-          </div>
-          <div>
-            <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-2">
-              In one line
-            </p>
-            <p className="text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/85">
-              The flagship build &mdash; the place where the next chapter begins.
-            </p>
-          </div>
-          <div>
-            <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-2">
-              Status
-            </p>
-            <p className="text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/85">
-              In design. Breaking ground in [ year ].
-            </p>
-          </div>
-          <a
-            href="#"
-            className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 self-start text-xs md:text-sm tracking-[0.2em] uppercase text-[var(--color-ink-900)] border-b-2 border-[var(--color-gold-500)] pb-1 hover:border-[var(--color-ink-900)] transition-colors mt-2"
-          >
-            Explore the anchor &rarr;
-          </a>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-/* ----------------------------------------------------------------------------
-   Portfolio — section #4 of the brief.
-   Numbered grid of supporting projects (anchor is #01, these are #02 onwards).
-
-   PLACEHOLDERS — replace the PORTFOLIO array with the real project list when
-   names + visuals + slugs are confirmed.
----------------------------------------------------------------------------- */
-type Project = {
+type ReachItem = {
   slug: string;
   name: string;
-  oneLiner: string;
+  region: string;
+  body: string;
+  cta?: { label: string; href: string; external?: boolean };
 };
 
-const PORTFOLIO: Project[] = [
+const GLOBAL_REACH: ReachItem[] = [
   {
-    slug: 'project-2',
-    name: '[ Project 02 ]',
-    oneLiner: 'A short one-line description of what this project is.',
+    slug: 'college',
+    name: 'Futures Global College',
+    region: 'Adelaide · Online',
+    body:
+      'Training the next generation of leaders, pastors and missional thinkers — the people God is raising up to plant the church’s next chapter.',
+    cta: {
+      label: 'Visit the college →',
+      href: 'https://futuresglobal.college',
+      external: true,
+    },
   },
   {
-    slug: 'project-3',
-    name: '[ Project 03 ]',
-    oneLiner: 'A short one-line description of what this project is.',
+    slug: 'indonesia',
+    name: 'Indonesia',
+    region: 'South-east Asia',
+    body:
+      'Long-running partnerships with local churches and leaders. The gospel taking root in some of the most populous islands on earth.',
   },
   {
-    slug: 'project-4',
-    name: '[ Project 04 ]',
-    oneLiner: 'A short one-line description of what this project is.',
+    slug: 'brazil',
+    name: 'Brazil',
+    region: 'South America',
+    body:
+      'Investing in churches and church planters across Brazil — backing what God is already doing through faithful local leaders.',
+  },
+  {
+    slug: 'venezuela',
+    name: 'Venezuela',
+    region: 'South America',
+    body:
+      'Standing with the church in Venezuela through a season the rest of the world has largely forgotten. Discipleship, relief, and resilience.',
   },
 ];
 
-function Portfolio() {
+function GlobalReach() {
   return (
-    <Section id="portfolio" tone="cream-100">
+    <Section id="global-reach" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
-        The Portfolio
+        Global · Local
       </p>
 
       <h2
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        And the <span className="text-[var(--color-gold-800)]">Rest</span>.
+        Across the <span className="text-[var(--color-gold-800)]">World</span>.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
       <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-        The supporting projects that round out the vision. Each one a part of
-        how the next decade actually lands.
+        The pillars don’t stop at our doorstep. The Building The Future
+        offering pours into what God is doing here, in our college, and in the
+        nations our church family is rooted to.
       </p>
 
-      <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-        {PORTFOLIO.map((p, i) => (
-          <ProjectCard key={p.slug} project={p} index={i} />
+      <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+        {GLOBAL_REACH.map((item) => (
+          <ReachCard key={item.slug} item={item} />
         ))}
       </div>
     </Section>
   );
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  // Anchor is project 01 — portfolio entries start at 02.
-  const num = String(index + 2).padStart(2, '0');
+function ReachCard({ item }: { item: ReachItem }) {
   return (
-    <article id={project.slug} className="flex flex-col">
-      {/* Image placeholder — TODO: replace with <img> when project visuals are ready */}
-      <div className="aspect-[4/5] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
+    <article id={item.slug} className="flex flex-col">
+      {/* Photo placeholder — TODO: drop a JPEG into /media/global/{slug}.jpg
+          and replace this tile with an <img>. Suggested copy: a B-roll still
+          or a city/landscape shot from each location. */}
+      <div className="aspect-[5/4] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
           <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
-            Render
+            Photo
           </span>
           <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
-            &mdash; TBC &mdash;
+            — TBC —
+          </span>
+          <span className="mt-5 max-w-[24ch] text-[11px] md:text-xs leading-snug">
+            B-roll or landscape from <span className="font-mono">{item.slug}</span>.
           </span>
         </div>
         <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
       </div>
 
       <p className="mt-5 font-[family-name:var(--font-display)] text-xs md:text-sm tracking-[0.32em] uppercase text-[var(--color-ink-900)]/45">
-        Project {num}
+        {item.region}
       </p>
       <h3
         className="mt-2 font-[family-name:var(--font-display)] uppercase leading-[0.95] tracking-[-0.01em] m-0"
-        style={{ fontSize: 'clamp(1.5rem, 2.4vw, 2.25rem)' }}
+        style={{ fontSize: 'clamp(1.75rem, 2.8vw, 2.75rem)' }}
       >
-        {project.name}
+        {item.name}
       </h3>
-      <p className="mt-3 text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/80 max-w-[36ch]">
-        {project.oneLiner}
+      <p className="mt-3 text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/80 max-w-[42ch]">
+        {item.body}
       </p>
+
+      {item.cta && (
+        <a
+          href={item.cta.href}
+          target={item.cta.external ? '_blank' : undefined}
+          rel={item.cta.external ? 'noopener noreferrer' : undefined}
+          className="mt-5 font-[family-name:var(--font-display)] inline-flex items-center gap-2 self-start text-xs md:text-sm tracking-[0.2em] uppercase text-[var(--color-ink-900)] border-b-2 border-[var(--color-gold-500)] pb-1 hover:border-[var(--color-ink-900)] transition-colors"
+        >
+          {item.cta.label}
+        </a>
+      )}
     </article>
   );
 }
@@ -942,21 +892,26 @@ type Voice = {
   role: string;
 };
 
+// TODO: replace each `quote` with the real words from each pastor.
+// Names + roles confirmed by Shannon.
 const VOICES: Voice[] = [
   {
-    quote: 'What we build now will be felt for generations.',
-    attribution: '[ Leader Name ]',
-    role: 'Campus Pastor',
+    quote:
+      'I’m watching kids meet Jesus for the first time every week. That’s not us. That’s him.',
+    attribution: 'Ps Renee Watego',
+    role: 'Kids Pastor · Futures Church',
   },
   {
-    quote: 'This isn’t a building campaign. It’s a faith campaign with a building attached.',
-    attribution: '[ Leader Name ]',
-    role: 'Elder',
+    quote:
+      'Our students aren’t just attending. They’re being formed for a lifetime of faith — and Jesus is doing more than we know how to measure.',
+    attribution: 'Ps Seth Behn',
+    role: 'Youth Pastor · Futures Church',
   },
   {
-    quote: 'I want my grandchildren to walk into something I had a part in.',
-    attribution: '[ Member Name ]',
-    role: 'Long-time member',
+    quote:
+      'What’s happening in this church right now is bigger than anything we’ve programmed. Jesus is moving — we’re being asked to make room.',
+    attribution: 'Ps Josh Greenwood',
+    role: 'Lead Pastor · Futures Church',
   },
 ];
 
@@ -971,14 +926,14 @@ function Voices() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        What <span className="text-[var(--color-gold-800)]">others</span> see.
+        What <span className="text-[var(--color-gold-800)]">Jesus</span> is doing.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
       <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-        Hear from the team — and from some of the people in this church — on
-        what they believe is being built.
+        Hear from the team on what Jesus is doing in this church right now —
+        and what we’re being asked to make room for next.
       </p>
 
       {/* Staff / leadership video — anchors the section */}
@@ -1139,8 +1094,7 @@ function Footer() {
             </p>
             <ul className="space-y-2 text-[var(--color-cream-50)]/85">
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#vision">A Letter</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#anchor">The Anchor</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#portfolio">Portfolio</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#global-reach">Global Reach</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#why-now">Why Now</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#pillars">Five Pillars</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#voices">Voices</a></li>
