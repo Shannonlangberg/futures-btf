@@ -193,48 +193,53 @@ function SiteNav() {
 
 /* ----------------------------------------------------------------------------
    Hero — section #1 of the brief.
-   Full-bleed campaign poster (dl-side2 → btf-hero.jpg) — sunset over the city,
-   sun-rays motif, "Building the FUTURE" wordmark baked into the photography.
-   Because the headline lives in the image, the HTML overlay is intentionally
-   minimal: a visually-hidden h1 for SR/SEO, plus two CTAs anchored to the
-   dark base of the photo. Image is shipped as 1200/1800/2400w via srcset.
+   Campaign poster ("dl-side2") with "Building the FUTURE" wordmark baked into
+   the photo. Two responsive behaviours from the same <img>:
+     - Mobile (< md): image flows at its natural 2:1 aspect ratio as a banner
+       across the top, CTAs + ribbon sit in dark space below. Prevents the
+       headline from getting cropped on narrow portrait viewports.
+     - Desktop (md+): full-bleed object-cover, CTAs anchored to dark base.
+   Image shipped at 1200 / 1800 / 2400 widths via srcset.
 ---------------------------------------------------------------------------- */
 function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
+    <section className="relative md:min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
       {/* Visually-hidden semantic page heading — the actual title lives baked
           into the hero image, but screen readers + SEO need a real <h1>. */}
       <h1 className="sr-only">
         Building The Future — Futures Church 2026 Vision
       </h1>
 
-      {/* full-bleed campaign hero photograph (3 sizes via srcset for perf) */}
+      {/* Hero photograph.
+          Mobile: in-flow block at natural aspect (full headline visible).
+          Desktop: absolutely-positioned, object-cover full-bleed. */}
       <img
         src="/media/hero/btf-hero-1800.jpg"
         srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
         sizes="100vw"
         alt="Sunset over the city skyline. The words 'Building the Future' rise with the sun, sun-rays cresting from the horizon."
-        className="absolute inset-0 w-full h-full object-cover object-center select-none"
-        loading="eager"
-        fetchPriority="high"
         width={2400}
         height={1167}
+        loading="eager"
+        fetchPriority="high"
+        className="block w-full h-auto select-none md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
       />
 
-      {/* dark gradient at the bottom so CTAs stay legible regardless of where
-          the photo's silhouette ends up */}
+      {/* Dark gradient at the bottom of the photo — only meaningful on desktop
+          where text overlays the image. On mobile, content sits in plain dark
+          space below the image and doesn't need it. */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-[1]"
+        className="hidden md:block absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-[1]"
       />
 
-      <div className="relative z-10 min-h-screen flex flex-col">
-        {/* spacer pushes content to the bottom of the frame */}
-        <div className="flex-1" />
+      <div className="relative z-10 md:min-h-screen md:flex md:flex-col">
+        {/* Desktop only: pushes content to the bottom of the frame */}
+        <div className="hidden md:block flex-1" />
 
-        <div className="px-6 md:px-10 pb-12 md:pb-16">
+        <div className="px-6 md:px-10 pt-10 pb-14 md:pt-0 md:pb-16">
           <div className="mx-auto w-full max-w-[1400px]">
-            {/* CTAs — subtitle removed (the hero image already says it) */}
+            {/* CTAs — subtitle removed (hero image already says it) */}
             <div className="flex flex-wrap items-center gap-3 md:gap-4">
               <a
                 href="#pillars"
