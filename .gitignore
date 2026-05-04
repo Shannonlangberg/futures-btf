@@ -20,6 +20,14 @@ dist-ssr
 # Netlify
 .netlify
 
+# Subagent extraction debris (delete in Finder when convenient)
+extract_large_files.py
+EXTRACT_FILES_MANUAL.md
+
+# Leftover BTF source assets (renamed/moved to /fonts, /media, /brand)
+# Keeps the dl-side print flyers + AdobeStock out of the deploy.
+public/assets/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
