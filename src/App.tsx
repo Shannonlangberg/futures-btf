@@ -8,19 +8,17 @@
  *   - Yellow horizontal strips as section dividers (campaign accent #ffc72c).
  *   - Section title PNGs from /media/titles/ as the headline graphics for pillars.
  *
- * Sections built:
- *   #1  Hero
- *   #2  Vision letter from senior pastor  (placeholder portrait + copy)
+ * Sections built (full skeleton in place — content placeholders marked TODO):
+ *   #1  Hero  (full-bleed campaign poster)
+ *   #2  Vision letter from senior pastor
+ *   #3  The Anchor Project (placeholder render, project meta)
+ *   #4  Portfolio grid (3 placeholder projects)
+ *   #5  Why Now  (placeholder copy + pull quote)
  *   #6  The Five Pillars
- *   #8a Action ladder — Pray · Prepare · Pledge · Commit (statement.png)
- *   #8b Ways to Give  (placeholder giving channels)
- *
- * Sections still to come, in brief order:
- *   #3  The Anchor Project (full-bleed reveal)
- *   #4  Portfolio grid
- *   #5  Why Now
- *   #7  Voices
- *   #9  FAQs
+ *   #7  Voices  (3 placeholder quotes)
+ *   #8a Action ladder — Pray · Prepare · Pledge · Commit
+ *   #8b Ways to Give
+ *   #9  FAQs (6 placeholder Q&As)
  *   #10 Footer
  *
  * TODOs marked inline below — final copy from the vision doc, real portrait,
@@ -33,10 +31,16 @@ function App() {
       <main>
         <Hero />
         <VisionLetter />
+        <AnchorProject />
+        <Portfolio />
+        <WhyNow />
         <Pillars />
+        <Voices />
         <ActionLadder />
         <WaysToGive />
+        <FAQs />
       </main>
+      <Footer />
     </>
   );
 }
@@ -611,6 +615,482 @@ function GivingMethodCard({ method }: { method: GivingMethod }) {
         </a>
       )}
     </article>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Anchor Project — section #3 of the brief.
+   The flagship project of the campaign, given a full-bleed reveal moment.
+
+   PLACEHOLDERS — all clearly marked:
+     - Project name (currently "[ Anchor Project ]")
+     - Anchor render (placeholder tile — drop a JPEG into
+       /public/media/projects/anchor/ and swap)
+     - Status / timeline copy
+     - "Explore the anchor" link target
+---------------------------------------------------------------------------- */
+function AnchorProject() {
+  return (
+    <Section id="anchor" tone="cream">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        The Anchor Project
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Where it <span className="text-[var(--color-gold-500)]">Begins</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
+        Every long-haul vision needs an anchor &mdash; the first build that
+        proves the rest is possible. Here is ours.
+      </p>
+
+      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+        {/* Big placeholder render — TODO: replace tile with <img src="/media/projects/anchor/render-1.jpg" /> */}
+        <div className="lg:col-span-8 aspect-[16/10] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
+            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+              Anchor Render
+            </span>
+            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+              &mdash; TBC &mdash;
+            </span>
+            <span className="mt-6 max-w-[28ch] text-[11px] md:text-xs leading-snug">
+              Drop the anchor render into{' '}
+              <span className="font-mono">/media/projects/anchor/</span>.
+            </span>
+          </div>
+          <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+        </div>
+
+        {/* Project metadata */}
+        <div className="lg:col-span-4 flex flex-col gap-7">
+          <div>
+            <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-2">
+              Project name
+            </p>
+            <p
+              className="font-[family-name:var(--font-display)] uppercase tracking-[-0.01em] leading-[1]"
+              style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}
+            >
+              [ Anchor Project ]
+            </p>
+          </div>
+          <div>
+            <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-2">
+              In one line
+            </p>
+            <p className="text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/85">
+              The flagship build &mdash; the place where the next chapter begins.
+            </p>
+          </div>
+          <div>
+            <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-2">
+              Status
+            </p>
+            <p className="text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/85">
+              In design. Breaking ground in [ year ].
+            </p>
+          </div>
+          <a
+            href="#"
+            className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 self-start text-xs md:text-sm tracking-[0.2em] uppercase text-[var(--color-ink-900)] border-b-2 border-[var(--color-gold-500)] pb-1 hover:border-[var(--color-ink-900)] transition-colors mt-2"
+          >
+            Explore the anchor &rarr;
+          </a>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Portfolio — section #4 of the brief.
+   Numbered grid of supporting projects (anchor is #01, these are #02 onwards).
+
+   PLACEHOLDERS — replace the PORTFOLIO array with the real project list when
+   names + visuals + slugs are confirmed.
+---------------------------------------------------------------------------- */
+type Project = {
+  slug: string;
+  name: string;
+  oneLiner: string;
+};
+
+const PORTFOLIO: Project[] = [
+  {
+    slug: 'project-2',
+    name: '[ Project 02 ]',
+    oneLiner: 'A short one-line description of what this project is.',
+  },
+  {
+    slug: 'project-3',
+    name: '[ Project 03 ]',
+    oneLiner: 'A short one-line description of what this project is.',
+  },
+  {
+    slug: 'project-4',
+    name: '[ Project 04 ]',
+    oneLiner: 'A short one-line description of what this project is.',
+  },
+];
+
+function Portfolio() {
+  return (
+    <Section id="portfolio" tone="cream-100">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        The Portfolio
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        And the <span className="text-[var(--color-gold-500)]">Rest</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
+        The supporting projects that round out the vision. Each one a part of
+        how the next decade actually lands.
+      </p>
+
+      <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        {PORTFOLIO.map((p, i) => (
+          <ProjectCard key={p.slug} project={p} index={i} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  // Anchor is project 01 — portfolio entries start at 02.
+  const num = String(index + 2).padStart(2, '0');
+  return (
+    <article id={project.slug} className="flex flex-col">
+      {/* Image placeholder — TODO: replace with <img> when project visuals are ready */}
+      <div className="aspect-[4/5] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+            Render
+          </span>
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+            &mdash; TBC &mdash;
+          </span>
+        </div>
+        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+      </div>
+
+      <p className="mt-5 font-[family-name:var(--font-display)] text-xs md:text-sm tracking-[0.32em] uppercase text-[var(--color-ink-900)]/45">
+        Project {num}
+      </p>
+      <h3
+        className="mt-2 font-[family-name:var(--font-display)] uppercase leading-[0.95] tracking-[-0.01em] m-0"
+        style={{ fontSize: 'clamp(1.5rem, 2.4vw, 2.25rem)' }}
+      >
+        {project.name}
+      </h3>
+      <p className="mt-3 text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/80 max-w-[36ch]">
+        {project.oneLiner}
+      </p>
+    </article>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Why Now — section #5 of the brief.
+   The case for the vision. Editorial dark moment with copy + a pull quote.
+
+   PLACEHOLDER — copy is my draft. Replace with the real "why now" reasoning
+   from the vision document.
+---------------------------------------------------------------------------- */
+function WhyNow() {
+  return (
+    <Section id="why-now" tone="ink">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
+        The Case
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Why <span className="text-[var(--color-gold-500)]">Now</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <div className="mt-10 md:mt-14 max-w-[58ch] text-lg md:text-xl lg:text-2xl leading-[1.6] text-[var(--color-cream-50)]/85 space-y-6">
+        <p>
+          Some seasons are for tending what you&rsquo;ve built. This one is for
+          building what comes next.
+        </p>
+        <p>
+          The church has grown. The team is in place. The need on the other
+          side of our walls keeps growing too. We can stay where we are and
+          stay safe &mdash; or we can step out, build bigger, and trust God
+          for what only he can do.
+        </p>
+        <p>
+          We believe the next five years are decisive. We don&rsquo;t want to
+          look back at this season and wonder what could have been.
+        </p>
+      </div>
+
+      {/* pull quote */}
+      <p
+        className="mt-16 md:mt-24 max-w-[18ch] font-[family-name:var(--font-display)] uppercase leading-[0.92] tracking-[-0.012em] text-[var(--color-gold-500)]"
+        style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.5rem)' }}
+      >
+        &ldquo;What we build now will outlast us.&rdquo;
+      </p>
+    </Section>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Voices — section #7 of the brief.
+   Pull quotes from leaders / pastors / long-time members.
+
+   PLACEHOLDERS — replace VOICES with real quotes + attributions.
+---------------------------------------------------------------------------- */
+type Voice = {
+  quote: string;
+  attribution: string;
+  role: string;
+};
+
+const VOICES: Voice[] = [
+  {
+    quote: 'What we build now will be felt for generations.',
+    attribution: '[ Leader Name ]',
+    role: 'Campus Pastor',
+  },
+  {
+    quote: 'This isn’t a building campaign. It’s a faith campaign with a building attached.',
+    attribution: '[ Leader Name ]',
+    role: 'Elder',
+  },
+  {
+    quote: 'I want my grandchildren to walk into something I had a part in.',
+    attribution: '[ Member Name ]',
+    role: 'Long-time member',
+  },
+];
+
+function Voices() {
+  return (
+    <Section id="voices" tone="cream">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        Voices
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        What <span className="text-[var(--color-gold-500)]">others</span> see.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
+        Some of the people in this church on what they believe is being built.
+      </p>
+
+      <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {VOICES.map((v, i) => (
+          <Quote key={i} voice={v} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function Quote({ voice }: { voice: Voice }) {
+  return (
+    <blockquote className="bg-[var(--color-cream-100)] p-7 md:p-8 border-t-4 border-[var(--color-gold-500)] flex flex-col gap-5">
+      <span
+        aria-hidden
+        className="font-[family-name:var(--font-display)] text-[var(--color-gold-500)] leading-[0.6] -mb-2"
+        style={{ fontSize: 'clamp(3rem, 6vw, 5rem)' }}
+      >
+        &ldquo;
+      </span>
+      <p className="text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/85 flex-1">
+        {voice.quote}
+      </p>
+      <footer className="font-[family-name:var(--font-display)] uppercase">
+        <p className="tracking-[0.18em] text-sm">{voice.attribution}</p>
+        <p className="mt-1 tracking-[0.32em] text-[10px] md:text-xs text-[var(--color-ink-900)]/60">
+          {voice.role}
+        </p>
+      </footer>
+    </blockquote>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   FAQs — section #9 of the brief.
+   Stacked Q&A list. Non-accordion for v1 — clean, fast, no JS state needed.
+
+   PLACEHOLDERS — replace each entry's `a` with the real answer when the team
+   has firmed it up.
+---------------------------------------------------------------------------- */
+type FAQ = { q: string; a: string };
+
+const FAQS: FAQ[] = [
+  {
+    q: 'When does the campaign start?',
+    a: '[ Placeholder. Confirm campaign launch + key milestone dates with the BTF team. ]',
+  },
+  {
+    q: 'How is the money used?',
+    a: '[ Placeholder. Describe how funds are stewarded across the five pillars and which projects they fund first. ]',
+  },
+  {
+    q: 'Is my pledge tax-deductible?',
+    a: '[ Placeholder. Confirm with the finance team — gift category, receipts, and what counts. ]',
+  },
+  {
+    q: 'Can I give from outside Australia?',
+    a: '[ Placeholder. Describe international giving channels. ]',
+  },
+  {
+    q: 'What if my circumstances change?',
+    a: '[ Placeholder. Reassure that pledges are flexible and explain how to update or pause. ]',
+  },
+  {
+    q: 'Who can I talk to?',
+    a: '[ Placeholder. Point to the BTF contact channel — email, phone, drop-in. ]',
+  },
+];
+
+function FAQs() {
+  return (
+    <Section id="faqs" tone="cream-100">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        Frequently Asked
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        The <span className="text-[var(--color-gold-500)]">Questions</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <dl className="mt-12 md:mt-16 max-w-[68ch] divide-y divide-[var(--color-ink-900)]/15">
+        {FAQS.map((f, i) => (
+          <FAQItem key={i} faq={f} />
+        ))}
+      </dl>
+    </Section>
+  );
+}
+
+function FAQItem({ faq }: { faq: FAQ }) {
+  return (
+    <div className="py-7 md:py-8">
+      <dt
+        className="font-[family-name:var(--font-display)] uppercase tracking-[-0.005em] leading-[1.05]"
+        style={{ fontSize: 'clamp(1.25rem, 2.2vw, 1.85rem)' }}
+      >
+        {faq.q}
+      </dt>
+      <dd className="mt-3 md:mt-4 text-base md:text-lg leading-[1.6] text-[var(--color-ink-900)]/80 max-w-[58ch]">
+        {faq.a}
+      </dd>
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Footer — section #10 of the brief.
+   Page-end. Brand mark, on-page anchors, contact channel, copyright.
+
+   PLACEHOLDERS — phone, address, real BTF contact email.
+---------------------------------------------------------------------------- */
+function Footer() {
+  return (
+    <footer
+      id="footer"
+      className="bg-[var(--color-ink-900)] text-[var(--color-cream-50)]"
+    >
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
+          {/* Brand mark column */}
+          <div className="md:col-span-5">
+            <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-lg md:text-xl">
+              Building{' '}
+              <span className="text-[var(--color-gold-500)]">The</span> Future
+            </p>
+            <p className="mt-3 font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs text-[var(--color-cream-50)]/60">
+              Futures Church · 2026 Vision
+            </p>
+            <p className="mt-7 max-w-md text-base leading-[1.55] text-[var(--color-cream-50)]/75">
+              The vision for the next chapter of Futures Church &mdash; five
+              pillars, one future, and the offering that builds it.
+            </p>
+          </div>
+
+          {/* On-page links */}
+          <div className="md:col-span-3">
+            <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs text-[var(--color-cream-50)]/55 mb-5">
+              On this page
+            </p>
+            <ul className="space-y-2 text-[var(--color-cream-50)]/85">
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#vision">A Letter</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#anchor">The Anchor</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#portfolio">Portfolio</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#why-now">Why Now</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#pillars">Five Pillars</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#voices">Voices</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#how-to-be-part">Be Part</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
+            </ul>
+          </div>
+
+          {/* Contact column */}
+          <div className="md:col-span-4">
+            <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs text-[var(--color-cream-50)]/55 mb-5">
+              Get in touch
+            </p>
+            <p className="leading-[1.55]">
+              <a
+                href="mailto:btf@futures.church"
+                className="hover:text-[var(--color-gold-500)] transition-colors"
+              >
+                btf@futures.church
+              </a>
+            </p>
+            <p className="mt-2 leading-[1.55] text-[var(--color-cream-50)]/75">
+              [ Phone TBC ]
+            </p>
+            <p className="mt-2 leading-[1.55] text-[var(--color-cream-50)]/55">
+              [ Address TBC ]
+            </p>
+          </div>
+        </div>
+
+        <YellowStrip className="mt-16 md:mt-20 w-full" />
+
+        <div className="mt-7 md:mt-8 flex flex-wrap justify-between items-center gap-3 text-[10px] md:text-xs font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[var(--color-cream-50)]/55">
+          <span>© Futures Church · {new Date().getFullYear()}</span>
+          <span>Pray · Prepare · Pledge · Commit</span>
+        </div>
+      </div>
+    </footer>
   );
 }
 
