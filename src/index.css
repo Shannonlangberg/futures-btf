@@ -89,6 +89,7 @@
 
   /* Typography */
   --font-display: "Acumin Pro Condensed", "Impact", "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+  --font-serif:   "Fraunces", "Playfair Display", "Times New Roman", Georgia, serif;
   --font-body:    "GalGothic", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 

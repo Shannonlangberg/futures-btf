@@ -284,77 +284,93 @@ function SiteNav() {
 ---------------------------------------------------------------------------- */
 function Hero() {
   return (
-    <section className="relative bg-[var(--color-cream-50)] text-white">
-      {/* Visually-hidden semantic page heading — the actual title lives baked
-          into the hero image, but screen readers + SEO need a real <h1>. */}
-      <h1 className="sr-only">
-        Building The Future — Futures Church 2026 Vision
-      </h1>
-
-      {/* Centered hero frame — capped at 1280px on desktop ("hw-classic" /
-          "magazine-cover proportions" from the design handoff). Cream paper
-          shows through the gutters on viewports wider than 1280px so the
-          baked-in headline isn't crushed against the screen edges. */}
-      <div className="relative overflow-hidden md:max-w-[1280px] md:mx-auto md:min-h-screen md:bg-[var(--color-ink-900)]">
-        {/* Hero photograph.
-            Mobile: in-flow block at natural aspect (full headline visible),
-            offset below the nav. Desktop: absolute object-cover inside frame. */}
-        <img
-          src="/media/hero/btf-hero-1800.jpg"
-          srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
-          sizes="(min-width: 1280px) 1280px, 100vw"
-          alt="Sunset over the city skyline. The words 'Building the Future' rise with the sun, sun-rays cresting from the horizon."
-          width={2400}
-          height={1167}
-          loading="eager"
-          fetchPriority="high"
-          className="block w-full h-auto select-none mt-[64px] md:mt-0 md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
-        />
-
-      {/* Dark gradient at the bottom of the photo — only meaningful on desktop
-          where text overlays the image. On mobile, content sits in plain dark
-          space below the image and doesn't need it. */}
-      <div
-        aria-hidden
-        className="hidden md:block absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/65 via-black/30 to-transparent z-[1]"
+    <section className="relative min-h-[88vh] md:min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
+      {/* Full-bleed campaign photograph as atmospheric background. Object-
+          position is biased toward the lower portion so the city silhouette,
+          horizon and sun-rays are what the visitor sees — the now-redundant
+          baked-in headline is allowed to sit off-screen. */}
+      <img
+        src="/media/hero/btf-hero-1800.jpg"
+        srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
+        sizes="100vw"
+        alt="Sunset over the city skyline, sun-rays cresting from the horizon."
+        width={2400}
+        height={1167}
+        loading="eager"
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover select-none"
+        style={{ objectPosition: '50% 80%' }}
       />
 
-      <div className="relative z-10 bg-[var(--color-ink-900)] md:bg-transparent md:min-h-screen md:flex md:flex-col">
-        {/* Desktop only: pushes content to the bottom of the frame */}
-        <div className="hidden md:block flex-1" />
+      {/* Soft dark veil — keeps the headline + CTAs legible regardless of
+          how the image gets cropped at any aspect ratio. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 z-[1]"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.30) 70%, rgba(0,0,0,0.78) 100%)',
+        }}
+      />
 
-        <div className="px-6 md:px-10 pt-6 pb-8 md:pt-0 md:pb-16">
-          <div className="mx-auto w-full max-w-[1400px]">
-            {/* CTAs — subtitle removed (hero image already says it).
-                Secondary "Watch the vision" hidden on mobile because the nav
-                already exposes it; keeping both there made the dark area
-                wrap and bloat. */}
-            <div className="flex flex-wrap items-center gap-3 md:gap-4">
-              <a
-                href="#pillars"
-                className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-gold-500)] text-[var(--color-ink-900)] px-6 py-3 md:px-7 md:py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors"
-              >
-                See the five pillars <span aria-hidden>→</span>
-              </a>
-              <a
-                href="#vision"
-                className="hidden md:inline-flex font-[family-name:var(--font-display)] items-center gap-2 px-5 py-4 text-xs md:text-sm tracking-[0.2em] uppercase text-white/85 hover:text-white transition-colors"
-              >
-                Watch the vision
-              </a>
-            </div>
+      {/* Content — fills the viewport top-to-bottom. Headline lives in the
+          upper-middle, CTAs anchored to the bottom. */}
+      <div className="relative z-10 min-h-[88vh] md:min-h-screen flex flex-col px-6 md:px-10 pt-24 md:pt-32 pb-10 md:pb-16">
+        <div className="mx-auto w-full max-w-[1400px] flex-1 flex flex-col justify-center">
+          {/* Headline rendered as live HTML so it's never cropped, no matter
+              the viewport aspect ratio. Mixed typography matches the original
+              campaign poster: serif italic "Building the" flowing into heavy
+              condensed caps "Future". */}
+          <h1
+            className="text-white leading-[0.92] tracking-[-0.01em] m-0 max-w-[14ch]"
+            style={{ fontSize: 'clamp(3.25rem, 12vw, 13rem)' }}
+          >
+            <span
+              className="block italic font-normal"
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontWeight: 700,
+                lineHeight: '0.95',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Building the
+            </span>
+            <span
+              className="block uppercase"
+              style={{
+                fontFamily: 'var(--font-display)',
+                letterSpacing: '-0.015em',
+              }}
+            >
+              Future
+            </span>
+          </h1>
+        </div>
 
-            {/* action ladder ribbon */}
-            <div className="mt-6 md:mt-14 flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-white/65 font-[family-name:var(--font-display)]">
-              <span aria-hidden className="h-px w-10 bg-current" />
-              Pray · Prepare · Pledge · Commit
-            </div>
+        {/* CTAs + ribbon — anchored to bottom of viewport */}
+        <div className="mx-auto w-full max-w-[1400px]">
+          <div className="flex flex-wrap items-center gap-3 md:gap-4">
+            <a
+              href="#pillars"
+              className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-gold-500)] text-[var(--color-ink-900)] px-6 py-3 md:px-7 md:py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors"
+            >
+              See the five pillars <span aria-hidden>→</span>
+            </a>
+            <a
+              href="#vision"
+              className="hidden md:inline-flex font-[family-name:var(--font-display)] items-center gap-2 px-5 py-4 text-xs md:text-sm tracking-[0.2em] uppercase text-white/85 hover:text-white transition-colors"
+            >
+              Watch the vision
+            </a>
+          </div>
+
+          <div className="mt-6 md:mt-10 flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-white/70 font-[family-name:var(--font-display)]">
+            <span aria-hidden className="h-px w-10 bg-current" />
+            Pray · Prepare · Pledge · Commit
           </div>
         </div>
       </div>
-      {/* /content wrapper */}
-      </div>
-      {/* /hero frame */}
     </section>
   );
 }
