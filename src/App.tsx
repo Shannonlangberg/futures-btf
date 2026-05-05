@@ -61,40 +61,123 @@ function YellowStrip({ className = '' }: { className?: string }) {
 }
 
 /**
- * Vimeo embed — responsive 16:9 iframe with a sensible default param set
- * (no title, no byline, no author portrait, do-not-track on).
+ * Vimeo embed — click-to-play "facade".
+ *
+ * Until the user hits play we show our own poster (custom image if the
+ * caller passes one, otherwise a brand-toned fallback with the section
+ * eyebrow). The actual Vimeo iframe only loads on click, which:
+ *   - lets us pick a flattering still instead of whatever frame Vimeo
+ *     auto-grabs from the video,
+ *   - keeps Vimeo's player JS off the critical path until the user opts in.
  */
 function VimeoEmbed({
   id,
   hash,
   title,
+  eyebrow,
+  poster,
   className = '',
 }: {
   id: string;
   hash: string;
   title: string;
+  /** Small caps line shown over the fallback poster (e.g. "A letter from your pastors"). */
+  eyebrow?: string;
+  /** Optional custom poster image. Drop a 1600x900-ish JPEG into
+   *  /public/media/posters/<slug>.jpg and pass it here. */
+  poster?: { src: string; alt: string };
   className?: string;
 }) {
-  const params = new URLSearchParams({
-    h: hash,
-    title: '0',
-    byline: '0',
-    portrait: '0',
-    dnt: '1',
-  }).toString();
+  const [activated, setActivated] = useState(false);
+
+  if (activated) {
+    const params = new URLSearchParams({
+      h: hash,
+      title: '0',
+      byline: '0',
+      portrait: '0',
+      dnt: '1',
+      autoplay: '1',
+    }).toString();
+    return (
+      <div
+        className={`relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden ${className}`}
+      >
+        <iframe
+          src={`https://player.vimeo.com/video/${id}?${params}`}
+          title={title}
+          frameBorder={0}
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={`relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden ${className}`}
+    <button
+      type="button"
+      onClick={() => setActivated(true)}
+      aria-label={`Play video: ${title}`}
+      className={`group relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden cursor-pointer block text-left ${className}`}
     >
-      <iframe
-        src={`https://player.vimeo.com/video/${id}?${params}`}
-        title={title}
-        frameBorder={0}
-        allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-        allowFullScreen
-        className="absolute inset-0 w-full h-full"
+      {poster ? (
+        <img
+          src={poster.src}
+          alt={poster.alt}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        // Fallback: warm dark gradient with eyebrow over a subtle ray motif
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(135deg, var(--color-rust-900) 0%, var(--color-ink-900) 60%, var(--color-ink-900) 100%)',
+          }}
+        >
+          <div
+            aria-hidden
+            className="absolute inset-0 opacity-50 mix-blend-soft-light"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(108deg, transparent 0 90px, rgba(250,246,239,0.05) 90px 92px)',
+            }}
+          />
+          {eyebrow && (
+            <div className="absolute inset-x-0 top-1/2 -translate-y-[calc(50%+60px)] flex justify-center px-8">
+              <p className="font-[family-name:var(--font-display)] text-[var(--color-cream-50)]/75 uppercase tracking-[0.32em] text-[10px] md:text-xs text-center">
+                {eyebrow}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Subtle darken + hover state */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-black/15 group-hover:bg-black/35 transition-colors"
       />
-    </div>
+
+      {/* Play button */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          aria-hidden
+          className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[var(--color-gold-500)] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="w-7 h-7 md:w-9 md:h-9 fill-[var(--color-ink-900)] translate-x-[2px]"
+          >
+            <polygon points="6,4 20,12 6,20" />
+          </svg>
+        </div>
+      </div>
+    </button>
   );
 }
 
@@ -300,6 +383,7 @@ function VisionLetter() {
           id="1188946482"
           hash="076da569fd"
           title="A letter from Pastors Ashley & Jane Evans"
+          eyebrow="A letter from your pastors"
         />
         <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
           Pastors Ashley &amp; Jane Evans · Senior Pastors
@@ -968,6 +1052,7 @@ function Voices() {
           id="1183634809"
           hash="9f487d7782"
           title="Hear from the Futures team"
+          eyebrow="Voices from the Futures team"
         />
         <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
           Voices from the Futures team
