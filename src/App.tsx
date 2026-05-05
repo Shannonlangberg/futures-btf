@@ -285,70 +285,41 @@ function SiteNav() {
 function Hero() {
   return (
     <section className="relative min-h-[88vh] md:min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
-      {/* Full-bleed campaign photograph as atmospheric background. Object-
-          position is biased toward the lower portion so the city silhouette,
-          horizon and sun-rays are what the visitor sees — the now-redundant
-          baked-in headline is allowed to sit off-screen. */}
+      <h1 className="sr-only">
+        Building The Future — Futures Church 2026 Vision
+      </h1>
+
+      {/* Full-bleed campaign photograph. Width is anchored to the image (so
+          the baked-in "Building the FUTURE" headline never gets cut on the
+          horizontal axis), centered horizontally, and pinned to the bottom
+          of the section — the height overflows up beyond the viewport on
+          aspect ratios narrower than the image's 2:1, which is fine: the
+          extra image bleeds above the viewport, not into the headline. */}
       <img
         src="/media/hero/btf-hero-1800.jpg"
         srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
         sizes="100vw"
-        alt="Sunset over the city skyline, sun-rays cresting from the horizon."
+        alt="Sunset over the city skyline. The words 'Building the Future' rise with the sun, sun-rays cresting from the horizon."
         width={2400}
         height={1167}
         loading="eager"
         fetchPriority="high"
-        className="absolute inset-0 w-full h-full object-cover select-none"
-        style={{ objectPosition: '50% 80%' }}
+        className="absolute bottom-0 left-0 right-0 w-full h-auto select-none"
       />
 
-      {/* Soft dark veil — keeps the headline + CTAs legible regardless of
-          how the image gets cropped at any aspect ratio. */}
+      {/* Subtle dark veil at the bottom for CTA legibility. */}
       <div
         aria-hidden
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-x-0 bottom-0 h-2/5 z-[1]"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.30) 70%, rgba(0,0,0,0.78) 100%)',
+            'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 50%, transparent 100%)',
         }}
       />
 
-      {/* Content — fills the viewport top-to-bottom. Headline lives in the
-          upper-middle, CTAs anchored to the bottom. */}
-      <div className="relative z-10 min-h-[88vh] md:min-h-screen flex flex-col px-6 md:px-10 pt-24 md:pt-32 pb-10 md:pb-16">
-        <div className="mx-auto w-full max-w-[1400px] flex-1 flex flex-col justify-center">
-          {/* Headline rendered as live HTML so it's never cropped, no matter
-              the viewport aspect ratio. Mixed typography matches the original
-              campaign poster: serif italic "Building the" flowing into heavy
-              condensed caps "Future". */}
-          <h1
-            className="text-white leading-[0.92] tracking-[-0.01em] m-0 max-w-[14ch]"
-            style={{ fontSize: 'clamp(3.25rem, 12vw, 13rem)' }}
-          >
-            <span
-              className="block italic font-normal"
-              style={{
-                fontFamily: 'var(--font-serif)',
-                fontWeight: 700,
-                lineHeight: '0.95',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Building the
-            </span>
-            <span
-              className="block uppercase"
-              style={{
-                fontFamily: 'var(--font-display)',
-                letterSpacing: '-0.015em',
-              }}
-            >
-              Future
-            </span>
-          </h1>
-        </div>
-
-        {/* CTAs + ribbon — anchored to bottom of viewport */}
+      {/* Content — CTAs + ribbon anchored to bottom over the dark veil. */}
+      <div className="relative z-10 min-h-[88vh] md:min-h-screen flex flex-col px-6 md:px-10 pt-24 pb-10 md:pb-16">
+        <div className="flex-1" />
         <div className="mx-auto w-full max-w-[1400px]">
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
             <a
@@ -376,19 +347,16 @@ function Hero() {
 }
 
 /* ----------------------------------------------------------------------------
-   Vision Letter — section #2 of the brief.
-   Video-led: A&J's vision message anchors the section. The written letter
-   sits below as a companion / transcript-feel block.
-
-   PLACEHOLDERS — all clearly marked TODO:
-     - Pastor names (currently "[ Ashley & Jane ]" — confirm with Shannon)
-     - Letter copy below the video is a 4-paragraph stand-in
+   Vision message — section #2.
+   Video-only: A&J's vision message is the whole section. There's no written
+   letter (it's a video, not a letter). The Vimeo poster falls back to the
+   campaign hero image until a real video still is provided.
 ---------------------------------------------------------------------------- */
 function VisionLetter() {
   return (
     <Section id="vision" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
-        A Letter From Your Pastors
+        From Your Pastors
       </p>
 
       <h2
@@ -401,73 +369,20 @@ function VisionLetter() {
 
       <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
 
-      {/* The vision video — anchors the section */}
       <div className="mt-12 md:mt-16">
         <VimeoEmbed
           id="1188946482"
           hash="076da569fd"
-          title="A letter from Pastors Ashley & Jane Evans"
-          eyebrow="A letter from your pastors"
+          title="A message from Pastors Ashley & Jane Evans"
+          eyebrow="From your pastors"
+          poster={{
+            src: '/media/hero/btf-hero-1200.jpg',
+            alt: 'Sunset over the city skyline — campaign poster.',
+          }}
         />
         <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
           Pastors Ashley &amp; Jane Evans · Senior Pastors
         </p>
-      </div>
-
-      {/* Companion letter — TODO: replace with the real letter copy */}
-      <div className="mt-14 md:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-10">
-        <div className="lg:col-span-9 xl:col-span-8">
-          <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-6">
-            In their words
-          </p>
-
-          <div className="max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.65] text-[var(--color-ink-900)]/85 space-y-5">
-            <p>Dear church family,</p>
-            <p>
-              Over the last decade you&rsquo;ve watched God do extraordinary
-              things in this place. Lives changed. Generations reached. A
-              community of faith becoming a community of life. None of it has
-              been our doing.
-            </p>
-            <p>
-              Today we want to tell you what we believe God is asking us to
-              build next.
-            </p>
-            <p>
-              <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.05em]">
-                Building The Future
-              </span>{' '}
-              is the vision for the season ahead — five pillars the next chapter
-              of Futures Church will be measured by. Souls coming home.
-              Disciples being made. Generations growing up in faith. Churches
-              being planted. A reach that&rsquo;s both global and local.
-            </p>
-            <p>
-              This is bigger than any one of us. Which is exactly why
-              we&rsquo;re asking each of us to be part of it.
-            </p>
-          </div>
-
-          {/* signature */}
-          <div className="mt-10 font-[family-name:var(--font-display)] uppercase">
-            <p className="text-base md:text-lg tracking-[0.18em]">
-              [ Ashley &amp; Jane Evans ]
-            </p>
-            <p className="text-[10px] md:text-xs tracking-[0.32em] text-[var(--color-ink-900)]/60 mt-1.5">
-              Senior Pastors · Futures Church
-            </p>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-10 md:mt-12 flex flex-wrap items-center gap-3 md:gap-4">
-            <a
-              href="#pillars"
-              className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-ink-900)] text-[var(--color-cream-50)] px-7 py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-[var(--color-gold-500)] hover:text-[var(--color-ink-900)] transition-colors"
-            >
-              Read the five pillars <span aria-hidden>→</span>
-            </a>
-          </div>
-        </div>
       </div>
     </Section>
   );
