@@ -255,11 +255,14 @@ function SiteNav() {
   return (
     <header className="fixed top-0 left-0 right-0 z-30 bg-[var(--color-cream-50)]/85 backdrop-blur-sm">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-4 md:py-5 flex items-center justify-between">
-        <a
-          href="/"
-          className="font-[family-name:var(--font-display)] text-[var(--color-ink-900)] text-sm md:text-base tracking-[0.18em] uppercase leading-none"
-        >
-          Building <span className="text-[var(--color-gold-800)]">The</span> Future
+        <a href="/" aria-label="Building The Future — home" className="block leading-none">
+          <img
+            src="/media/general/BTF_logo-black.png"
+            alt="Building the Future"
+            width={1015}
+            height={184}
+            className="block h-6 md:h-7 w-auto select-none"
+          />
         </a>
         <a
           href="#ways-to-give"
@@ -474,17 +477,30 @@ function Pillars() {
         church to build with us.
       </p>
 
-      {/* pillars list */}
+      {/* Pillars stack — explicitly interleaved with yellow strips and photo
+          breaks so the text-heavy section gets visual relief. */}
       <div className="mt-20 md:mt-32 flex flex-col gap-20 md:gap-28">
-        {PILLARS.map((p, i) => (
-          <PillarBlock key={p.slug} pillar={p} isLast={i === PILLARS.length - 1} />
-        ))}
+        <PillarBlock pillar={PILLARS[0]} />
+        <YellowStrip className="w-full max-w-[760px]" />
+        <PillarBlock pillar={PILLARS[1]} />
+        <PillarPhotoBreak
+          src="/media/pillars/community-1.jpg"
+          alt="The Futures Church family in worship together — hands raised, faces lit, voices high."
+        />
+        <PillarBlock pillar={PILLARS[2]} />
+        <YellowStrip className="w-full max-w-[760px]" />
+        <PillarBlock pillar={PILLARS[3]} />
+        <PillarPhotoBreak
+          src="/media/pillars/community-2.jpg"
+          alt="A group of young people gathered in the foyer at Futures, near the kids check-in."
+        />
+        <PillarBlock pillar={PILLARS[4]} />
       </div>
     </Section>
   );
 }
 
-function PillarBlock({ pillar, isLast }: { pillar: Pillar; isLast: boolean }) {
+function PillarBlock({ pillar }: { pillar: Pillar }) {
   return (
     <article id={pillar.slug} className="relative">
       {/* number tag */}
@@ -506,10 +522,28 @@ function PillarBlock({ pillar, isLast }: { pillar: Pillar; isLast: boolean }) {
       <p className="mt-7 md:mt-9 text-lg md:text-xl lg:text-2xl leading-[1.5] text-[var(--color-ink-900)]/85 max-w-[58ch]">
         {pillar.body}
       </p>
-
-      {/* yellow strip between blocks (skip after the last) */}
-      {!isLast && <YellowStrip className="mt-20 md:mt-28 w-full max-w-[760px]" />}
     </article>
+  );
+}
+
+/**
+ * Wide photographic break between pillar blocks. The text-heavy stack reads
+ * tighter when it's punctuated by people-photography — same editorial rhythm
+ * the inside.jpg poster uses. A thin yellow strip across the bottom edge
+ * picks up the campaign motif without making the photo feel boxed in.
+ */
+function PillarPhotoBreak({ src, alt }: { src: string; alt: string }) {
+  return (
+    <figure className="relative w-full m-0">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        className="block w-full h-auto max-h-[68vh] object-cover select-none"
+      />
+      <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+    </figure>
   );
 }
 

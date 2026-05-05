@@ -28,6 +28,11 @@ EXTRACT_FILES_MANUAL.md
 # Keeps the dl-side print flyers + AdobeStock out of the deploy.
 public/assets/
 
+# Raw Drive zip drop + extracted source pics — processed copies are committed
+# under /public/media/global/ and /public/media/pillars/ instead.
+public/media/global/pics/
+public/media/global/*.zip
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
