@@ -74,17 +74,18 @@ function VimeoEmbed({
   id,
   hash,
   title,
-  eyebrow,
+  posterTitle,
   poster,
   className = '',
 }: {
   id: string;
   hash: string;
+  /** iframe accessibility title (the actual video name, used by SR + Vimeo). */
   title: string;
-  /** Small caps line shown over the fallback poster (e.g. "A letter from your pastors"). */
-  eyebrow?: string;
-  /** Optional custom poster image. Drop a 1600x900-ish JPEG into
-   *  /public/media/posters/<slug>.jpg and pass it here. */
+  /** Big centered caps shown above the play button while inactive. */
+  posterTitle?: string;
+  /** Optional custom poster image. If omitted, the brand-toned fallback (warm
+   *  dark gradient with subtle ray motif) is used. */
   poster?: { src: string; alt: string };
   className?: string;
 }) {
@@ -122,6 +123,8 @@ function VimeoEmbed({
       aria-label={`Play video: ${title}`}
       className={`group relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden cursor-pointer block text-left ${className}`}
     >
+      {/* Background — custom photo if provided, otherwise brand-toned gradient
+          with a subtle ray motif. */}
       {poster ? (
         <img
           src={poster.src}
@@ -131,7 +134,6 @@ function VimeoEmbed({
           className="absolute inset-0 w-full h-full object-cover"
         />
       ) : (
-        // Fallback: warm dark gradient with eyebrow over a subtle ray motif
         <div
           className="absolute inset-0"
           style={{
@@ -147,13 +149,6 @@ function VimeoEmbed({
                 'repeating-linear-gradient(108deg, transparent 0 90px, rgba(250,246,239,0.05) 90px 92px)',
             }}
           />
-          {eyebrow && (
-            <div className="absolute inset-x-0 top-1/2 -translate-y-[calc(50%+60px)] flex justify-center px-8">
-              <p className="font-[family-name:var(--font-display)] text-[var(--color-cream-50)]/75 uppercase tracking-[0.32em] text-[10px] md:text-xs text-center">
-                {eyebrow}
-              </p>
-            </div>
-          )}
         </div>
       )}
 
@@ -163,8 +158,20 @@ function VimeoEmbed({
         className="absolute inset-0 bg-black/15 group-hover:bg-black/35 transition-colors"
       />
 
-      {/* Play button */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      {/* Centered stack: poster title (Acumin caps) + play button */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 md:gap-7 px-6 text-center">
+        {posterTitle && (
+          <p
+            className="font-[family-name:var(--font-display)] uppercase text-white m-0"
+            style={{
+              fontSize: 'clamp(1.25rem, 3.2vw, 2.5rem)',
+              letterSpacing: '0.12em',
+              lineHeight: 1.05,
+            }}
+          >
+            {posterTitle}
+          </p>
+        )}
         <div
           aria-hidden
           className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[var(--color-gold-500)] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform"
@@ -380,11 +387,7 @@ function VisionLetter() {
           id="1188946482"
           hash="076da569fd"
           title="A message from Pastors Ashley & Jane Evans"
-          eyebrow="From your pastors"
-          poster={{
-            src: '/media/hero/btf-hero-1200.jpg',
-            alt: 'Sunset over the city skyline — campaign poster.',
-          }}
+          posterTitle="Ps Ashley & Jane Evans"
         />
         <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
           Pastors Ashley &amp; Jane Evans · Senior Pastors
@@ -1028,7 +1031,7 @@ function Voices() {
           id="1183634809"
           hash="9f487d7782"
           title="Hear from the Futures team"
-          eyebrow="Voices from the Futures team"
+          posterTitle="Testimonies"
         />
         <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
           Voices from the Futures team
