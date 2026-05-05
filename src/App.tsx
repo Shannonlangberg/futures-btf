@@ -262,10 +262,10 @@ function SiteNav() {
           Building <span className="text-[var(--color-gold-800)]">The</span> Future
         </a>
         <a
-          href="#vision"
+          href="#ways-to-give"
           className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.22em] uppercase border border-[var(--color-ink-900)]/25 rounded-full px-4 md:px-5 py-2 md:py-2.5 hover:bg-[var(--color-ink-900)] hover:text-[var(--color-cream-50)] hover:border-[var(--color-ink-900)] transition-colors"
         >
-          Watch the vision
+          Ways to give
         </a>
       </div>
     </header>
