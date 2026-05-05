@@ -284,17 +284,19 @@ function SiteNav() {
 ---------------------------------------------------------------------------- */
 function Hero() {
   return (
-    <section className="relative min-h-[88vh] md:min-h-screen overflow-hidden bg-[var(--color-ink-900)] text-white">
+    <section className="relative overflow-hidden bg-[var(--color-ink-900)] text-white md:min-h-screen">
       <h1 className="sr-only">
         Building The Future — Futures Church 2026 Vision
       </h1>
 
-      {/* Full-bleed campaign photograph. Width is anchored to the image (so
-          the baked-in "Building the FUTURE" headline never gets cut on the
-          horizontal axis), centered horizontally, and pinned to the bottom
-          of the section — the height overflows up beyond the viewport on
-          aspect ratios narrower than the image's 2:1, which is fine: the
-          extra image bleeds above the viewport, not into the headline. */}
+      {/* Full-bleed campaign photograph.
+          Mobile: in normal flow as a banner at the top (with a top margin to
+          clear the fixed nav). Section height = image + CTA area below.
+          Desktop: absolutely-positioned, anchored to the bottom of the
+          section at full natural width (so the baked-in "Building the
+          FUTURE" headline never gets horizontally cropped). The image's
+          height bleeds above the viewport on tall screens — the bleed is
+          sky, not headline. */}
       <img
         src="/media/hero/btf-hero-1800.jpg"
         srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
@@ -304,22 +306,23 @@ function Hero() {
         height={1167}
         loading="eager"
         fetchPriority="high"
-        className="absolute bottom-0 left-0 right-0 w-full h-auto select-none"
+        className="block w-full h-auto select-none mt-[64px] md:mt-0 md:absolute md:bottom-0 md:left-0 md:right-0"
       />
 
-      {/* Subtle dark veil at the bottom for CTA legibility. */}
+      {/* Subtle dark veil — desktop only, where the CTA stack overlays the
+          image. On mobile, CTAs sit in plain dark space below the image. */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-2/5 z-[1]"
+        className="hidden md:block absolute inset-x-0 bottom-0 h-2/5 z-[1]"
         style={{
           background:
             'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 50%, transparent 100%)',
         }}
       />
 
-      {/* Content — CTAs + ribbon anchored to bottom over the dark veil. */}
-      <div className="relative z-10 min-h-[88vh] md:min-h-screen flex flex-col px-6 md:px-10 pt-24 pb-10 md:pb-16">
-        <div className="flex-1" />
+      {/* Content area — mobile sits in flow below the image; desktop is
+          absolutely pinned to the bottom of the (full-screen) section. */}
+      <div className="relative z-10 px-6 md:px-10 py-8 md:py-0 md:absolute md:inset-x-0 md:bottom-0 md:pb-16">
         <div className="mx-auto w-full max-w-[1400px]">
           <div className="flex flex-wrap items-center gap-3 md:gap-4">
             <a
