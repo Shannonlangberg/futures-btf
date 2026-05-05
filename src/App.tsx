@@ -284,27 +284,32 @@ function SiteNav() {
 ---------------------------------------------------------------------------- */
 function Hero() {
   return (
-    <section className="relative md:min-h-screen overflow-hidden bg-[var(--color-cream-50)] md:bg-[var(--color-ink-900)] text-white">
+    <section className="relative bg-[var(--color-cream-50)] text-white">
       {/* Visually-hidden semantic page heading — the actual title lives baked
           into the hero image, but screen readers + SEO need a real <h1>. */}
       <h1 className="sr-only">
         Building The Future — Futures Church 2026 Vision
       </h1>
 
-      {/* Hero photograph.
-          Mobile: in-flow block at natural aspect (full headline visible).
-          Desktop: absolutely-positioned, object-cover full-bleed. */}
-      <img
-        src="/media/hero/btf-hero-1800.jpg"
-        srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
-        sizes="100vw"
-        alt="Sunset over the city skyline. The words 'Building the Future' rise with the sun, sun-rays cresting from the horizon."
-        width={2400}
-        height={1167}
-        loading="eager"
-        fetchPriority="high"
-        className="block w-full h-auto select-none mt-[64px] md:mt-0 md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
-      />
+      {/* Centered hero frame — capped at 1280px on desktop ("hw-classic" /
+          "magazine-cover proportions" from the design handoff). Cream paper
+          shows through the gutters on viewports wider than 1280px so the
+          baked-in headline isn't crushed against the screen edges. */}
+      <div className="relative overflow-hidden md:max-w-[1280px] md:mx-auto md:min-h-screen md:bg-[var(--color-ink-900)]">
+        {/* Hero photograph.
+            Mobile: in-flow block at natural aspect (full headline visible),
+            offset below the nav. Desktop: absolute object-cover inside frame. */}
+        <img
+          src="/media/hero/btf-hero-1800.jpg"
+          srcSet="/media/hero/btf-hero-1200.jpg 1200w, /media/hero/btf-hero-1800.jpg 1800w, /media/hero/btf-hero-2400.jpg 2400w"
+          sizes="(min-width: 1280px) 1280px, 100vw"
+          alt="Sunset over the city skyline. The words 'Building the Future' rise with the sun, sun-rays cresting from the horizon."
+          width={2400}
+          height={1167}
+          loading="eager"
+          fetchPriority="high"
+          className="block w-full h-auto select-none mt-[64px] md:mt-0 md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
+        />
 
       {/* Dark gradient at the bottom of the photo — only meaningful on desktop
           where text overlays the image. On mobile, content sits in plain dark
@@ -347,6 +352,9 @@ function Hero() {
           </div>
         </div>
       </div>
+      {/* /content wrapper */}
+      </div>
+      {/* /hero frame */}
     </section>
   );
 }
@@ -1229,10 +1237,15 @@ function Footer() {
               </a>
             </p>
             <p className="mt-2 leading-[1.55] text-[var(--color-cream-50)]/75">
-              [ Phone TBC ]
+              <a
+                href="tel:+61883600000"
+                className="hover:text-[var(--color-gold-500)] transition-colors"
+              >
+                8336 0000
+              </a>
             </p>
             <p className="mt-2 leading-[1.55] text-[var(--color-cream-50)]/55">
-              [ Address TBC ]
+              57 Darley Road, Paradise SA 5075
             </p>
           </div>
         </div>
