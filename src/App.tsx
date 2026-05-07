@@ -337,26 +337,12 @@ function Hero() {
         }}
       />
 
-      {/* Content area — mobile sits in flow below the image; desktop is
-          absolutely pinned to the bottom of the (full-screen) section. */}
-      <div className="relative z-10 px-6 md:px-10 py-8 md:py-0 md:absolute md:inset-x-0 md:bottom-0 md:pb-16">
+      {/* Content area — just the action-ladder ribbon now (CTAs removed).
+          Mobile: sits in flow below the image. Desktop: absolutely pinned
+          to the bottom of the (full-screen) section. */}
+      <div className="relative z-10 px-6 md:px-10 py-6 md:py-0 md:absolute md:inset-x-0 md:bottom-0 md:pb-16">
         <div className="mx-auto w-full max-w-[1400px]">
-          <div className="flex flex-wrap items-center gap-3 md:gap-4">
-            <a
-              href="#pillars"
-              className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 bg-[var(--color-gold-500)] text-[var(--color-ink-900)] px-6 py-3 md:px-7 md:py-4 text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors"
-            >
-              See the five pillars <span aria-hidden>→</span>
-            </a>
-            <a
-              href="#vision"
-              className="hidden md:inline-flex font-[family-name:var(--font-display)] items-center gap-2 px-5 py-4 text-xs md:text-sm tracking-[0.2em] uppercase text-white/85 hover:text-white transition-colors"
-            >
-              Watch the vision
-            </a>
-          </div>
-
-          <div className="mt-6 md:mt-10 flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-white/70 font-[family-name:var(--font-display)]">
+          <div className="flex items-center gap-3 text-[10px] md:text-xs tracking-[0.35em] uppercase text-white/70 font-[family-name:var(--font-display)]">
             <span aria-hidden className="h-px w-10 bg-current" />
             Pray · Prepare · Pledge · Commit
           </div>
@@ -697,7 +683,7 @@ const GIVING_METHODS: GivingMethod[] = [
     cta: {
       label: 'Talk to the team →',
       // TODO: replace with the real BTF contact email.
-      href: 'mailto:btf@futures.church',
+      href: 'mailto:finance@futures.church',
     },
   },
 ];
@@ -1193,10 +1179,10 @@ function Footer() {
             </p>
             <p className="leading-[1.55]">
               <a
-                href="mailto:btf@futures.church"
+                href="mailto:finance@futures.church"
                 className="hover:text-[var(--color-gold-500)] transition-colors"
               >
-                btf@futures.church
+                finance@futures.church
               </a>
             </p>
             <p className="mt-2 leading-[1.55] text-[var(--color-cream-50)]/75">
@@ -1284,7 +1270,7 @@ function WhatGodsBeenDoing() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
       >
-        What God&rsquo;s Been{' '}
+        See What God&rsquo;s Been{' '}
         <span className="text-[var(--color-gold-500)]">Doing</span>.
       </h2>
 
@@ -1294,15 +1280,7 @@ function WhatGodsBeenDoing() {
         [ Placeholder lead — one or two sentences setting up the two videos. ]
       </p>
 
-      <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-10">
-        {/* Local — TBC. Wire VimeoEmbed once the local video is recorded. */}
-        <div>
-          <StoryPosterTbc title="Local" />
-          <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
-            Local · Futures Church
-          </p>
-        </div>
-
+      <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
         {/* Staff video */}
         <div>
           <VimeoEmbed
@@ -1495,7 +1473,7 @@ function FifteenYears() {
         below. ]
       </p>
 
-      <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+      <div className="mt-12 md:mt-20 grid grid-cols-1 gap-14 md:gap-24">
         {STAT_BLOCKS.map((b) => (
           <StatCard key={b.slug} stat={b} />
         ))}
@@ -1507,27 +1485,32 @@ function FifteenYears() {
 function StatCard({ stat }: { stat: StatBlock }) {
   return (
     <article id={stat.slug} className="flex flex-col">
-      <p className="font-[family-name:var(--font-display)] text-xs md:text-sm tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-3 md:mb-4">
+      {/* Big section-style title — stacked cards mean each one is its own
+          moment, not a small grid item. */}
+      <h3
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em] text-[var(--color-ink-900)] m-0"
+        style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
+      >
         {stat.title}
-      </p>
+      </h3>
 
-      {/* Infographic placeholder — sized slot. Replace with <img> when the
-          real infographic SVGs/PNGs are ready. Landscape on mobile (so a 3-up
-          stack doesn't dominate the viewport) and portrait at md+ where the
-          three cards sit side-by-side. */}
-      <div className="aspect-[3/2] md:aspect-[4/5] bg-[var(--color-cream-50)] relative overflow-hidden">
+      {/* Big landscape infographic placeholder — full container width, banner-
+          like aspect so a real infographic SVG/PNG can show top-line numbers
+          across the page. Replace this tile with an <img> when the real
+          asset is ready. */}
+      <div className="mt-8 md:mt-10 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-50)] relative overflow-hidden">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
             Infographic
           </span>
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm mt-2">
             — TBC —
           </span>
         </div>
         <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
       </div>
 
-      <p className="mt-4 text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/80 max-w-[36ch]">
+      <p className="mt-6 md:mt-8 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.55] text-[var(--color-ink-900)]/80">
         {stat.body}
       </p>
     </article>
