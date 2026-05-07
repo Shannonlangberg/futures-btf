@@ -1237,16 +1237,47 @@ function BuildingTheFuture2026() {
 
       <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
 
-      {/* TODO: replace with real intro copy from the BTF team. */}
-      <div className="mt-10 md:mt-12 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.65] text-[var(--color-ink-900)]/85 space-y-5">
+      <div className="mt-10 md:mt-12 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85 space-y-5">
         <p>
-          [ Placeholder. Two short paragraphs introducing the BTF 2026 vision —
-          what we&rsquo;re asking the church to be part of and why this season
-          matters. Replace when copy lands. ]
+          <em
+            className="italic font-normal"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            Something is happening.
+          </em>
         </p>
         <p>
-          [ Placeholder. A second paragraph that lands the &quot;why now&quot;
-          and points the reader at the videos and campus updates below. ]
+          Across South Australia, Indonesia, the United States and Brazil,
+          churches are being planted, leaders are being raised, and people are
+          finding Jesus for the first time. What God is doing through Futures
+          Church is nothing short of extraordinary, and we are only just
+          getting started.
+        </p>
+        <p>
+          <em
+            className="italic font-normal"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            Building the Future
+          </em>{' '}
+          is our annual moment to pause, celebrate what God has done, and say
+          a united yes to what He is still building. It&rsquo;s not just a
+          campaign, it&rsquo;s a conviction&hellip; that what we do together
+          today becomes someone else&rsquo;s miracle tomorrow. That the seed
+          we sow now grows into a harvest we may never fully see, in cities we
+          may never visit, for people we haven&rsquo;t yet met.
+        </p>
+        <p>
+          We believe the Church is God&rsquo;s greatest idea. And we believe
+          He has called us, together, to partner with Jesus and build it well.
+          Not for ourselves, but for the next generation. Not just locally,
+          but globally. Not just for today, but for a future that belongs to
+          Him.
+        </p>
+        <p>This is what Building the Future is all about.</p>
+        <p>
+          Explore the stories. Watch what God has done. And if this is your
+          home, we&rsquo;d love you to be part of what comes next.
         </p>
       </div>
     </Section>
