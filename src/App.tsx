@@ -13,17 +13,19 @@ import { useEffect, useState } from 'react';
  * Page order (post-restructure 2026-05-05):
  *   1.  Hero  (full-bleed campaign poster)
  *   2.  Building the Future 2026  (heading + intro text, placeholder copy)
- *   3.  What God's Been Doing  (Local + Vision videos)
+ *   3.  What God's Been Doing  (Local + Staff + Vision videos)
  *   4.  New Campuses  (Indonesia 6th, East Coast Australia, Chattanooga TN, Venezuela ×4)
- *   5.  15 Years of Multiplication  (3 infographic placeholders: overall, church health, wellness centre)
- *   6.  Ways to Give
- *   7.  Stories of Faith  (video placeholder)
- *   8.  FAQs
- *   9.  Footer
+ *   5.  Why Now  (heading + placeholder copy)
+ *   6.  15 Years of Multiplication  (3 infographic placeholders)
+ *   7.  Ways to Give
+ *   8.  Stories of Faith  (video placeholder)
+ *   9.  FAQs
+ *   10. Footer
  *
  * Components retained from the previous structure but no longer rendered
- * (kept for easy revival if needed): VisionLetter, GlobalReach, WhyNow,
- * Pillars (+ PillarBlock + PillarPhotoBreak), Voices (+ Quote), ActionLadder.
+ * (kept for easy revival, prefixed `export` to satisfy noUnusedLocals):
+ * VisionLetter, GlobalReach, Pillars (+ PillarBlock + PillarPhotoBreak),
+ * Voices (+ Quote), ActionLadder.
  *
  * TODOs marked inline below — final copy from the vision doc, real portrait,
  * real anchor render etc.
@@ -38,6 +40,7 @@ function App() {
         <BuildingTheFuture2026 />
         <WhatGodsBeenDoing />
         <NewCampuses />
+        <WhyNow />
         <FifteenYears />
         <WaysToGive />
         <StoriesOfFaith />
@@ -928,7 +931,7 @@ function ReachCard({ item }: { item: ReachItem }) {
    PLACEHOLDER — copy is my draft. Replace with the real "why now" reasoning
    from the vision document.
 ---------------------------------------------------------------------------- */
-export function WhyNow() {
+function WhyNow() {
   return (
     <Section id="why-now" tone="ink">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
@@ -944,30 +947,14 @@ export function WhyNow() {
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-      <div className="mt-10 md:mt-14 max-w-[58ch] text-lg md:text-xl lg:text-2xl leading-[1.6] text-[var(--color-cream-50)]/85 space-y-6">
+      {/* TODO: replace with the real "why now" copy from the BTF team. */}
+      <div className="mt-10 md:mt-14 max-w-[58ch] text-lg md:text-xl lg:text-2xl leading-[1.6] text-[var(--color-cream-50)]/85">
         <p>
-          Some seasons are for tending what you&rsquo;ve built. This one is for
-          building what comes next.
-        </p>
-        <p>
-          The church has grown. The team is in place. The need on the other
-          side of our walls keeps growing too. We can stay where we are and
-          stay safe &mdash; or we can step out, build bigger, and trust God
-          for what only he can do.
-        </p>
-        <p>
-          We believe the next five years are decisive. We don&rsquo;t want to
-          look back at this season and wonder what could have been.
+          [ Placeholder. A short paragraph or two making the case for why this
+          season — why this campaign, why this offering, why now. Replace
+          when copy lands. ]
         </p>
       </div>
-
-      {/* pull quote */}
-      <p
-        className="mt-16 md:mt-24 max-w-[18ch] font-[family-name:var(--font-display)] uppercase leading-[0.92] tracking-[-0.012em] text-[var(--color-gold-500)]"
-        style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.5rem)' }}
-      >
-        &ldquo;What we build now will outlast us.&rdquo;
-      </p>
     </Section>
   );
 }
@@ -1188,6 +1175,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#building-2026">Building 2026</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#why-now">Why Now</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
