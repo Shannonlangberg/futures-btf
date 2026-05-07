@@ -252,7 +252,7 @@ function Section({
       : 'bg-[var(--color-cream-50)] text-[var(--color-ink-900)]';
   return (
     <section id={id} className={`relative ${bg} ${className}`}>
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-28">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-14 md:py-28">
         {children}
       </div>
     </section>
@@ -1291,7 +1291,7 @@ function WhatGodsBeenDoing() {
         [ Placeholder lead — one or two sentences setting up the two videos. ]
       </p>
 
-      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10">
+      <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-10">
         {/* Local — TBC. Wire VimeoEmbed once the local video is recorded. */}
         <div>
           <StoryPosterTbc title="Local" />
@@ -1393,7 +1393,7 @@ function NewCampuses() {
         [ Placeholder lead — what we&rsquo;re planting in the 2026 cycle. ]
       </p>
 
-      <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+      <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10">
         {CAMPUSES.map((c) => (
           <CampusCard key={c.slug} campus={c} />
         ))}
@@ -1509,8 +1509,10 @@ function StatCard({ stat }: { stat: StatBlock }) {
       </p>
 
       {/* Infographic placeholder — sized slot. Replace with <img> when the
-          real infographic SVGs/PNGs are ready. */}
-      <div className="aspect-[4/5] bg-[var(--color-cream-50)] relative overflow-hidden">
+          real infographic SVGs/PNGs are ready. Landscape on mobile (so a 3-up
+          stack doesn't dominate the viewport) and portrait at md+ where the
+          three cards sit side-by-side. */}
+      <div className="aspect-[3/2] md:aspect-[4/5] bg-[var(--color-cream-50)] relative overflow-hidden">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
           <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
             Infographic
@@ -1574,7 +1576,7 @@ function StoriesOfFaith() {
         [ Placeholder lead — short framing for the testimony videos. ]
       </p>
 
-      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+      <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
         {STORIES.map((s) => (
           <div key={s.slug}>
             <StoryPosterTbc title={s.posterTitle} />
