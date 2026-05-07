@@ -43,6 +43,7 @@ function App() {
         <NewCampuses />
         <WhyNow />
         <FifteenYears />
+        <WellnessClinic />
         <ActionLadder />
         <WaysToGive />
         <StoriesOfFaith />
@@ -1165,6 +1166,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#why-now">Why Now</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#how-to-be-part">Be Part</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
@@ -1537,12 +1539,6 @@ const STAT_BLOCKS: StatBlock[] = [
     body:
       '[ Placeholder. Health markers — discipleship, attendance, generations engaged. ]',
   },
-  {
-    slug: 'wellness',
-    title: 'Wellness Centre Impact',
-    body:
-      '[ Placeholder. Wellness Centre stats — people served, programs run, lives touched. ]',
-  },
 ];
 
 function FifteenYears() {
@@ -1608,6 +1604,75 @@ function StatCard({ stat }: { stat: StatBlock }) {
         {stat.body}
       </p>
     </article>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Section 6.5 — Futures Wellness Centre
+   Story-led standalone section: four-year origin reflection + a kicker line
+   that lands into an impact infographic placeholder. Slot for real numbers
+   when the Wellness team has them.
+---------------------------------------------------------------------------- */
+function WellnessClinic() {
+  return (
+    <Section id="wellness" tone="cream">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        Built In Faith · Four Years On
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Futures{' '}
+        <span className="text-[var(--color-gold-800)]">Wellness</span> Centre.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      {/* Body — origin story */}
+      <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85 space-y-5">
+        <p>
+          Four years ago, we gave in faith for something we couldn&rsquo;t yet
+          see. We believed that the church could be more than a Sunday
+          gathering &mdash; that it could be a place of real healing for real
+          people.
+        </p>
+        <p>
+          So we started Futures Wellness Clinic, built to meet the emotional,
+          relational, physical and mental needs of our community, with a
+          special heart for those who are most vulnerable and least able to
+          access the help they need.
+        </p>
+      </div>
+
+      {/* Italic kicker — pivots into the impact infographic */}
+      <p className="mt-10 md:mt-14 max-w-[58ch]">
+        <em
+          className="italic font-normal leading-[1.4]"
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(1.25rem, 2.8vw, 1.875rem)',
+          }}
+        >
+          Here&rsquo;s what God has done with that yes.
+        </em>
+      </p>
+
+      {/* Big landscape infographic placeholder for the wellness impact stats.
+          Replace with <img> when the wellness team has the real numbers. */}
+      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-100)] relative overflow-hidden">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
+            Wellness Impact Infographic
+          </span>
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm mt-2">
+            &mdash; TBC &mdash;
+          </span>
+        </div>
+        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+      </div>
+    </Section>
   );
 }
 
