@@ -1312,29 +1312,29 @@ function WhatGodsBeenDoing() {
       </p>
 
       <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
-        {/* Staff video */}
+        {/* Local — staff video, what God has been doing locally */}
         <div>
           <VimeoEmbed
             id="1183634809"
             hash="9f487d7782"
-            title="Staff — what God has been doing through the Futures team"
-            posterTitle="Staff"
+            title="Local — what God has been doing through the Futures family"
+            posterTitle="Local"
           />
           <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
-            Staff · Futures Church
+            Local · Staff · Futures Church
           </p>
         </div>
 
-        {/* Vision video — Ps Ashley & Jane Evans */}
+        {/* Global — Ps Ashley & Jane Evans vision */}
         <div>
           <VimeoEmbed
             id="1188946482"
             hash="076da569fd"
-            title="Vision — Ps Ashley & Jane Evans"
-            posterTitle="Ps Ashley & Jane Evans"
+            title="Global — Ps Ashley & Jane Evans"
+            posterTitle="Global"
           />
           <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
-            Vision · Senior Pastors
+            Global · Ps Ashley &amp; Jane Evans
           </p>
         </div>
       </div>
@@ -1401,15 +1401,78 @@ function NewCampuses() {
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-        [ Placeholder lead — what we&rsquo;re planting in the 2026 cycle. ]
-      </p>
+      {/* Sub-headline / thesis statement */}
+      <h3
+        className="mt-10 md:mt-14 font-[family-name:var(--font-display)] uppercase leading-[0.95] tracking-[-0.01em] text-[var(--color-ink-900)] max-w-[18ch] m-0"
+        style={{ fontSize: 'clamp(1.75rem, 4.5vw, 3.75rem)' }}
+      >
+        The Vision for{' '}
+        <span className="text-[var(--color-gold-800)]">200</span> Continues.
+      </h3>
 
-      <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10">
+      {/* Intro body */}
+      <div className="mt-8 md:mt-10 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85 space-y-5">
+        <p>
+          We don&rsquo;t plant churches because it&rsquo;s a good idea. We
+          plant churches because Jesus commanded it, the Spirit empowers it,
+          and people&rsquo;s eternities depend on it.
+        </p>
+        <p>
+          From Adelaide to Atlanta, Bali to Brazil &mdash; Futures Church has
+          always been a church on the move. And we&rsquo;re not slowing down.
+        </p>
+        <p>
+          By the end of 2027, we believe God is calling us to plant at least
+          seven new campuses across the globe. New cities. New communities.
+          New families finding a home.
+        </p>
+      </div>
+
+      {/* Campus location cards */}
+      <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10">
         {CAMPUSES.map((c) => (
           <CampusCard key={c.slug} campus={c} />
         ))}
       </div>
+
+      {/* Closing body — bridge from cards into the stat poster */}
+      <div className="mt-14 md:mt-20 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85">
+        <p>
+          Every campus is a yes to someone who hasn&rsquo;t found Jesus yet.
+          Every city is a field waiting for seed. And every time we go, we go
+          together &mdash; one church, one vision, one name lifted high.
+        </p>
+      </div>
+
+      {/* Stat poster — three big stacked lines, numbers in gold */}
+      <div
+        className="mt-10 md:mt-14 font-[family-name:var(--font-display)] uppercase leading-[0.96] tracking-[-0.012em] text-[var(--color-ink-900)]"
+        style={{ fontSize: 'clamp(2rem, 6.5vw, 5.5rem)' }}
+      >
+        <p className="m-0">
+          <span className="text-[var(--color-gold-800)]">200</span> Campuses.
+        </p>
+        <p className="m-0">
+          <span className="text-[var(--color-gold-800)]">10,000</span> Leaders.
+        </p>
+        <p className="m-0">
+          <span className="text-[var(--color-gold-800)]">100,000</span> Souls.
+        </p>
+      </div>
+
+      {/* Closing line — italic Fraunces, echoes the BTF 2026 intro */}
+      <p className="mt-10 md:mt-14 max-w-[58ch]">
+        <em
+          className="italic font-normal leading-[1.4]"
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(1.25rem, 2.8vw, 1.875rem)',
+          }}
+        >
+          This is what He&rsquo;s building. And we&rsquo;re just getting
+          started.
+        </em>
+      </p>
     </Section>
   );
 }
