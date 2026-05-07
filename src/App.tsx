@@ -367,7 +367,7 @@ function Hero() {
    letter (it's a video, not a letter). The Vimeo poster falls back to the
    campaign hero image until a real video still is provided.
 ---------------------------------------------------------------------------- */
-function VisionLetter() {
+export function VisionLetter() {
   return (
     <Section id="vision" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
@@ -459,7 +459,7 @@ const PILLARS: Pillar[] = [
   },
 ];
 
-function Pillars() {
+export function Pillars() {
   return (
     <Section id="pillars">
       {/* section header */}
@@ -595,7 +595,7 @@ const ACTIONS: Action[] = [
   },
 ];
 
-function ActionLadder() {
+export function ActionLadder() {
   return (
     <Section id="how-to-be-part" tone="ink">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
@@ -834,7 +834,7 @@ const GLOBAL_REACH: ReachItem[] = [
   },
 ];
 
-function GlobalReach() {
+export function GlobalReach() {
   return (
     <Section id="global-reach" tone="cream">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
@@ -928,7 +928,7 @@ function ReachCard({ item }: { item: ReachItem }) {
    PLACEHOLDER — copy is my draft. Replace with the real "why now" reasoning
    from the vision document.
 ---------------------------------------------------------------------------- */
-function WhyNow() {
+export function WhyNow() {
   return (
     <Section id="why-now" tone="ink">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
@@ -1006,7 +1006,7 @@ const VOICES: Voice[] = [
   },
 ];
 
-function Voices() {
+export function Voices() {
   return (
     <Section id="voices" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
