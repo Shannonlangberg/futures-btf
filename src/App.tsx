@@ -1309,11 +1309,7 @@ function WhatGodsBeenDoing() {
 
       <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
 
-      <p className="mt-8 md:mt-10 max-w-2xl text-base md:text-lg lg:text-xl leading-[1.45] text-[var(--color-cream-50)]/80">
-        [ Placeholder lead — one or two sentences setting up the two videos. ]
-      </p>
-
-      <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
+      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
         {/* Local — staff video, what God has been doing locally */}
         <div>
           <VimeoEmbed
