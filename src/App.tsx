@@ -1562,9 +1562,9 @@ function FifteenYears() {
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-        [ Placeholder lead — a sentence or two framing the three impact areas
-        below. ]
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.5] text-[var(--color-ink-900)]/85">
+        Fifteen years ago, we were one church in one city. Today, we&rsquo;re
+        one church across the world&hellip; and the best is still ahead.
       </p>
 
       <div className="mt-12 md:mt-20 grid grid-cols-1 gap-14 md:gap-24">
