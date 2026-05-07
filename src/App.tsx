@@ -1303,19 +1303,29 @@ function WhatGodsBeenDoing() {
         [ Placeholder lead — one or two sentences setting up the two videos. ]
       </p>
 
-      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10">
+        {/* Local — TBC. Wire VimeoEmbed once the local video is recorded. */}
         <div>
-          <VimeoEmbed
-            id="1183634809"
-            hash="9f487d7782"
-            title="Local — what God has been doing through the Futures family"
-            posterTitle="Local"
-          />
+          <StoryPosterTbc title="Local" />
           <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
             Local · Futures Church
           </p>
         </div>
 
+        {/* Staff video */}
+        <div>
+          <VimeoEmbed
+            id="1183634809"
+            hash="9f487d7782"
+            title="Staff — what God has been doing through the Futures team"
+            posterTitle="Staff"
+          />
+          <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
+            Staff · Futures Church
+          </p>
+        </div>
+
+        {/* Vision video — Ps Ashley & Jane Evans */}
         <div>
           <VimeoEmbed
             id="1188946482"
