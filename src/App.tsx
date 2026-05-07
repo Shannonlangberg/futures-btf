@@ -10,17 +10,20 @@ import { useEffect, useState } from 'react';
  *   - Yellow horizontal strips as section dividers (campaign accent #ffc72c).
  *   - Section title PNGs from /media/titles/ as the headline graphics for pillars.
  *
- * Sections built (full skeleton in place — content placeholders marked TODO):
- *   #1  Hero  (full-bleed campaign poster)
- *   #2  Vision letter from senior pastors  (A&J video + companion letter)
- *   #3  Global Reach  (Futures Global College, Indonesia, Brazil, Venezuela)
- *   #4  Why Now  (placeholder copy + pull quote)
- *   #5  The Five Pillars
- *   #6  Voices  (Ps Renee Watego, Ps Seth Behn, Ps Josh Greenwood + staff video)
- *   #7a Action ladder — Pray · Prepare · Pledge · Commit
- *   #7b Ways to Give
- *   #8  FAQs (6 placeholder Q&As)
- *   #9  Footer
+ * Page order (post-restructure 2026-05-05):
+ *   1.  Hero  (full-bleed campaign poster)
+ *   2.  Building the Future 2026  (heading + intro text, placeholder copy)
+ *   3.  What God's Been Doing  (Local + Vision videos)
+ *   4.  New Campuses  (Indonesia 6th, East Coast Australia, Chattanooga TN, Venezuela ×4)
+ *   5.  15 Years of Multiplication  (3 infographic placeholders: overall, church health, wellness centre)
+ *   6.  Ways to Give
+ *   7.  Stories of Faith  (video placeholder)
+ *   8.  FAQs
+ *   9.  Footer
+ *
+ * Components retained from the previous structure but no longer rendered
+ * (kept for easy revival if needed): VisionLetter, GlobalReach, WhyNow,
+ * Pillars (+ PillarBlock + PillarPhotoBreak), Voices (+ Quote), ActionLadder.
  *
  * TODOs marked inline below — final copy from the vision doc, real portrait,
  * real anchor render etc.
@@ -32,13 +35,12 @@ function App() {
       <SiteNav />
       <main>
         <Hero />
-        <VisionLetter />
-        <GlobalReach />
-        <WhyNow />
-        <Pillars />
-        <Voices />
-        <ActionLadder />
+        <BuildingTheFuture2026 />
+        <WhatGodsBeenDoing />
+        <NewCampuses />
+        <FifteenYears />
         <WaysToGive />
+        <StoriesOfFaith />
         <FAQs />
       </main>
       <Footer />
@@ -1183,13 +1185,12 @@ function Footer() {
               On this page
             </p>
             <ul className="space-y-2 text-[var(--color-cream-50)]/85">
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#vision">A Letter</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#global-reach">Global Reach</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#why-now">Why Now</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#pillars">Five Pillars</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#voices">Voices</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#how-to-be-part">Be Part</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#building-2026">Building 2026</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
             </ul>
           </div>
@@ -1229,6 +1230,417 @@ function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+/* ============================================================================
+   NEW SECTIONS — restructure 2026-05-05
+   ============================================================================ */
+
+/* ----------------------------------------------------------------------------
+   Section 2 — Building the Future 2026
+   Heading + intro text. Sits directly under the hero. Pure typography, no
+   media; the hero already carries the visual moment.
+   PLACEHOLDER COPY — replace with real intro copy when content lands.
+---------------------------------------------------------------------------- */
+function BuildingTheFuture2026() {
+  return (
+    <Section id="building-2026" tone="cream">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        Futures Church · 2026 Vision
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
+      >
+        Building The{' '}
+        <span className="text-[var(--color-gold-800)]">Future</span> 2026.
+      </h2>
+
+      <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
+
+      {/* TODO: replace with real intro copy from the BTF team. */}
+      <div className="mt-10 md:mt-12 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.65] text-[var(--color-ink-900)]/85 space-y-5">
+        <p>
+          [ Placeholder. Two short paragraphs introducing the BTF 2026 vision —
+          what we&rsquo;re asking the church to be part of and why this season
+          matters. Replace when copy lands. ]
+        </p>
+        <p>
+          [ Placeholder. A second paragraph that lands the &quot;why now&quot;
+          and points the reader at the videos and campus updates below. ]
+        </p>
+      </div>
+    </Section>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Section 3 — What God's Been Doing
+   Two videos side-by-side: the local/staff video and the Ps Ash & Jane vision
+   video. Dark moment to break the cream rhythm + put the videos in their best
+   visual environment.
+---------------------------------------------------------------------------- */
+function WhatGodsBeenDoing() {
+  return (
+    <Section id="updates" tone="ink">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
+        A Look Back · A Look Ahead
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
+      >
+        What God&rsquo;s Been{' '}
+        <span className="text-[var(--color-gold-500)]">Doing</span>.
+      </h2>
+
+      <YellowStrip className="mt-6 md:mt-8 w-full max-w-[520px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-base md:text-lg lg:text-xl leading-[1.45] text-[var(--color-cream-50)]/80">
+        [ Placeholder lead — one or two sentences setting up the two videos. ]
+      </p>
+
+      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+        <div>
+          <VimeoEmbed
+            id="1183634809"
+            hash="9f487d7782"
+            title="Local — what God has been doing through the Futures family"
+            posterTitle="Local"
+          />
+          <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
+            Local · Futures Church
+          </p>
+        </div>
+
+        <div>
+          <VimeoEmbed
+            id="1188946482"
+            hash="076da569fd"
+            title="Vision — Ps Ashley & Jane Evans"
+            posterTitle="Ps Ashley & Jane Evans"
+          />
+          <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
+            Vision · Senior Pastors
+          </p>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Section 4 — New Campuses
+   The four new plants in the 2026 cycle. Each gets a card with placeholder
+   copy + photo. Venezuela rolls four campuses into one card.
+---------------------------------------------------------------------------- */
+type Campus = {
+  slug: string;
+  name: string;
+  region: string;
+  body: string;
+};
+
+const CAMPUSES: Campus[] = [
+  {
+    slug: 'indonesia-6',
+    name: 'Indonesia · 6th Campus',
+    region: 'South-east Asia',
+    body:
+      '[ Placeholder. Short copy describing the 6th Indonesia campus — where, when, who. ]',
+  },
+  {
+    slug: 'east-coast-australia',
+    name: 'East Coast Australia',
+    region: 'Australia',
+    body:
+      '[ Placeholder. Short copy on the new East Coast Australia campus. ]',
+  },
+  {
+    slug: 'chattanooga',
+    name: 'Chattanooga, Tennessee',
+    region: 'United States',
+    body:
+      '[ Placeholder. Short copy on the new Chattanooga campus. ]',
+  },
+  {
+    slug: 'venezuela',
+    name: 'Venezuela · 4 Campuses',
+    region: 'South America',
+    body:
+      '[ Placeholder. Short copy summarising the four new Venezuela campuses. ]',
+  },
+];
+
+function NewCampuses() {
+  return (
+    <Section id="campuses" tone="cream">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        2026 Plant Cycle
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        New <span className="text-[var(--color-gold-800)]">Campuses</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
+        [ Placeholder lead — what we&rsquo;re planting in the 2026 cycle. ]
+      </p>
+
+      <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+        {CAMPUSES.map((c) => (
+          <CampusCard key={c.slug} campus={c} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function CampusCard({ campus }: { campus: Campus }) {
+  return (
+    <article id={campus.slug} className="flex flex-col">
+      {/* Photo placeholder — drop a JPEG into /media/campuses/<slug>.jpg
+          and replace this tile with an <img> when assets land. */}
+      <div className="aspect-[5/4] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+            Photo
+          </span>
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+            — TBC —
+          </span>
+          <span className="mt-5 max-w-[24ch] text-[11px] md:text-xs leading-snug">
+            <span className="font-mono">{campus.slug}</span>
+          </span>
+        </div>
+        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+      </div>
+
+      <p className="mt-5 font-[family-name:var(--font-display)] text-xs md:text-sm tracking-[0.32em] uppercase text-[var(--color-ink-900)]/45">
+        {campus.region}
+      </p>
+      <h3
+        className="mt-2 font-[family-name:var(--font-display)] uppercase leading-[0.95] tracking-[-0.01em] m-0"
+        style={{ fontSize: 'clamp(1.75rem, 2.8vw, 2.75rem)' }}
+      >
+        {campus.name}
+      </h3>
+      <p className="mt-3 text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/80 max-w-[42ch]">
+        {campus.body}
+      </p>
+    </article>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Section 5 — 15 Years of Multiplication
+   Three infographic placeholders: overall multiplication, church health,
+   wellness centre impact. Each is a sized slot waiting for the real graphic.
+---------------------------------------------------------------------------- */
+type StatBlock = {
+  slug: string;
+  title: string;
+  body: string;
+};
+
+const STAT_BLOCKS: StatBlock[] = [
+  {
+    slug: 'overall',
+    title: 'Multiplication',
+    body:
+      '[ Placeholder. Top-line numbers on what 15 years of multiplication looks like — campuses, leaders, souls. ]',
+  },
+  {
+    slug: 'church-health',
+    title: 'Church Health',
+    body:
+      '[ Placeholder. Health markers — discipleship, attendance, generations engaged. ]',
+  },
+  {
+    slug: 'wellness',
+    title: 'Wellness Centre Impact',
+    body:
+      '[ Placeholder. Wellness Centre stats — people served, programs run, lives touched. ]',
+  },
+];
+
+function FifteenYears() {
+  return (
+    <Section id="multiplication" tone="cream-100">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        2011 → 2026
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        15 Years of{' '}
+        <span className="text-[var(--color-gold-800)]">Multiplication</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
+        [ Placeholder lead — a sentence or two framing the three impact areas
+        below. ]
+      </p>
+
+      <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        {STAT_BLOCKS.map((b) => (
+          <StatCard key={b.slug} stat={b} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function StatCard({ stat }: { stat: StatBlock }) {
+  return (
+    <article id={stat.slug} className="flex flex-col">
+      <p className="font-[family-name:var(--font-display)] text-xs md:text-sm tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55 mb-3 md:mb-4">
+        {stat.title}
+      </p>
+
+      {/* Infographic placeholder — sized slot. Replace with <img> when the
+          real infographic SVGs/PNGs are ready. */}
+      <div className="aspect-[4/5] bg-[var(--color-cream-50)] relative overflow-hidden">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+            Infographic
+          </span>
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+            — TBC —
+          </span>
+        </div>
+        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+      </div>
+
+      <p className="mt-4 text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/80 max-w-[36ch]">
+        {stat.body}
+      </p>
+    </article>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Section 7 — Stories of Faith
+   Video moment near the bottom of the page. Up to two videos in the same
+   shape as the "What God's Been Doing" pair. Currently shows posters only —
+   wire real Vimeo IDs when stories are recorded.
+---------------------------------------------------------------------------- */
+type Story = {
+  slug: string;
+  posterTitle: string;
+  caption: string;
+};
+
+const STORIES: Story[] = [
+  {
+    slug: 'story-1',
+    posterTitle: 'Story 01',
+    caption: 'Story 01 · TBC',
+  },
+  {
+    slug: 'story-2',
+    posterTitle: 'Story 02',
+    caption: 'Story 02 · TBC',
+  },
+];
+
+function StoriesOfFaith() {
+  return (
+    <Section id="stories" tone="ink">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
+        Voices of the Church
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Stories of <span className="text-[var(--color-gold-500)]">Faith</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-cream-50)]/80">
+        [ Placeholder lead — short framing for the testimony videos. ]
+      </p>
+
+      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
+        {STORIES.map((s) => (
+          <div key={s.slug}>
+            <StoryPosterTbc title={s.posterTitle} />
+            <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
+              {s.caption}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/**
+ * Story video poster — visually identical to the click-to-play VimeoEmbed
+ * fallback, but non-interactive because there's no real Vimeo ID yet.
+ * Swap to <VimeoEmbed id={...} hash={...} ... /> when each story is recorded.
+ */
+function StoryPosterTbc({ title }: { title: string }) {
+  return (
+    <div className="relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden">
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(135deg, var(--color-rust-900) 0%, var(--color-ink-900) 60%, var(--color-ink-900) 100%)',
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-50 mix-blend-soft-light"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(108deg, transparent 0 90px, rgba(250,246,239,0.05) 90px 92px)',
+        }}
+      />
+      <div className="absolute inset-0 bg-black/15" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 md:gap-7 px-6 text-center">
+        <p
+          className="font-[family-name:var(--font-display)] uppercase text-white m-0"
+          style={{
+            fontSize: 'clamp(1.25rem, 3.2vw, 2.5rem)',
+            letterSpacing: '0.12em',
+            lineHeight: 1.05,
+          }}
+        >
+          {title}
+        </p>
+        <div
+          aria-hidden
+          className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[var(--color-gold-500)]/60 flex items-center justify-center"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="w-7 h-7 md:w-9 md:h-9 fill-[var(--color-ink-900)] translate-x-[2px]"
+          >
+            <polygon points="6,4 20,12 6,20" />
+          </svg>
+        </div>
+        <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs text-white/55 m-0">
+          Video — TBC
+        </p>
+      </div>
+    </div>
   );
 }
 
