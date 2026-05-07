@@ -17,15 +17,16 @@ import { useEffect, useState } from 'react';
  *   4.  New Campuses  (Indonesia 6th, East Coast Australia, Chattanooga TN, Venezuela ×4)
  *   5.  Why Now  (heading + placeholder copy)
  *   6.  15 Years of Multiplication  (3 infographic placeholders)
- *   7.  Ways to Give
- *   8.  Stories of Faith  (video placeholder)
- *   9.  FAQs
- *   10. Footer
+ *   7.  Action Ladder — Pray · Prepare · Pledge · Commit
+ *   8.  Ways to Give
+ *   9.  Stories of Faith  (video placeholder)
+ *   10. FAQs
+ *   11. Footer
  *
  * Components retained from the previous structure but no longer rendered
  * (kept for easy revival, prefixed `export` to satisfy noUnusedLocals):
  * VisionLetter, GlobalReach, Pillars (+ PillarBlock + PillarPhotoBreak),
- * Voices (+ Quote), ActionLadder.
+ * Voices (+ Quote).
  *
  * TODOs marked inline below — final copy from the vision doc, real portrait,
  * real anchor render etc.
@@ -42,6 +43,7 @@ function App() {
         <NewCampuses />
         <WhyNow />
         <FifteenYears />
+        <ActionLadder />
         <WaysToGive />
         <StoriesOfFaith />
         <FAQs />
@@ -598,7 +600,7 @@ const ACTIONS: Action[] = [
   },
 ];
 
-export function ActionLadder() {
+function ActionLadder() {
   return (
     <Section id="how-to-be-part" tone="ink">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
@@ -1177,6 +1179,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#why-now">Why Now</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#how-to-be-part">Be Part</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
