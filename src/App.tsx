@@ -571,19 +571,19 @@ const ACTIONS: Action[] = [
     n: '02',
     word: 'Prepare',
     body:
-      'Come to a vision night. Read the brief. Sit with your family and decide what stewardship looks like for your household.',
+      'Rewatch the videos. Read the stories. Let what God has done sink in. Take time to thank Him for His goodness, and then prayerfully decide what faithful generosity looks like for your household in this season.',
   },
   {
     n: '03',
-    word: 'Pledge',
+    word: 'Give / Pledge',
     body:
-      'Make a pledge for what you and your household are believing for over the next 12–18 months. Big or small, every pledge counts.',
+      'On our collection day, bring your faith offering — or make a pledge for what you and your household believe God is calling you to give over the next three months. Big or small, every pledge carries the same spirit; a yes to His vision, a seed into the future.',
   },
   {
     n: '04',
     word: 'Commit',
     body:
-      'Stand with us as we build. Show up. Serve. Give. Tell the story of what God is doing.',
+      'This is bigger than a one-day offering. Stand with us as we build. Show up. Pray. Serve. Give. And tell the story of what God is doing… because when people hear what He’s done, faith rises and the future gets built together.',
   },
 ];
 
