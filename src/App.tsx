@@ -656,70 +656,124 @@ function WaysToGive() {
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
       {/* Two columns: timing/commitment + payment methods */}
-      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+      <div className="mt-14 md:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         {/* CHOOSE EITHER */}
         <div>
           <YellowTag>Choose Either</YellowTag>
-          <ul className="mt-7 space-y-5 text-base md:text-lg lg:text-xl leading-[1.5] text-[var(--color-ink-900)]/85 list-none p-0">
-            <li>One-off offering on Sunday, June 22 or 29</li>
-            <li>3-month pledge finishing on Monday, September 29</li>
-            <li>A combination of an offering + pledge</li>
-          </ul>
+          <ol className="mt-8 md:mt-10 space-y-6 md:space-y-7 list-none p-0">
+            {[
+              'One-off offering on Sunday, June 22 or 29',
+              '3-month pledge finishing on Monday, September 29',
+              'A combination of an offering + pledge',
+            ].map((line, i) => (
+              <li key={i} className="grid grid-cols-[3rem_1fr] gap-x-5 items-baseline">
+                <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-sm md:text-base text-[var(--color-gold-800)]">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="text-lg md:text-xl lg:text-2xl leading-[1.4] text-[var(--color-ink-900)]">
+                  {line}
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
 
         {/* WAYS TO GIVE */}
         <div>
           <YellowTag>Ways to Give</YellowTag>
-          <ul className="mt-7 space-y-3 text-base md:text-lg lg:text-xl leading-[1.4] text-[var(--color-ink-900)]/85 list-none p-0">
-            <li>Cash</li>
-            <li>Cheque</li>
-            <li>Credit Card</li>
-            <li>Direct Debit</li>
-            <li>Online Deposit</li>
-          </ul>
-          <p className="mt-6 text-sm md:text-base italic text-[var(--color-ink-900)]/65 max-w-[40ch]">
+          <ol className="mt-8 md:mt-10 space-y-4 md:space-y-5 list-none p-0">
+            {['Cash', 'Cheque', 'Credit Card', 'Direct Debit', 'Online Deposit'].map(
+              (line, i) => (
+                <li key={i} className="grid grid-cols-[3rem_1fr] gap-x-5 items-baseline">
+                  <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-sm md:text-base text-[var(--color-gold-800)]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.08em] text-xl md:text-2xl lg:text-3xl leading-[1.1] text-[var(--color-ink-900)]">
+                    {line}
+                  </span>
+                </li>
+              )
+            )}
+          </ol>
+          <p className="mt-8 text-sm md:text-base italic text-[var(--color-ink-900)]/65 max-w-[42ch]">
             Tax deductibility is available for donation amounts of $5,000 and above.
           </p>
         </div>
       </div>
 
-      {/* Bank account details — real FCSA BTF Project account */}
-      <div className="mt-14 md:mt-20 bg-[var(--color-cream-100)] border-t-4 border-[var(--color-gold-500)] p-8 md:p-10 max-w-2xl">
+      {/* Bank account details — stacked single-column so each piece of info
+          gets its own poster moment. Huge numbers in gold; account number is
+          the largest because it's the most critical to copy correctly. */}
+      <div className="mt-14 md:mt-20 bg-[var(--color-cream-100)] border-t-[6px] border-[var(--color-gold-500)] p-8 md:p-12 lg:p-16">
         <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
           For Direct Deposit
         </p>
-        <p className="mt-3 font-[family-name:var(--font-display)] uppercase tracking-[0.1em] text-xl md:text-2xl text-[var(--color-ink-900)]">
+        <p
+          className="mt-3 font-[family-name:var(--font-display)] uppercase tracking-[0.06em] text-[var(--color-ink-900)] leading-[1]"
+          style={{ fontSize: 'clamp(1.75rem, 4vw, 3.25rem)' }}
+        >
           FCSA BTF Project
         </p>
-        <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 font-[family-name:var(--font-display)] uppercase tracking-[0.12em] text-base md:text-lg">
-          <dt className="text-[var(--color-ink-900)]/55">BSB</dt>
-          <dd className="m-0 text-[var(--color-gold-800)]">085-005</dd>
-          <dt className="text-[var(--color-ink-900)]/55">Acc No</dt>
-          <dd className="m-0 text-[var(--color-gold-800)]">31-405-9072</dd>
-          <dt className="text-[var(--color-ink-900)]/55">Reference</dt>
-          <dd className="m-0 text-[var(--color-ink-900)]">Your PLEDGE Number</dd>
-        </dl>
+
+        <div className="mt-10 md:mt-14 space-y-9 md:space-y-12">
+          <div>
+            <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm text-[var(--color-ink-900)]/55 mb-3">
+              BSB
+            </p>
+            <p
+              className="font-[family-name:var(--font-display)] uppercase leading-[0.95] tracking-[-0.012em] text-[var(--color-gold-800)] m-0"
+              style={{ fontSize: 'clamp(2.5rem, 9vw, 7rem)' }}
+            >
+              085-005
+            </p>
+          </div>
+          <div>
+            <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm text-[var(--color-ink-900)]/55 mb-3">
+              Account Number
+            </p>
+            <p
+              className="font-[family-name:var(--font-display)] uppercase leading-[0.95] tracking-[-0.012em] text-[var(--color-gold-800)] m-0"
+              style={{ fontSize: 'clamp(2.25rem, 8vw, 6.5rem)' }}
+            >
+              31-405-9072
+            </p>
+          </div>
+          <div>
+            <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm text-[var(--color-ink-900)]/55 mb-3">
+              Reference
+            </p>
+            <p
+              className="font-[family-name:var(--font-display)] uppercase leading-[1.05] tracking-[0.02em] text-[var(--color-ink-900)] m-0"
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
+            >
+              Your Pledge Number
+            </p>
+          </div>
+        </div>
       </div>
 
-      {/* QUESTIONS */}
-      <div className="mt-14 md:mt-20">
+      {/* QUESTIONS — huge phone number as the closing CTA */}
+      <div className="mt-16 md:mt-24">
         <YellowTag>Questions?</YellowTag>
-        <p className="mt-6 text-base md:text-lg text-[var(--color-ink-900)]/80">
+        <p className="mt-6 md:mt-8 text-lg md:text-xl text-[var(--color-ink-900)]/80">
           Call our finance team at
         </p>
-        <p className="mt-2 font-[family-name:var(--font-display)] uppercase tracking-[0.05em] text-2xl md:text-3xl lg:text-4xl">
+        <p
+          className="mt-3 md:mt-4 font-[family-name:var(--font-display)] uppercase tracking-[-0.01em] leading-[1]"
+          style={{ fontSize: 'clamp(2.5rem, 7vw, 6rem)' }}
+        >
           <a
             href="tel:+61883600000"
-            className="hover:text-[var(--color-gold-800)] transition-colors"
+            className="text-[var(--color-ink-900)] hover:text-[var(--color-gold-800)] transition-colors"
           >
             (08) 8336 0000
           </a>
         </p>
-        <p className="mt-4 text-base md:text-lg text-[var(--color-ink-900)]/75">
+        <p className="mt-5 md:mt-6 text-base md:text-lg text-[var(--color-ink-900)]/75">
           Or email{' '}
           <a
             href="mailto:finance@futures.church"
-            className="border-b-2 border-[var(--color-gold-500)] pb-0.5 hover:border-[var(--color-ink-900)] transition-colors"
+            className="font-[family-name:var(--font-display)] uppercase tracking-[0.1em] border-b-2 border-[var(--color-gold-500)] pb-0.5 hover:border-[var(--color-ink-900)] transition-colors"
           >
             finance@futures.church
           </a>
@@ -735,7 +789,7 @@ function WaysToGive() {
  */
 function YellowTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block bg-[var(--color-gold-500)] text-[var(--color-ink-900)] font-[family-name:var(--font-display)] uppercase tracking-[0.1em] text-base md:text-xl px-4 py-2 leading-none">
+    <span className="inline-block bg-[var(--color-gold-500)] text-[var(--color-ink-900)] font-[family-name:var(--font-display)] uppercase tracking-[0.1em] text-lg md:text-2xl px-5 py-3 leading-none">
       {children}
     </span>
   );
@@ -1160,7 +1214,6 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#how-to-be-part">Be Part</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
