@@ -634,59 +634,6 @@ function ActionBlock({ action }: { action: Action }) {
 }
 
 /* ----------------------------------------------------------------------------
-   Ways to Give — section #8b of the brief.
-   The practical, transactional follow-up to the action ladder. Card grid of
-   four giving channels. All copy + URLs + bank details are placeholders for
-   now — clearly TODO-tagged in the data so they're easy to swap.
----------------------------------------------------------------------------- */
-type GivingMethod = {
-  slug: string;
-  name: string;
-  body: string;
-  detail?: string; // smaller secondary line, e.g. bank reference details
-  cta?: { label: string; href: string };
-};
-
-const GIVING_METHODS: GivingMethod[] = [
-  {
-    slug: 'online',
-    name: 'Online',
-    body:
-      'Make your pledge or one-off gift through the secure giving portal. Set up recurring giving in a couple of clicks.',
-    cta: {
-      label: 'Give online →',
-      // TODO: replace with the real giving-portal URL.
-      href: '#',
-    },
-  },
-  {
-    slug: 'bank',
-    name: 'Bank Transfer',
-    body:
-      'Direct deposit straight from your bank. Use your full name as the reference so we can match the gift to your pledge.',
-    // TODO: confirm the BTF account details with the finance team.
-    detail: 'BSB 000-000  ·  Acc 0000 0000  ·  Ref: Your full name',
-  },
-  {
-    slug: 'in-person',
-    name: 'In Person',
-    body:
-      'Bring your offering to any weekend service. The team will help you set up a pledge card on the day.',
-  },
-  {
-    slug: 'other',
-    name: 'Other Ways',
-    body:
-      'Shares, property, business gifts — there are many ways to give. Speak with the BTF team and we’ll walk you through it.',
-    cta: {
-      label: 'Talk to the team →',
-      // TODO: replace with the real BTF contact email.
-      href: 'mailto:finance@futures.church',
-    },
-  },
-];
-
-/* ----------------------------------------------------------------------------
    Ways to Give — adapted from the campaign's "How to Give" slide.
    Structure: two columns (Choose Either / Ways to Give) then a bank-details
    block with the real FCSA BTF Project account, then a Questions contact.
