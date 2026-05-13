@@ -1306,11 +1306,11 @@ function WhatGodsBeenDoing() {
           <VimeoEmbed
             id="1183634809"
             hash="9f487d7782"
-            title="Local — what God has been doing through the Futures family"
-            posterTitle="Local"
+            title="Australia — what God has been doing through Futures Church"
+            posterTitle="Australia"
           />
           <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
-            Local · Staff · Futures Church
+            Australia · Futures Church
           </p>
         </div>
 
