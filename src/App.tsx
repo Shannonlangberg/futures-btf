@@ -15,18 +15,17 @@ import { useEffect, useState } from 'react';
  *   2.  Building the Future 2026  (heading + intro text, placeholder copy)
  *   3.  What God's Been Doing  (Local + Staff + Vision videos)
  *   4.  New Campuses  (Indonesia 6th, East Coast Australia, Chattanooga TN, Venezuela ×4)
- *   5.  Why Now  (heading + placeholder copy)
- *   6.  15 Years of Multiplication  (3 infographic placeholders)
- *   7.  Action Ladder — Pray · Prepare · Pledge · Commit
- *   8.  Ways to Give
- *   9.  Stories of Faith  (video placeholder)
- *   10. FAQs
- *   11. Footer
+ *   5.  Futures Wellness Centre
+ *   6.  Action Ladder — Pray · Prepare · Pledge · Commit
+ *   7.  Ways to Give
+ *   8.  Stories of Faith  (video placeholder)
+ *   9.  FAQs
+ *   10. Footer
  *
  * Components retained from the previous structure but no longer rendered
  * (kept for easy revival, prefixed `export` to satisfy noUnusedLocals):
  * VisionLetter, GlobalReach, Pillars (+ PillarBlock + PillarPhotoBreak),
- * Voices (+ Quote).
+ * Voices (+ Quote), WhyNow, FifteenYears (+ StatCard).
  *
  * TODOs marked inline below — final copy from the vision doc, real portrait,
  * real anchor render etc.
@@ -41,8 +40,6 @@ function App() {
         <BuildingTheFuture2026 />
         <WhatGodsBeenDoing />
         <NewCampuses />
-        <WhyNow />
-        <FifteenYears />
         <WellnessClinic />
         <ActionLadder />
         <WaysToGive />
@@ -689,11 +686,16 @@ const GIVING_METHODS: GivingMethod[] = [
   },
 ];
 
+/* ----------------------------------------------------------------------------
+   Ways to Give — adapted from the campaign's "How to Give" slide.
+   Structure: two columns (Choose Either / Ways to Give) then a bank-details
+   block with the real FCSA BTF Project account, then a Questions contact.
+---------------------------------------------------------------------------- */
 function WaysToGive() {
   return (
-    <Section id="ways-to-give">
+    <Section id="ways-to-give" tone="cream">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
-        Practical Steps
+        How To Give
       </p>
 
       <h2
@@ -705,46 +707,89 @@ function WaysToGive() {
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-      <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-ink-900)]/80">
-        Four ways to make a pledge a real gift. Pick whichever fits your
-        family best &mdash; every method goes to the same place.
-      </p>
+      {/* Two columns: timing/commitment + payment methods */}
+      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        {/* CHOOSE EITHER */}
+        <div>
+          <YellowTag>Choose Either</YellowTag>
+          <ul className="mt-7 space-y-5 text-base md:text-lg lg:text-xl leading-[1.5] text-[var(--color-ink-900)]/85 list-none p-0">
+            <li>One-off offering on Sunday, June 22 or 29</li>
+            <li>3-month pledge finishing on Monday, September 29</li>
+            <li>A combination of an offering + pledge</li>
+          </ul>
+        </div>
 
-      <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        {GIVING_METHODS.map((m) => (
-          <GivingMethodCard key={m.slug} method={m} />
-        ))}
+        {/* WAYS TO GIVE */}
+        <div>
+          <YellowTag>Ways to Give</YellowTag>
+          <ul className="mt-7 space-y-3 text-base md:text-lg lg:text-xl leading-[1.4] text-[var(--color-ink-900)]/85 list-none p-0">
+            <li>Cash</li>
+            <li>Cheque</li>
+            <li>Credit Card</li>
+            <li>Direct Debit</li>
+            <li>Online Deposit</li>
+          </ul>
+          <p className="mt-6 text-sm md:text-base italic text-[var(--color-ink-900)]/65 max-w-[40ch]">
+            Tax deductibility is available for donation amounts of $5,000 and above.
+          </p>
+        </div>
+      </div>
+
+      {/* Bank account details — real FCSA BTF Project account */}
+      <div className="mt-14 md:mt-20 bg-[var(--color-cream-100)] border-t-4 border-[var(--color-gold-500)] p-8 md:p-10 max-w-2xl">
+        <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/55">
+          For Direct Deposit
+        </p>
+        <p className="mt-3 font-[family-name:var(--font-display)] uppercase tracking-[0.1em] text-xl md:text-2xl text-[var(--color-ink-900)]">
+          FCSA BTF Project
+        </p>
+        <dl className="mt-6 grid grid-cols-[auto_1fr] gap-x-6 gap-y-3 font-[family-name:var(--font-display)] uppercase tracking-[0.12em] text-base md:text-lg">
+          <dt className="text-[var(--color-ink-900)]/55">BSB</dt>
+          <dd className="m-0 text-[var(--color-gold-800)]">085-005</dd>
+          <dt className="text-[var(--color-ink-900)]/55">Acc No</dt>
+          <dd className="m-0 text-[var(--color-gold-800)]">31-405-9072</dd>
+          <dt className="text-[var(--color-ink-900)]/55">Reference</dt>
+          <dd className="m-0 text-[var(--color-ink-900)]">Your PLEDGE Number</dd>
+        </dl>
+      </div>
+
+      {/* QUESTIONS */}
+      <div className="mt-14 md:mt-20">
+        <YellowTag>Questions?</YellowTag>
+        <p className="mt-6 text-base md:text-lg text-[var(--color-ink-900)]/80">
+          Call our finance team at
+        </p>
+        <p className="mt-2 font-[family-name:var(--font-display)] uppercase tracking-[0.05em] text-2xl md:text-3xl lg:text-4xl">
+          <a
+            href="tel:+61883600000"
+            className="hover:text-[var(--color-gold-800)] transition-colors"
+          >
+            (08) 8336 0000
+          </a>
+        </p>
+        <p className="mt-4 text-base md:text-lg text-[var(--color-ink-900)]/75">
+          Or email{' '}
+          <a
+            href="mailto:finance@futures.church"
+            className="border-b-2 border-[var(--color-gold-500)] pb-0.5 hover:border-[var(--color-ink-900)] transition-colors"
+          >
+            finance@futures.church
+          </a>
+        </p>
       </div>
     </Section>
   );
 }
 
-function GivingMethodCard({ method }: { method: GivingMethod }) {
+/**
+ * YellowTag — sticker-style label used to mark the sub-sections inside
+ * Ways to Give. Pulls from the campaign "How to Give" slide.
+ */
+function YellowTag({ children }: { children: React.ReactNode }) {
   return (
-    <article className="bg-[var(--color-cream-100)] p-8 md:p-10 flex flex-col gap-5 md:gap-6 border-t-4 border-[var(--color-gold-500)]">
-      <h3
-        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em] m-0"
-        style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}
-      >
-        {method.name}
-      </h3>
-      <p className="text-base md:text-lg leading-[1.55] text-[var(--color-ink-900)]/80 max-w-[44ch] flex-1">
-        {method.body}
-      </p>
-      {method.detail && (
-        <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-xs md:text-sm text-[var(--color-ink-900)]/70 border-t border-[var(--color-ink-900)]/10 pt-4">
-          {method.detail}
-        </p>
-      )}
-      {method.cta && (
-        <a
-          href={method.cta.href}
-          className="font-[family-name:var(--font-display)] inline-flex items-center gap-2 self-start text-xs md:text-sm tracking-[0.2em] uppercase text-[var(--color-ink-900)] border-b-2 border-[var(--color-gold-500)] pb-1 hover:border-[var(--color-ink-900)] transition-colors"
-        >
-          {method.cta.label}
-        </a>
-      )}
-    </article>
+    <span className="inline-block bg-[var(--color-gold-500)] text-[var(--color-ink-900)] font-[family-name:var(--font-display)] uppercase tracking-[0.1em] text-base md:text-xl px-4 py-2 leading-none">
+      {children}
+    </span>
   );
 }
 
@@ -920,7 +965,7 @@ function ReachCard({ item }: { item: ReachItem }) {
    PLACEHOLDER — copy is my draft. Replace with the real "why now" reasoning
    from the vision document.
 ---------------------------------------------------------------------------- */
-function WhyNow() {
+export function WhyNow() {
   return (
     <Section id="why-now" tone="ink">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/65 mb-6 md:mb-8">
@@ -1164,8 +1209,6 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#building-2026">Building 2026</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#why-now">Why Now</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#how-to-be-part">Be Part</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
@@ -1230,8 +1273,8 @@ function BuildingTheFuture2026() {
       </p>
 
       <h2
-        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em]"
-        style={{ fontSize: 'clamp(2.25rem, 6.5vw, 5.75rem)' }}
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
         Building The{' '}
         <span className="text-[var(--color-gold-800)]">Future</span> 2026.
@@ -1537,7 +1580,7 @@ const STAT_BLOCKS: StatBlock[] = [
   },
 ];
 
-function FifteenYears() {
+export function FifteenYears() {
   return (
     <Section id="multiplication" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
@@ -1611,7 +1654,7 @@ function StatCard({ stat }: { stat: StatBlock }) {
 ---------------------------------------------------------------------------- */
 function WellnessClinic() {
   return (
-    <Section id="wellness" tone="cream">
+    <Section id="wellness" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
         Built In Faith · Four Years On
       </p>
@@ -1657,7 +1700,7 @@ function WellnessClinic() {
 
       {/* Big landscape infographic placeholder for the wellness impact stats.
           Replace with <img> when the wellness team has the real numbers. */}
-      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-100)] relative overflow-hidden">
+      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-50)] relative overflow-hidden">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
           <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
             Wellness Impact Infographic
