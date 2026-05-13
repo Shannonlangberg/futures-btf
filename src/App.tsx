@@ -40,6 +40,7 @@ function App() {
         <BuildingTheFuture2026 />
         <WhatGodsBeenDoing />
         <NewCampuses />
+        <ChurchHealth />
         <WellnessClinic />
         <ActionLadder />
         <WaysToGive />
@@ -1157,6 +1158,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#building-2026">Building 2026</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#how-to-be-part">Be Part</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
@@ -1595,6 +1597,66 @@ function StatCard({ stat }: { stat: StatBlock }) {
 }
 
 /* ----------------------------------------------------------------------------
+   Section — Church Health
+   Pair with Wellness Centre below it as the "what we've been investing in"
+   diptych. Placeholder copy + landscape infographic tile until the team has
+   the real metrics.
+---------------------------------------------------------------------------- */
+function ChurchHealth() {
+  return (
+    <Section id="church-health" tone="cream-100">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        Built Together · 15 Years On
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Church <span className="text-[var(--color-gold-800)]">Health</span>.
+      </h2>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      {/* TODO: replace with real church-health copy from the team. */}
+      <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85 space-y-5">
+        <p>
+          [ Placeholder. A short paragraph or two on what church health has
+          looked like across these fifteen years — discipleship, generations,
+          community, the markers that tell us the church is alive and growing
+          well. Replace when copy lands. ]
+        </p>
+      </div>
+
+      <p className="mt-10 md:mt-14 max-w-[58ch]">
+        <em
+          className="italic font-normal leading-[1.4]"
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 'clamp(1.25rem, 2.8vw, 1.875rem)',
+          }}
+        >
+          [ Placeholder kicker line — what the numbers reveal. ]
+        </em>
+      </p>
+
+      {/* Landscape infographic placeholder — same shape as Wellness. */}
+      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-50)] relative overflow-hidden">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
+            Church Health Infographic
+          </span>
+          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm mt-2">
+            &mdash; TBC &mdash;
+          </span>
+        </div>
+        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+      </div>
+    </Section>
+  );
+}
+
+/* ----------------------------------------------------------------------------
    Section 6.5 — Futures Wellness Centre
    Story-led standalone section: four-year origin reflection + a kicker line
    that lands into an impact infographic placeholder. Slot for real numbers
@@ -1602,7 +1664,7 @@ function StatCard({ stat }: { stat: StatBlock }) {
 ---------------------------------------------------------------------------- */
 function WellnessClinic() {
   return (
-    <Section id="wellness" tone="cream-100">
+    <Section id="wellness" tone="cream">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
         Built In Faith · Four Years On
       </p>
@@ -1648,7 +1710,7 @@ function WellnessClinic() {
 
       {/* Big landscape infographic placeholder for the wellness impact stats.
           Replace with <img> when the wellness team has the real numbers. */}
-      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-50)] relative overflow-hidden">
+      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-100)] relative overflow-hidden">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
           <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
             Wellness Impact Infographic
