@@ -1057,21 +1057,19 @@ const FAQS: FAQ[] = [
       'The Building The Future offering lands on Sunday, June 22 and Sunday, June 29 — that’s when you bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 29.',
   },
   {
-    q: 'How is the money used?',
-    a: '[ Placeholder. Describe how funds are stewarded across the new campuses, the Wellness Centre, and other commitments. ]',
-  },
-  {
     q: 'Is my pledge tax-deductible?',
     a:
       'Tax deductibility is available for donation amounts of $5,000 and above. If you’d like detail on how that works for your gift, our finance team can walk you through it.',
   },
   {
     q: 'Can I give from outside Australia?',
-    a: '[ Placeholder. Describe international giving channels. ]',
+    a:
+      'Yes — international giving is possible. Get in touch with our finance team and we’ll send the right account details and any currency information for your country. [ Confirm specifics with finance. ]',
   },
   {
     q: 'What if my circumstances change?',
-    a: '[ Placeholder. Reassure that pledges are flexible and explain how to update or pause. ]',
+    a:
+      'A pledge is an act of faith, not a contract. If anything shifts between now and the end of September, have a conversation with our finance team — they’ll walk through your options with you.',
   },
   {
     q: 'Who can I talk to?',
