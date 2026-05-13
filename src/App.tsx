@@ -1053,15 +1053,17 @@ type FAQ = { q: string; a: string };
 const FAQS: FAQ[] = [
   {
     q: 'When does the campaign start?',
-    a: '[ Placeholder. Confirm campaign launch + key milestone dates with the BTF team. ]',
+    a:
+      'The Building The Future offering lands on Sunday, June 22 and Sunday, June 29 — that’s when you bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 29.',
   },
   {
     q: 'How is the money used?',
-    a: '[ Placeholder. Describe how funds are stewarded across the five pillars and which projects they fund first. ]',
+    a: '[ Placeholder. Describe how funds are stewarded across the new campuses, the Wellness Centre, and other commitments. ]',
   },
   {
     q: 'Is my pledge tax-deductible?',
-    a: '[ Placeholder. Confirm with the finance team — gift category, receipts, and what counts. ]',
+    a:
+      'Tax deductibility is available for donation amounts of $5,000 and above. If you’d like detail on how that works for your gift, our finance team can walk you through it.',
   },
   {
     q: 'Can I give from outside Australia?',
@@ -1073,7 +1075,8 @@ const FAQS: FAQ[] = [
   },
   {
     q: 'Who can I talk to?',
-    a: '[ Placeholder. Point to the BTF contact channel — email, phone, drop-in. ]',
+    a:
+      'Our finance team is happy to walk you through any of it. Call (08) 8336 0000 or email finance@futures.church.',
   },
 ];
 
