@@ -10,22 +10,25 @@ import { useEffect, useState } from 'react';
  *   - Yellow horizontal strips as section dividers (campaign accent #ffc72c).
  *   - Section title PNGs from /media/titles/ as the headline graphics for pillars.
  *
- * Page order (post-restructure 2026-05-05):
- *   1.  Hero  (full-bleed campaign poster)
- *   2.  Building the Future 2026  (heading + intro text, placeholder copy)
- *   3.  What God's Been Doing  (Local + Staff + Vision videos)
- *   4.  New Campuses  (Indonesia 6th, East Coast Australia, Chattanooga TN, Venezuela ×4)
- *   5.  Futures Wellness Centre
- *   6.  Action Ladder — Pray · Prepare · Pledge · Commit
- *   7.  Ways to Give
- *   8.  Stories of Faith  (video placeholder)
- *   9.  FAQs
- *   10. Footer
+ * Page order:
+ *   1.  Hero
+ *   2.  Building the Future 2026  (intro copy)
+ *   3.  What God's Been Doing  (Australia + Global videos)
+ *   4.  15 Years of Multiplication  (real growth infographic)
+ *   5.  Church Health  (placeholder copy + infographic placeholder)
+ *   6.  Futures Wellness Centre  (real impact infographic)
+ *   7.  New Campuses  (7 location screens: Kilburn, New Indonesia, Chattanooga,
+ *                      Concepción, Mérida, Sur Del Lago, Valles Del Tuy)
+ *   8.  Action Ladder  (Pray · Prepare · Give/Pledge · Commit)
+ *   9.  Ways to Give  (slide-aligned: Choose Either / Ways / Bank / Questions)
+ *   10. Stories of Faith  (video placeholder)
+ *   11. FAQs
+ *   12. Footer
  *
  * Components retained from the previous structure but no longer rendered
  * (kept for easy revival, prefixed `export` to satisfy noUnusedLocals):
  * VisionLetter, GlobalReach, Pillars (+ PillarBlock + PillarPhotoBreak),
- * Voices (+ Quote), WhyNow, FifteenYears (+ StatCard).
+ * Voices (+ Quote), WhyNow.
  *
  * TODOs marked inline below — final copy from the vision doc, real portrait,
  * real anchor render etc.
@@ -39,9 +42,10 @@ function App() {
         <Hero />
         <BuildingTheFuture2026 />
         <WhatGodsBeenDoing />
-        <NewCampuses />
+        <FifteenYears />
         <ChurchHealth />
         <WellnessClinic />
+        <NewCampuses />
         <ActionLadder />
         <WaysToGive />
         <StoriesOfFaith />
@@ -1119,7 +1123,7 @@ const FAQS: FAQ[] = [
   {
     q: 'Can I give from outside Australia?',
     a:
-      'Yes — international giving is possible. Get in touch with our finance team and we’ll send the right account details and any currency information for your country. [ Confirm specifics with finance. ]',
+      'We welcome international partners who would like to support our vision. You can give securely or via international bank transfer. For overseas transfers, please contact our finance team at finance@futures.church for banking details.',
   },
   {
     q: 'What if my circumstances change?',
@@ -1211,9 +1215,10 @@ function Footer() {
             <ul className="space-y-2 text-[var(--color-cream-50)]/85">
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#building-2026">Building 2026</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
@@ -1394,44 +1399,72 @@ function WhatGodsBeenDoing() {
 type Campus = {
   slug: string;
   name: string;
-  region: string;
-  body: string;
+  /** Optional photo screen — each location has its own labeled image. */
+  image?: { src: string; alt: string };
 };
 
 const CAMPUSES: Campus[] = [
   {
-    slug: 'indonesia-6',
-    name: 'Indonesia · 6th Campus',
-    region: 'South-east Asia',
-    body:
-      '[ Placeholder. Short copy describing the 6th Indonesia campus — where, when, who. ]',
+    slug: 'kilburn',
+    name: 'Futures Kilburn · Melbourne, Australia',
+    image: {
+      src: '/media/campuses/kilburn.jpg',
+      alt: 'Futures Kilburn — Melbourne, Australia.',
+    },
   },
   {
-    slug: 'east-coast-australia',
-    name: 'East Coast Australia',
-    region: 'Australia',
-    body:
-      '[ Placeholder. Short copy on the new East Coast Australia campus. ]',
+    slug: 'new-indonesia',
+    name: 'Futures New Indonesia',
+    image: {
+      src: '/media/campuses/new-indonesia.jpg',
+      alt: 'Futures New Indonesia.',
+    },
   },
   {
     slug: 'chattanooga',
-    name: 'Chattanooga, Tennessee',
-    region: 'United States',
-    body:
-      '[ Placeholder. Short copy on the new Chattanooga campus. ]',
+    name: 'Futures Chattanooga · Tennessee, USA',
+    image: {
+      src: '/media/campuses/chattanooga.jpg',
+      alt: 'Futures Chattanooga — Tennessee, USA.',
+    },
   },
   {
-    slug: 'venezuela',
-    name: 'Venezuela · 4 Campuses',
-    region: 'South America',
-    body:
-      '[ Placeholder. Short copy summarising the four new Venezuela campuses. ]',
+    slug: 'concepcion',
+    name: 'Futuros Concepción · Chile',
+    image: {
+      src: '/media/campuses/concepcion.jpg',
+      alt: 'Futuros Concepción — Chile, South America.',
+    },
+  },
+  {
+    slug: 'merida',
+    name: 'Futuros Mérida · Western Venezuela',
+    image: {
+      src: '/media/campuses/merida.jpg',
+      alt: 'Futuros Mérida — Western Venezuela.',
+    },
+  },
+  {
+    slug: 'sur-del-lago',
+    name: 'Futuros Sur Del Lago · North-Western Venezuela',
+    image: {
+      src: '/media/campuses/sur-del-lago.jpg',
+      alt: 'Futuros Sur Del Lago — North-Western Venezuela.',
+    },
+  },
+  {
+    slug: 'valles-del-tuy',
+    name: 'Futuros Valles Del Tuy · North-Central Venezuela',
+    image: {
+      src: '/media/campuses/valles-del-tuy.jpg',
+      alt: 'Futuros Valles Del Tuy — North-Central Venezuela.',
+    },
   },
 ];
 
 function NewCampuses() {
   return (
-    <Section id="campuses" tone="cream">
+    <Section id="campuses" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
         2026 Plant Cycle
       </p>
@@ -1524,68 +1557,41 @@ function NewCampuses() {
 function CampusCard({ campus }: { campus: Campus }) {
   return (
     <article id={campus.slug} className="flex flex-col">
-      {/* Photo placeholder — drop a JPEG into /media/campuses/<slug>.jpg
-          and replace this tile with an <img> when assets land. */}
-      <div className="aspect-[5/4] bg-[var(--color-ink-900)]/5 relative overflow-hidden">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
-            Photo
-          </span>
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
-            — TBC —
-          </span>
-          <span className="mt-5 max-w-[24ch] text-[11px] md:text-xs leading-snug">
-            <span className="font-mono">{campus.slug}</span>
-          </span>
-        </div>
-        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+      {/* Each campus screen has its own labeled image (city + region baked
+          in), so the card is just the screen — no redundant text labels.
+          Falls back to a placeholder if the image is missing. */}
+      <div className="aspect-[16/9] bg-[var(--color-ink-900)] relative overflow-hidden">
+        {campus.image ? (
+          <img
+            src={campus.image.src}
+            alt={campus.image.alt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-cream-50)]/55">
+            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs">
+              {campus.name}
+            </span>
+            <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs mt-2">
+              — TBC —
+            </span>
+          </div>
+        )}
       </div>
-
-      <p className="mt-5 font-[family-name:var(--font-display)] text-xs md:text-sm tracking-[0.32em] uppercase text-[var(--color-ink-900)]/45">
-        {campus.region}
-      </p>
-      <h3
-        className="mt-2 font-[family-name:var(--font-display)] uppercase leading-[0.95] tracking-[-0.01em] m-0"
-        style={{ fontSize: 'clamp(1.75rem, 2.8vw, 2.75rem)' }}
-      >
-        {campus.name}
-      </h3>
-      <p className="mt-3 text-base md:text-lg leading-[1.5] text-[var(--color-ink-900)]/80 max-w-[42ch]">
-        {campus.body}
-      </p>
     </article>
   );
 }
 
 /* ----------------------------------------------------------------------------
-   Section 5 — 15 Years of Multiplication
-   Three infographic placeholders: overall multiplication, church health,
-   wellness centre impact. Each is a sized slot waiting for the real graphic.
+   Section — 15 Years of Multiplication
+   Single landscape infographic showing the multiplication story
+   (campuses, nations, cities, congregation, buildings).
 ---------------------------------------------------------------------------- */
-type StatBlock = {
-  slug: string;
-  title: string;
-  body: string;
-};
-
-const STAT_BLOCKS: StatBlock[] = [
-  {
-    slug: 'overall',
-    title: 'Multiplication',
-    body:
-      '[ Placeholder. Top-line numbers on what 15 years of multiplication looks like — campuses, leaders, souls. ]',
-  },
-  {
-    slug: 'church-health',
-    title: 'Church Health',
-    body:
-      '[ Placeholder. Health markers — discipleship, attendance, generations engaged. ]',
-  },
-];
-
-export function FifteenYears() {
+function FifteenYears() {
   return (
-    <Section id="multiplication" tone="cream-100">
+    <Section id="multiplication" tone="cream">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
         2011 → 2026
       </p>
@@ -1605,47 +1611,17 @@ export function FifteenYears() {
         one church across the world&hellip; and the best is still ahead.
       </p>
 
-      <div className="mt-12 md:mt-20 grid grid-cols-1 gap-14 md:gap-24">
-        {STAT_BLOCKS.map((b) => (
-          <StatCard key={b.slug} stat={b} />
-        ))}
-      </div>
+      {/* Real growth infographic — campuses, nations, cities, congregation. */}
+      <figure className="mt-12 md:mt-16 m-0">
+        <img
+          src="/media/infographics/15-years.jpg"
+          alt="15 years of growth: 3 → 21 campuses, 1 → 4 nations, 1 → 8 cities, 7,000 → 19,000 congregation."
+          loading="lazy"
+          decoding="async"
+          className="block w-full h-auto"
+        />
+      </figure>
     </Section>
-  );
-}
-
-function StatCard({ stat }: { stat: StatBlock }) {
-  return (
-    <article id={stat.slug} className="flex flex-col">
-      {/* Big section-style title — stacked cards mean each one is its own
-          moment, not a small grid item. */}
-      <h3
-        className="font-[family-name:var(--font-display)] uppercase leading-[0.9] tracking-[-0.01em] text-[var(--color-ink-900)] m-0"
-        style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
-      >
-        {stat.title}
-      </h3>
-
-      {/* Big landscape infographic placeholder — full container width, banner-
-          like aspect so a real infographic SVG/PNG can show top-line numbers
-          across the page. Replace this tile with an <img> when the real
-          asset is ready. */}
-      <div className="mt-8 md:mt-10 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-50)] relative overflow-hidden">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
-            Infographic
-          </span>
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm mt-2">
-            — TBC —
-          </span>
-        </div>
-        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
-      </div>
-
-      <p className="mt-6 md:mt-8 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.55] text-[var(--color-ink-900)]/80">
-        {stat.body}
-      </p>
-    </article>
   );
 }
 
@@ -1761,19 +1737,16 @@ function WellnessClinic() {
         </em>
       </p>
 
-      {/* Big landscape infographic placeholder for the wellness impact stats.
-          Replace with <img> when the wellness team has the real numbers. */}
-      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-100)] relative overflow-hidden">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
-            Wellness Impact Infographic
-          </span>
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm mt-2">
-            &mdash; TBC &mdash;
-          </span>
-        </div>
-        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
-      </div>
+      {/* Wellness Centre impact infographic — real screen. */}
+      <figure className="mt-8 md:mt-12 m-0">
+        <img
+          src="/media/infographics/wellness.jpg"
+          alt="Futures Wellness Clinic — impact over the last 2 years: 14,270 total appointments, 18 team members, 272 individual clients, 1,050+ subsidised appointments."
+          loading="lazy"
+          decoding="async"
+          className="block w-full h-auto"
+        />
+      </figure>
     </Section>
   );
 }
