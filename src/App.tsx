@@ -44,6 +44,7 @@ function App() {
         <WhatGodsBeenDoing />
         <FifteenYears />
         <ChurchHealth />
+        <MountBarker />
         <WellnessClinic />
         <NewCampuses />
         <ActionLadder />
@@ -1217,6 +1218,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#mount-barker">Mount Barker</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
@@ -1680,6 +1682,97 @@ function ChurchHealth() {
           </span>
         </div>
         <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
+      </div>
+    </Section>
+  );
+}
+
+/* ----------------------------------------------------------------------------
+   Section — Mount Barker
+   New campus with a mezzanine. Full-width section under Church Health.
+   Placeholder copy + video placeholder until the team supplies the real
+   write-up and Vimeo asset.
+---------------------------------------------------------------------------- */
+function MountBarker() {
+  return (
+    <Section id="mount-barker" tone="cream">
+      <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
+        Built In Faith · Local
+      </p>
+
+      <h2
+        className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
+        style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
+      >
+        Mount <span className="text-[var(--color-gold-800)]">Barker</span>.
+      </h2>
+
+      <p
+        className="mt-4 md:mt-6 italic font-normal leading-[1.3] text-[var(--color-ink-900)]/85"
+        style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 'clamp(1.5rem, 4vw, 3rem)',
+        }}
+      >
+        with mezzanine
+      </p>
+
+      <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
+
+      {/* TODO: replace with real Mount Barker copy from the team. */}
+      <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85 space-y-5">
+        <p>
+          [ Placeholder. A short paragraph on the Mount Barker campus &mdash;
+          why now, who it&rsquo;s for, what the mezzanine unlocks for the
+          community. Replace when copy lands. ]
+        </p>
+      </div>
+
+      {/* Video placeholder — mirrors the inactive VimeoEmbed look but static
+          until a real Vimeo id is supplied. Swap to <VimeoEmbed ... /> later. */}
+      <div className="mt-10 md:mt-14 relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(135deg, var(--color-rust-900) 0%, var(--color-ink-900) 60%, var(--color-ink-900) 100%)',
+          }}
+        >
+          <div
+            className="absolute inset-0 opacity-50 mix-blend-soft-light"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(108deg, transparent 0 90px, rgba(250,246,239,0.05) 90px 92px)',
+            }}
+          />
+        </div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 md:gap-7 px-6 text-center">
+          <p
+            className="font-[family-name:var(--font-display)] uppercase text-white m-0"
+            style={{
+              fontSize: 'clamp(1.25rem, 3.2vw, 2.5rem)',
+              letterSpacing: '0.12em',
+              lineHeight: 1.05,
+            }}
+          >
+            Mount Barker
+          </p>
+          <div
+            aria-hidden
+            className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[var(--color-gold-500)] flex items-center justify-center shadow-lg"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="w-7 h-7 md:w-9 md:h-9 fill-[var(--color-ink-900)] translate-x-[2px]"
+            >
+              <polygon points="6,4 20,12 6,20" />
+            </svg>
+          </div>
+          <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm text-white/70 mt-2">
+            &mdash; Video TBC &mdash;
+          </p>
+        </div>
       </div>
     </Section>
   );
