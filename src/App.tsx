@@ -1218,7 +1218,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Clinic</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#mount-barker">Mount Barker</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
@@ -1807,7 +1807,7 @@ function WellnessClinic() {
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
         Futures{' '}
-        <span className="text-[var(--color-gold-800)]">Wellness</span> Centre.
+        <span className="text-[var(--color-gold-800)]">Wellness</span> Clinic.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
