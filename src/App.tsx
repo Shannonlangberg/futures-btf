@@ -44,9 +44,9 @@ function App() {
         <WhatGodsBeenDoing />
         <FifteenYears />
         <ChurchHealth />
-        <MountBarker />
         <WellnessClinic />
         <NewCampuses />
+        <MountBarker />
         <ActionLadder />
         <WaysToGive />
         <StoriesOfFaith />
@@ -1218,9 +1218,9 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#updates">What God&rsquo;s Doing</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#multiplication">15 Years</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#mount-barker">Mount Barker</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Centre</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#mount-barker">Mount Barker</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
@@ -1708,13 +1708,24 @@ function MountBarker() {
       </h2>
 
       <p
-        className="mt-4 md:mt-6 italic font-normal leading-[1.3] text-[var(--color-ink-900)]/85"
+        className="mt-4 md:mt-6 italic font-normal leading-[1.15] text-[var(--color-ink-900)]/85"
         style={{
           fontFamily: 'var(--font-serif)',
           fontSize: 'clamp(1.5rem, 4vw, 3rem)',
         }}
       >
-        with mezzanine
+        with{' '}
+        <span
+          className="not-italic font-[family-name:var(--font-display)] uppercase text-[var(--color-gold-800)] align-baseline"
+          style={{
+            fontSize: 'clamp(2rem, 6vw, 4.5rem)',
+            letterSpacing: '-0.005em',
+            lineHeight: 0.9,
+          }}
+        >
+          A HUGE
+        </span>{' '}
+        mezzanine
       </p>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
