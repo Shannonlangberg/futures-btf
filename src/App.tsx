@@ -1620,40 +1620,18 @@ function ChurchHealth() {
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-      {/* TODO: replace with real church-health copy from the team. */}
-      <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85 space-y-5">
-        <p>
-          [ Placeholder. A short paragraph or two on what church health has
-          looked like across these fifteen years — discipleship, generations,
-          community, the markers that tell us the church is alive and growing
-          well. Replace when copy lands. ]
-        </p>
-      </div>
-
-      <p className="mt-10 md:mt-14 max-w-[58ch]">
-        <em
-          className="italic font-normal leading-[1.4]"
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(1.25rem, 2.8vw, 1.875rem)',
-          }}
-        >
-          [ Placeholder kicker line — what the numbers reveal. ]
-        </em>
-      </p>
-
-      {/* Landscape infographic placeholder — same shape as Wellness. */}
-      <div className="mt-8 md:mt-12 aspect-[16/9] md:aspect-[2/1] bg-[var(--color-cream-50)] relative overflow-hidden">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-[var(--color-ink-900)]/40">
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm">
-            Church Health Infographic
-          </span>
-          <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm mt-2">
-            &mdash; TBC &mdash;
-          </span>
-        </div>
-        <YellowStrip className="absolute left-0 right-0 bottom-0 max-w-none" />
-      </div>
+      {/* Futures Church Snapshot — the markers of a healthy, growing church.
+          Attendance, baptisms, salvations, Dream Team, kids, youth, connect
+          groups. Replaces the previous placeholder copy + infographic tile. */}
+      <figure className="mt-12 md:mt-16 m-0">
+        <img
+          src="/media/infographics/church-health.jpg"
+          alt="Futures Church snapshot: 8,426 average weekly attendance · 19,000 people call Futures home · 574 baptisms in 2025 · 3,753 salvations in 2025 · 1,713 serving in Dream Team · 732 youth weekly attendance · 298 connect groups · 1,477 kids weekly attendance."
+          loading="lazy"
+          decoding="async"
+          className="w-full h-auto block"
+        />
+      </figure>
     </Section>
   );
 }
