@@ -659,51 +659,19 @@ function WaysToGive() {
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-      {/* Two columns: timing/commitment + payment methods */}
-      <div className="mt-14 md:mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-        {/* CHOOSE EITHER */}
-        <div>
-          <YellowTag>Choose Either</YellowTag>
-          <ol className="mt-8 md:mt-10 space-y-6 md:space-y-7 list-none p-0">
-            {[
-              'One-off offering on Sunday, June 22 or 29',
-              '3-month pledge finishing on Monday, September 29',
-              'A combination of an offering + pledge',
-            ].map((line, i) => (
-              <li key={i} className="grid grid-cols-[3rem_1fr] gap-x-5 items-baseline">
-                <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-sm md:text-base text-[var(--color-gold-800)]">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className="text-lg md:text-xl lg:text-2xl leading-[1.4] text-[var(--color-ink-900)]">
-                  {line}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        {/* WAYS TO GIVE */}
-        <div>
-          <YellowTag>Ways to Give</YellowTag>
-          <ol className="mt-8 md:mt-10 space-y-4 md:space-y-5 list-none p-0">
-            {['Cash', 'Cheque', 'Credit Card', 'Direct Debit', 'Online Deposit'].map(
-              (line, i) => (
-                <li key={i} className="grid grid-cols-[3rem_1fr] gap-x-5 items-baseline">
-                  <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.18em] text-sm md:text-base text-[var(--color-gold-800)]">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="font-[family-name:var(--font-display)] uppercase tracking-[0.08em] text-xl md:text-2xl lg:text-3xl leading-[1.1] text-[var(--color-ink-900)]">
-                    {line}
-                  </span>
-                </li>
-              )
-            )}
-          </ol>
-          <p className="mt-8 text-sm md:text-base italic text-[var(--color-ink-900)]/65 max-w-[42ch]">
-            Tax deductibility is available for donation amounts of $5,000 and above.
-          </p>
-        </div>
-      </div>
+      {/* Campaign How-To-Give poster — single image that carries the
+          Choose Either dates, the payment methods, the tax line and the
+          finance phone number. Replaces the previous textual two-column
+          layout. Tappable phone + email follow below for iOS users. */}
+      <figure className="mt-12 md:mt-16 m-0">
+        <img
+          src="/media/posters/how-to-give.jpg"
+          alt="How to give — choose either a one-off offering on Sunday June 21 or 28, a 3-month pledge finishing Monday September 28, or a combination. Ways to give: cash, cheque, credit card, online deposit. Tax deductibility is available for donation amounts of $5,000 and above. For any questions call our finance team on 08 8336 0000."
+          loading="lazy"
+          decoding="async"
+          className="w-full h-auto block"
+        />
+      </figure>
 
       {/* Bank account details — stacked single-column so each piece of info
           gets its own poster moment. Huge numbers in gold; account number is
@@ -1113,7 +1081,7 @@ const FAQS: FAQ[] = [
   {
     q: 'When does the campaign start?',
     a:
-      'The Building The Future offering lands on Sunday, June 22 and Sunday, June 29 — that’s when you bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 29.',
+      'The Building The Future offering lands on Sunday, June 21 and Sunday, June 28 — that’s when you bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 28.',
   },
   {
     q: 'Is my pledge tax-deductible?',
