@@ -46,7 +46,6 @@ function App() {
         <ChurchHealth />
         <WellnessClinic />
         <NewCampuses />
-        <MountBarker />
         <ActionLadder />
         <WaysToGive />
         <StoriesOfFaith />
@@ -1383,6 +1382,10 @@ function WhatGodsBeenDoing() {
             hash="076da569fd"
             title="Global — Ps Ashley & Jane Evans"
             posterTitle="Global"
+            poster={{
+              src: '/media/portraits/ashley-jane-poster.jpg',
+              alt: 'Pastors Ashley and Jane Evans — Global vision.',
+            }}
           />
           <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
             Global · Ps Ashley &amp; Jane Evans
@@ -1693,7 +1696,7 @@ function ChurchHealth() {
    Placeholder copy + video placeholder until the team supplies the real
    write-up and Vimeo asset.
 ---------------------------------------------------------------------------- */
-function MountBarker() {
+export function MountBarker() {
   return (
     <Section id="mount-barker" tone="cream">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
