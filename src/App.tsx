@@ -1116,7 +1116,7 @@ function FAQs() {
         className="font-[family-name:var(--font-display)] uppercase leading-[0.88] tracking-[-0.01em]"
         style={{ fontSize: 'clamp(2.75rem, 9vw, 9rem)' }}
       >
-        The <span className="text-[var(--color-gold-800)]">Questions</span>.
+        <span className="text-[var(--color-gold-800)]">Questions</span>.
       </h2>
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
