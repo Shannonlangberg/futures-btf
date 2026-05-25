@@ -1897,7 +1897,9 @@ function StoriesOfFaith() {
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
       <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-cream-50)]/80">
-        [ Placeholder lead — short framing for the testimony videos. ]
+        Real people. Real stories. Hear from the family of Futures Church on
+        what God has done, what He's doing now, and the future He's calling us
+        to build together.
       </p>
 
       <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
