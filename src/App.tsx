@@ -579,13 +579,13 @@ const ACTIONS: Action[] = [
     n: '03',
     word: 'Give / Pledge',
     body:
-      'On our collection day, bring your faith offering — or make a pledge for what you and your household believe God is calling you to give over the next three months. Big or small, every pledge carries the same spirit; a yes to His vision, a seed into the future.',
+      'On our collection day, bring your faith offering. Or make a pledge for what you and your household believe God is calling you to give over the next three months. Big or small, every pledge carries the same spirit. A yes to His vision. A seed into the future.',
   },
   {
     n: '04',
     word: 'Commit',
     body:
-      'This is bigger than a one-day offering. Stand with us as we build. Show up. Pray. Serve. Give. And tell the story of what God is doing… because when people hear what He’s done, faith rises and the future gets built together.',
+      'This is bigger than a one-day offering. Stand with us as we build. Show up. Pray. Serve. Give. And tell the story of what God is doing. When people hear what He’s done, faith rises and the future gets built together.',
   },
 ];
 
@@ -606,7 +606,7 @@ function ActionLadder() {
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
       <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.45] text-[var(--color-cream-50)]/80">
-        We&rsquo;re asking the church to take four steps with us &mdash; in this
+        We&rsquo;re asking the church to take four steps with us. In this
         order, at your own pace, but all the way through.
       </p>
 
@@ -1081,12 +1081,12 @@ const FAQS: FAQ[] = [
   {
     q: 'When does the giving start?',
     a:
-      'The Building The Future offering will take place on Sunday, June 21 and Sunday, June 28 — that’s when you can bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 28.',
+      'The Building The Future offering will take place on Sunday, June 21 and Sunday, June 28. That’s when you can bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 28.',
   },
   {
     q: 'Is my pledge tax-deductible?',
     a:
-      'Tax deductibility is available for donation amounts of $5,000 and above. If you would like a tax deduction, please contact our finance team for account details — call (08) 8336 0000 or email finance@futures.church.',
+      'Tax deductibility is available for donation amounts of $5,000 and above. If you would like a tax deduction, please contact our finance team for account details. Call (08) 8336 0000 or email finance@futures.church.',
   },
   {
     q: 'Can I give from outside Australia?',
@@ -1096,12 +1096,12 @@ const FAQS: FAQ[] = [
   {
     q: 'What if my circumstances change?',
     a:
-      'A pledge is an act of faith, not a contract. If anything shifts between now and the end of September, have a conversation with our finance team — they’ll walk through your options with you.',
+      'A pledge is an act of faith, not a contract. If anything shifts between now and the end of September, have a conversation with our finance team. They’ll walk through your options with you.',
   },
   {
     q: 'Who can I talk to?',
     a:
-      'For anything about banking, pledges, or tax — our finance team is the right call: (08) 8336 0000 or finance@futures.church. For questions about the vision itself — what we’re giving to, why now, what it means for your campus — have a chat with your Campus Pastor.',
+      'For anything about banking, pledges or tax, our finance team is the right call. Phone (08) 8336 0000 or email finance@futures.church. For questions about the vision itself (what we’re giving to, why now, what it means for your campus) have a chat with your Campus Pastor.',
   },
 ];
 
@@ -1279,17 +1279,16 @@ function BuildingTheFuture2026() {
           </em>{' '}
           is our annual moment to pause, celebrate what God has done, and say
           a united &lsquo;yes&rsquo; to what He is still building. It&rsquo;s not just a
-          campaign, it&rsquo;s a conviction&hellip; that what we do together
-          today becomes someone else&rsquo;s miracle tomorrow. That the seed
-          we sow now grows into a harvest we may never fully see, in cities we
-          may never visit, for people we haven&rsquo;t yet met.
+          campaign. It&rsquo;s a conviction. That what we do together today
+          becomes someone else&rsquo;s miracle tomorrow. That the seed we sow
+          now grows into a harvest we may never fully see, in cities we may
+          never visit, for people we haven&rsquo;t yet met.
         </p>
         <p>
           We believe the Church is God&rsquo;s greatest idea. And we believe
-          He has called us, together, to partner with Jesus and build it well.
-          Not for ourselves, but for the next generation. Not just locally,
-          but globally. Not just for today, but for a future that belongs to
-          Him.
+          He has called us together to partner with Jesus and build it well.
+          Not for ourselves but for the next generation. Not just locally but
+          globally. Not just for today but for a future that belongs to Him.
         </p>
         <p>This is what Building the Future is all about.</p>
         <p>
@@ -1463,8 +1462,8 @@ function NewCampuses() {
           and people&rsquo;s eternities depend on it.
         </p>
         <p>
-          From Adelaide to Atlanta, Bali to Brazil &mdash; Futures Church has
-          always been a church on the move. And we&rsquo;re not slowing down.
+          From Adelaide to Atlanta, Bali to Brazil, Futures Church has always
+          been a church on the move. And we&rsquo;re not slowing down.
         </p>
         <p>
           By the end of 2027, we believe God is calling us to plant at least
@@ -1485,7 +1484,7 @@ function NewCampuses() {
         <p>
           Every campus is a yes to someone who hasn&rsquo;t found Jesus yet.
           Every city is a field waiting for seed. And every time we go, we go
-          together &mdash; one church, one vision, one name lifted high.
+          together. One church, one vision, one name lifted high.
         </p>
       </div>
 
@@ -1576,7 +1575,7 @@ function FifteenYears() {
 
       <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl leading-[1.5] text-[var(--color-ink-900)]/85">
         Fifteen years ago, we were one church in one city. Today, we&rsquo;re
-        one church across the world&hellip; and the best is still ahead.
+        one church across the world. And the best is still ahead.
       </p>
 
       {/* Real growth infographic — campuses, nations, cities, congregation. */}
@@ -1615,6 +1614,17 @@ function ChurchHealth() {
 
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
+      {/* Framing paragraph — sets up the snapshot infographic that follows. */}
+      <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85">
+        <p>
+          Right now across every campus, every city, every nation, Futures
+          Church is alive, growing and moving. These numbers aren&rsquo;t
+          metrics. They&rsquo;re people. Families. Stories. Salvations. A
+          snapshot of what happens when a church says yes to the vision God
+          placed in its heart.
+        </p>
+      </div>
+
       {/* Futures Church Snapshot — the markers of a healthy, growing church.
           Attendance, baptisms, salvations, Dream Team, kids, youth, connect
           groups. Replaces the previous placeholder copy + infographic tile. */}
@@ -1627,16 +1637,6 @@ function ChurchHealth() {
           className="w-full h-auto block"
         />
       </figure>
-
-      <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85">
-        <p>
-          Right now, across every campus, every city, every nation, Futures
-          Church is alive, growing, and moving. These numbers aren&rsquo;t
-          metrics, they&rsquo;re people. Families. Stories. Salvations. A
-          snapshot of what happens when a church says yes to the vision God
-          placed in its heart.
-        </p>
-      </div>
     </Section>
   );
 }
@@ -1771,8 +1771,7 @@ function WellnessClinic() {
         <p>
           Four years ago, we gave in faith for something we couldn&rsquo;t yet
           see. We believed that the church could be more than a Sunday
-          gathering &mdash; that it could be a place of real healing for real
-          people.
+          gathering. That it could be a place of real healing for real people.
         </p>
         <p>
           So we started Futures Wellness Clinic, built to meet the emotional,
