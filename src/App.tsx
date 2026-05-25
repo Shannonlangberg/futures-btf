@@ -1079,14 +1079,14 @@ type FAQ = { q: string; a: string };
 
 const FAQS: FAQ[] = [
   {
-    q: 'When does the campaign start?',
+    q: 'When does the giving start?',
     a:
-      'The Building The Future offering lands on Sunday, June 21 and Sunday, June 28 — that’s when you bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 28.',
+      'The Building The Future offering will take place on Sunday, June 21 and Sunday, June 28 — that’s when you can bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 28.',
   },
   {
     q: 'Is my pledge tax-deductible?',
     a:
-      'Tax deductibility is available for donation amounts of $5,000 and above. If you’d like detail on how that works for your gift, our finance team can walk you through it.',
+      'Tax deductibility is available for donation amounts of $5,000 and above. If you would like a tax deduction, please contact our finance team for account details — call (08) 8336 0000 or email finance@futures.church.',
   },
   {
     q: 'Can I give from outside Australia?',
@@ -1101,7 +1101,7 @@ const FAQS: FAQ[] = [
   {
     q: 'Who can I talk to?',
     a:
-      'Our finance team is happy to walk you through any of it. Call (08) 8336 0000 or email finance@futures.church.',
+      'For anything about banking, pledges, or tax — our finance team is the right call: (08) 8336 0000 or finance@futures.church. For questions about the vision itself — what we’re giving to, why now, what it means for your campus — have a chat with your Campus Pastor.',
   },
 ];
 
@@ -1278,7 +1278,7 @@ function BuildingTheFuture2026() {
             Building the Future
           </em>{' '}
           is our annual moment to pause, celebrate what God has done, and say
-          a united yes to what He is still building. It&rsquo;s not just a
+          a united &lsquo;yes&rsquo; to what He is still building. It&rsquo;s not just a
           campaign, it&rsquo;s a conviction&hellip; that what we do together
           today becomes someone else&rsquo;s miracle tomorrow. That the seed
           we sow now grows into a harvest we may never fully see, in cities we
