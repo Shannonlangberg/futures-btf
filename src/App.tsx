@@ -1169,10 +1169,6 @@ function Footer() {
             <p className="mt-3 font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-[10px] md:text-xs text-[var(--color-cream-50)]/60">
               Futures Church · 2026 Vision
             </p>
-            <p className="mt-7 max-w-md text-base leading-[1.55] text-[var(--color-cream-50)]/75">
-              The vision for the next chapter of Futures Church &mdash; five
-              pillars, one future, and the offering that builds it.
-            </p>
           </div>
 
           {/* On-page links */}
@@ -1187,7 +1183,6 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Clinic</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
-              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#mount-barker">Mount Barker</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
