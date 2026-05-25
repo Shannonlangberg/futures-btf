@@ -1627,6 +1627,16 @@ function ChurchHealth() {
           className="w-full h-auto block"
         />
       </figure>
+
+      <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85">
+        <p>
+          Right now, across every campus, every city, every nation, Futures
+          Church is alive, growing, and moving. These numbers aren&rsquo;t
+          metrics, they&rsquo;re people. Families. Stories. Salvations. A
+          snapshot of what happens when a church says yes to the vision God
+          placed in its heart.
+        </p>
+      </div>
     </Section>
   );
 }
