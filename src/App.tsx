@@ -1331,6 +1331,10 @@ function WhatGodsBeenDoing() {
             hash="9f487d7782"
             title="Australia — what God has been doing through Futures Church"
             posterTitle="Australia"
+            poster={{
+              src: '/media/portraits/australia-poster.jpg',
+              alt: 'Futures Church Australia team on stage celebrating together.',
+            }}
           />
           <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
             Australia · Futures Church
@@ -1631,7 +1635,7 @@ function ChurchHealth() {
       <figure className="mt-12 md:mt-16 m-0">
         <img
           src="/media/infographics/church-health.jpg"
-          alt="Futures Church snapshot: 8,426 average weekly attendance · 19,000 people call Futures home · 574 baptisms in 2025 · 3,753 salvations in 2025 · 1,713 serving in Dream Team · 732 youth weekly attendance · 298 connect groups · 1,477 kids weekly attendance."
+          alt="Futures Church snapshot: 9,000 average weekly attendance · 19,000+ people call Futures home · 594 baptisms in 2025 · 3,773 salvations in 2025 · 1,713 serving in Dream Team · 777 youth weekly attendance · 305 connect groups · 1,494 kids weekly attendance."
           loading="lazy"
           decoding="async"
           className="w-full h-auto block"
