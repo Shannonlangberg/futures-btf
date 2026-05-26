@@ -567,7 +567,7 @@ const ACTIONS: Action[] = [
     n: '01',
     word: 'Pray',
     body:
-      'Set aside time over the coming weeks to pray for what God is doing in this church and what your part of it looks like.',
+      'Set aside time over the coming weeks to pray for what God is doing in this church and what your part looks like.',
   },
   {
     n: '02',
@@ -1081,7 +1081,7 @@ const FAQS: FAQ[] = [
   {
     q: 'When does the giving start?',
     a:
-      'The Building The Future offering will take place on Sunday, June 21 and Sunday, June 28. That’s when you can bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 28.',
+      'The Building the Future offering will take place on Sunday, June 21 and Sunday, June 28. That’s when you can bring a one-off offering, begin a 3-month pledge, or do a combination of both. Pledges finish on Monday, September 28.',
   },
   {
     q: 'Is my pledge tax-deductible?',
