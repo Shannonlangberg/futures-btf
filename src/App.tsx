@@ -89,7 +89,9 @@ function VimeoEmbed({
   className = '',
 }: {
   id: string;
-  hash: string;
+  /** Unlisted-video privacy token (the `h=` value from the Vimeo embed code).
+   *  Omit for fully public videos. */
+  hash?: string;
   /** iframe accessibility title (the actual video name, used by SR + Vimeo). */
   title: string;
   /** Big centered caps shown above the play button while inactive. */
@@ -103,7 +105,7 @@ function VimeoEmbed({
 
   if (activated) {
     const params = new URLSearchParams({
-      h: hash,
+      ...(hash ? { h: hash } : {}),
       title: '0',
       byline: '0',
       portrait: '0',
@@ -1822,13 +1824,20 @@ type Story = {
   slug: string;
   posterTitle: string;
   caption: string;
+  /** Optional Vimeo video id. If omitted, a TBC poster is shown instead. */
+  vimeoId?: string;
+  /** Optional unlisted-video privacy token. Only needed if the video on Vimeo
+   *  is set to "Unlisted" rather than fully public. */
+  vimeoHash?: string;
 };
 
 const STORIES: Story[] = [
   {
-    slug: 'story-1',
-    posterTitle: 'Story 01',
-    caption: 'Story 01 · TBC',
+    slug: 'noah-and-lara',
+    posterTitle: 'Noah & Lara',
+    caption: 'Noah & Lara',
+    vimeoId: '1195508930',
+    // TODO: drop the unlisted `h=` token here if the video isn't fully public.
   },
   {
     slug: 'story-2',
@@ -1862,7 +1871,16 @@ function StoriesOfFaith() {
       <div className="mt-10 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-10">
         {STORIES.map((s) => (
           <div key={s.slug}>
-            <StoryPosterTbc title={s.posterTitle} />
+            {s.vimeoId ? (
+              <VimeoEmbed
+                id={s.vimeoId}
+                hash={s.vimeoHash}
+                title={`Stories of Faith — ${s.caption}`}
+                posterTitle={s.posterTitle}
+              />
+            ) : (
+              <StoryPosterTbc title={s.posterTitle} />
+            )}
             <p className="mt-3 font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-cream-50)]/55">
               {s.caption}
             </p>
