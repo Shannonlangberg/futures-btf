@@ -1829,6 +1829,8 @@ type Story = {
   /** Optional unlisted-video privacy token. Only needed if the video on Vimeo
    *  is set to "Unlisted" rather than fully public. */
   vimeoHash?: string;
+  /** Optional custom poster image (the still shown before the video plays). */
+  poster?: { src: string; alt: string };
 };
 
 const STORIES: Story[] = [
@@ -1837,12 +1839,18 @@ const STORIES: Story[] = [
     posterTitle: 'Noah & Lara',
     caption: 'Noah & Lara',
     vimeoId: '1195508930',
+    poster: {
+      src: '/media/stories/noah-and-lara-poster.jpg',
+      alt: 'Noah and Lara sharing their story together.',
+    },
     // TODO: drop the unlisted `h=` token here if the video isn't fully public.
   },
   {
     slug: 'story-2',
     posterTitle: 'Story 02',
     caption: 'Story 02 · TBC',
+    vimeoId: '1195873289',
+    vimeoHash: '92bc4f3f0d',
   },
 ];
 
@@ -1877,6 +1885,7 @@ function StoriesOfFaith() {
                 hash={s.vimeoHash}
                 title={`Stories of Faith — ${s.caption}`}
                 posterTitle={s.posterTitle}
+                poster={s.poster}
               />
             ) : (
               <StoryPosterTbc title={s.posterTitle} />
