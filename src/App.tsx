@@ -1801,6 +1801,10 @@ const STORIES: Story[] = [
     caption: 'James & Georgie',
     vimeoId: '1195873289',
     vimeoHash: '92bc4f3f0d',
+    poster: {
+      src: '/media/stories/james-and-georgie-poster.jpg',
+      alt: 'James and Georgie sharing their story together.',
+    },
   },
 ];
 
