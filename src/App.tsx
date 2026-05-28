@@ -46,6 +46,7 @@ function App() {
         <ChurchHealth />
         <WellnessClinic />
         <NewCampuses />
+        <MountBarker />
         <ActionLadder />
         <WaysToGive />
         <StoriesOfFaith />
@@ -1185,6 +1186,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Clinic</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#mount-barker">Mount Barker</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
@@ -1649,15 +1651,14 @@ function ChurchHealth() {
 
 /* ----------------------------------------------------------------------------
    Section — Mount Barker
-   New campus with a mezzanine. Full-width section under Church Health.
-   Placeholder copy + video placeholder until the team supplies the real
-   write-up and Vimeo asset.
+   Standalone announcement section sitting under New Campuses. Calls out the
+   new Mount Barker building with the campaign screen graphic.
 ---------------------------------------------------------------------------- */
-export function MountBarker() {
+function MountBarker() {
   return (
-    <Section id="mount-barker" tone="cream">
+    <Section id="mount-barker" tone="cream-100">
       <p className="font-[family-name:var(--font-display)] text-[10px] md:text-xs tracking-[0.32em] uppercase text-[var(--color-ink-900)]/65 mb-6 md:mb-8">
-        Built In Faith · Local
+        Built In Faith · Mount Barker
       </p>
 
       <h2
@@ -1667,84 +1668,33 @@ export function MountBarker() {
         Mount <span className="text-[var(--color-gold-800)]">Barker</span>.
       </h2>
 
-      <p
-        className="mt-4 md:mt-6 italic font-normal leading-[1.15] text-[var(--color-ink-900)]/85"
-        style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: 'clamp(1.5rem, 4vw, 3rem)',
-        }}
-      >
-        with{' '}
-        <span
-          className="not-italic font-[family-name:var(--font-display)] uppercase text-[var(--color-gold-800)] align-baseline"
-          style={{
-            fontSize: 'clamp(2rem, 6vw, 4.5rem)',
-            letterSpacing: '-0.005em',
-            lineHeight: 0.9,
-          }}
-        >
-          A HUGE
-        </span>{' '}
-        mezzanine
-      </p>
-
       <YellowStrip className="mt-8 md:mt-10 w-full max-w-[760px]" />
 
-      {/* TODO: replace with real Mount Barker copy from the team. */}
+      {/* TODO: replace with the final Mount Barker announcement copy when it
+          lands. The current draft uses the site voice (short, declarative,
+          faith-led, no em-dashes). */}
       <div className="mt-10 md:mt-14 max-w-[58ch] text-base md:text-lg lg:text-xl leading-[1.7] text-[var(--color-ink-900)]/85 space-y-5">
         <p>
-          [ Placeholder. A short paragraph on the Mount Barker campus &mdash;
-          why now, who it&rsquo;s for, what the mezzanine unlocks for the
-          community. Replace when copy lands. ]
+          For years we&rsquo;ve been praying for a building for Mount Barker. A
+          home where the church family can gather, grow and send from.
+        </p>
+        <p>
+          We&rsquo;re so excited to announce that God has answered. Another
+          yes to His vision. Another seed in the ground for the next chapter
+          of Futures Church.
         </p>
       </div>
 
-      {/* Video placeholder — mirrors the inactive VimeoEmbed look but static
-          until a real Vimeo id is supplied. Swap to <VimeoEmbed ... /> later. */}
-      <div className="mt-10 md:mt-14 relative w-full aspect-video bg-[var(--color-ink-900)] overflow-hidden">
-        <div
-          aria-hidden
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(135deg, var(--color-rust-900) 0%, var(--color-ink-900) 60%, var(--color-ink-900) 100%)',
-          }}
-        >
-          <div
-            className="absolute inset-0 opacity-50 mix-blend-soft-light"
-            style={{
-              backgroundImage:
-                'repeating-linear-gradient(108deg, transparent 0 90px, rgba(250,246,239,0.05) 90px 92px)',
-            }}
-          />
-        </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 md:gap-7 px-6 text-center">
-          <p
-            className="font-[family-name:var(--font-display)] uppercase text-white m-0"
-            style={{
-              fontSize: 'clamp(1.25rem, 3.2vw, 2.5rem)',
-              letterSpacing: '0.12em',
-              lineHeight: 1.05,
-            }}
-          >
-            Mount Barker
-          </p>
-          <div
-            aria-hidden
-            className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[var(--color-gold-500)] flex items-center justify-center shadow-lg"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="w-7 h-7 md:w-9 md:h-9 fill-[var(--color-ink-900)] translate-x-[2px]"
-            >
-              <polygon points="6,4 20,12 6,20" />
-            </svg>
-          </div>
-          <p className="font-[family-name:var(--font-display)] uppercase tracking-[0.32em] text-xs md:text-sm text-white/70 mt-2">
-            &mdash; Video TBC &mdash;
-          </p>
-        </div>
-      </div>
+      {/* Mount Barker announcement screen. */}
+      <figure className="mt-10 md:mt-14 m-0">
+        <img
+          src="/media/campuses/mount-barker.jpg"
+          alt="Futures Mount Barker — South Australia. A new home for the church family."
+          loading="lazy"
+          decoding="async"
+          className="block w-full h-auto"
+        />
+      </figure>
     </Section>
   );
 }
@@ -1846,9 +1796,9 @@ const STORIES: Story[] = [
     // TODO: drop the unlisted `h=` token here if the video isn't fully public.
   },
   {
-    slug: 'story-2',
-    posterTitle: 'Story 02',
-    caption: 'Story 02 · TBC',
+    slug: 'james-and-georgie',
+    posterTitle: 'James & Georgie',
+    caption: 'James & Georgie',
     vimeoId: '1195873289',
     vimeoHash: '92bc4f3f0d',
   },
