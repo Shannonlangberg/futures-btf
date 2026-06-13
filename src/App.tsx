@@ -46,6 +46,7 @@ function App() {
         <ChurchHealth />
         <WellnessClinic />
         <NewCampuses />
+        <MountBarker />
         <ActionLadder />
         <WaysToGive />
         <StoriesOfFaith />
@@ -1185,6 +1186,7 @@ function Footer() {
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#church-health">Church Health</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#wellness">Wellness Clinic</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#campuses">New Campuses</a></li>
+              <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#mount-barker">Mount Barker</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#ways-to-give">Ways to Give</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#stories">Stories of Faith</a></li>
               <li><a className="hover:text-[var(--color-gold-500)] transition-colors" href="#faqs">FAQs</a></li>
